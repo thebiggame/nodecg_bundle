@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="../bower_components/iron-icons/av-icons.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-input/paper-input.html">
+    <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+        body {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0;
+		}
+		paper-input {
+			--paper-input-container: {
+				padding-top: 0;
+			}
+		}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div>
+    		<paper-input id="alertName" label="Title" always-float-label></paper-input>
+    	</div>
+
+		<div>
+    		<paper-checkbox id="alertFlair">Show Flair</paper-checkbox>
+		</div>
+
+        <paper-button id="start" class="nodecg-info" raised style="margin-left: 0;">
+            Show Alert
+        </paper-button>
+        <paper-button id="stop" class="nodecg-danger" raised style="margin-left: 0;">
+            Close
+        </paper-button>
+    </div>
+
+    <script src="alert.js"></script>
+</body>
+</html>

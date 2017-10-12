@@ -1,0 +1,89 @@
+{
+  "name": "thebiggame",
+  "version": "0.0.0",
+  "description": "theBIGGAME graphical assets, etc",
+  "homepage": "http://thebiggame.org",
+  "author": {
+    "name": "duck",
+    "email": "me@duck.me.uk",
+    "url": "http://duck.me.uk"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.9.7",
+    "dashboardPanels": [
+      {
+        "name": "alert",
+        "title": "Alert",
+        "width": 2,
+        "file": "alert.html",
+        "headerColor": "#ff0000"
+      },
+      {
+        "name": "countdown",
+        "title": "C/down",
+        "width": 1,
+        "file": "countdown.html",
+        "headerColor": "#f47425"
+      },
+      {
+        "name": "halfwipe",
+        "title": "Stream Waiting",
+        "width": 2,
+        "file": "halfwipe.html",
+        "headerColor": "#4286f4"
+      },
+      {
+        "name": "lowerthird",
+        "title": "Lower Third - Data",
+        "width": 3,
+        "file": "lowerthird.html",
+        "headerColor": "#4286f4"
+      },
+      {
+        "name": "persons",
+        "title": "Nameplate",
+        "width": 3,
+        "file": "persons.html",
+        "headerColor": "#4286f4"
+      },
+      {
+        "name": "scoreboard",
+        "title": "Scoreboard",
+        "width": 3,
+        "file": "scoreboard.html",
+        "headerColor": "#4286f4"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "stage.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "stream_waiting.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "soundCues": [
+      {
+        "name": "alertCue",
+        "defaultFile": "sound/alert.ogg",
+        "channels": 1
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0"
+}
