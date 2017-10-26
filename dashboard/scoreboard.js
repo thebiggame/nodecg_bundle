@@ -11,8 +11,12 @@
 	const data1minus = document.getElementById('1minus');
 	const data2plus = document.getElementById('2plus');
 	const data2minus = document.getElementById('2minus');
+	const dataTitleInput = document.getElementById('title');
     const scoreRep = nodecg.Replicant('scoreboard');
 
+	dataTitleInput.addEventListener('input', e => {
+		updateInputs();
+	});
 	data1Input.addEventListener('input', e => {
 		updateInputs();
 	});
@@ -67,6 +71,7 @@
 		scoreRep.value.p1score = data1scoreInput.value;
 		scoreRep.value.p2 = data2Input.value;
 		scoreRep.value.p2score = data2scoreInput.value;
+		scoreRep.value.title = dataTitleInput.value
 	}
 
 	start.addEventListener('click', () => {
