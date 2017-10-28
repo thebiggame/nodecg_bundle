@@ -80,7 +80,7 @@
             }, '-=0.1');
 
             this.tl.to(this.$['name-body'], 3, {
-                x: '40%',
+                x: '20%',
                 ease: Circ.easeOut
             }, 'enter');
 
