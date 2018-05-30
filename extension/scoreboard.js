@@ -4,7 +4,7 @@ module.exports = function (nodecg) {
 
     const wipeRep = nodecg.Replicant('scoreboard', {
         defaultValue: {
-        	live: true,
+        	live: false,
 			title: "",
             p1: 'Player 1',
 			p2: 'Player 2',

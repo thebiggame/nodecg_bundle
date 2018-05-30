@@ -5,7 +5,7 @@ module.exports = function (nodecg) {
 
     const wipeRep = nodecg.Replicant('lowerthird', {
         defaultValue: {
-        	live: true,
+        	live: false,
             body: 'Welcome to The BIG GAME!',
         },
         persistent: false

@@ -66,7 +66,7 @@
 			if (newVal.live) {
 				this.tl.add('in');
 				this.tl.to(outerNode, 1, {
-					top: "850px",
+					top: "750px",
 					ease: Quart.easeOut
 				}, 'in');
 				this.tl.to(innerNode, 1, {

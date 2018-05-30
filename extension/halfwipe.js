@@ -6,8 +6,8 @@ module.exports = function (nodecg) {
     const wipeRep = nodecg.Replicant('halfwipe', {
         defaultValue: {
         	live: true,
-            now: 'What\'s Up Doc?',
-			next: 'Next Up'
+            now: 'theBIGGAME',
+			next: ''
         },
         persistent: false
     });

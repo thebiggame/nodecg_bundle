@@ -5,7 +5,7 @@ module.exports = function (nodecg) {
 
     const wipeRep = nodecg.Replicant('persons', {
         defaultValue: {
-        	live: true,
+        	live: false,
             person1: 'Person 1',
 			person1desc: 'Person 1 Description',
 			person2: 'Person 2',
