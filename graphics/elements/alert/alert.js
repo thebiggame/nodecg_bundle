@@ -1,25 +1,27 @@
 (function () {
     'use strict';
 
-    Polymer({
-        is: 'tbg-alert',
+    class TbgAlert extends Polymer.Element {
+        static get is() {
+            return 'tbg-alert';
+        }
 
         ready() {
+            super.ready();
             this.tl = window.alertTL;
-            console.log(this.tl);
             window.addEventListener('alert', e => {
                 this.handleAlert(e.detail);
             });
             window.addEventListener('alert-end', e => {
                 this.handleExit();
             });
-        },
+        }
 
         handleAlert({flair, name}) {
         	const darkenNode = document.getElementById('darkener');
-        	const alertFlair = this.$$('#alert-flair');
-            const alertExclaim = this.$$('.exclaim');
-            const border = this.$$('.border');
+        	const alertFlair = Polymer.dom(this.root).querySelector('#alert-flair');
+            const alertExclaim = Polymer.dom(this.root).querySelector('.exclaim');
+            const border = Polymer.dom(this.root).querySelector('.border');
 
             // Fade out stuff
         	TweenLite.to(darkenNode, 2.5, {
@@ -130,12 +132,15 @@
 
             // Time padding#3c438c
             this.tl.to({}, 0.2, {});
-        },
+        }
 
 
         handleExit() {
         	console.log('exiting');
             this.tl.gotoAndPlay("exit");
         }
-    });
+    }
+
+    customElements.define(TbgAlert.is, TbgAlert);
+
 })();
