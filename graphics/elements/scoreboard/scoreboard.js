@@ -9,16 +9,13 @@
             console.log(this.wipeTL);
 
 			const scoreRep = nodecg.Replicant('scoreboard');
-			const metaRep = nodecg.Replicant('event');
 
             scoreRep.on('change', e => {
                 this.handleScore(e);
             });
 
-			metaRep.on('change', e => {
-				this.updateEvent(e);
-			})
-
+            const eventNode = document.getElementById('scoreboard-event-num');
+            eventNode.textContent = nodecg.bundleConfig.event_num;
         },
 
         handleScore(newVal) {
@@ -94,11 +91,7 @@
 				}, 'out+=0.25');
 				this.tl.play('out');
 			}
-        },
-		updateEvent(newVal) {
-			const eventNode = document.getElementById('scoreboard-event-num');
-			eventNode.textContent = newVal.eventNum;
-		}
+        }
 
     });
 })();

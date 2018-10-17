@@ -10,7 +10,6 @@
 
 			const wipeRep = nodecg.Replicant('halfwipe');
 			const clockRep = nodecg.Replicant('clock');
-			const metaRep = nodecg.Replicant('event');
 
             wipeRep.on('change', e => {
                 this.handleWipe(e);
@@ -18,9 +17,8 @@
             clockRep.on('change', e => {
             	this.updateClock(e);
 			});
-			metaRep.on('change', e => {
-				this.updateEvent(e);
-			})
+	    const eventNode = document.getElementById('event-num');
+            eventNode.textContent = nodecg.bundleConfig.event_num;
         },
 
         handleWipe(newVal) {
@@ -85,10 +83,6 @@
 				dayNode.textContent = '?/3'
 			}
 
-		},
-		updateEvent(newVal) {
-			const eventNode = document.getElementById('event-num');
-			eventNode.textContent = newVal.eventNum;
 		}
     });
 })();

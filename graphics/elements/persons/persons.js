@@ -9,16 +9,13 @@
             console.log(this.wipeTL);
 
 			const wipeRep = nodecg.Replicant('persons');
-			const metaRep = nodecg.Replicant('event');
 
             wipeRep.on('change', e => {
                 this.handleWipe(e);
             });
 
-			metaRep.on('change', e => {
-				this.updateEvent(e);
-			})
-
+            const eventNode = document.getElementById('persons-event-num');
+            eventNode.textContent = nodecg.bundleConfig.event_num;
         },
 
         handleWipe(newVal) {
@@ -86,11 +83,7 @@
 				}, 'out+=0.2');
 				this.tl.play('out');
 			}
-        },
-		updateEvent(newVal) {
-			const eventNode = document.getElementById('persons-event-num');
-			eventNode.textContent = newVal.eventNum;
-		}
+        }
 
     });
 })();

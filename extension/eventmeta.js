@@ -4,7 +4,6 @@ module.exports = function (nodecg) {
 
     const eventRep = nodecg.Replicant('event', {
         defaultValue: {
-            eventNum: 46,
 			day: 1,
 			time: Date.now()
         },

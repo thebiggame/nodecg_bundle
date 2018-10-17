@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "0.0.0",
+  "version": "48.0.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -15,11 +15,10 @@
     "extension"
   ],
   "keywords": [
-    "",
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "~0.9.7",
+    "compatibleRange": "~1.1.0",
     "dashboardPanels": [
       {
         "name": "alert",
@@ -27,41 +26,6 @@
         "width": 2,
         "file": "alert.html",
         "headerColor": "#ff0000"
-      },
-      {
-        "name": "countdown",
-        "title": "C/down",
-        "width": 1,
-        "file": "countdown.html",
-        "headerColor": "#f47425"
-      },
-      {
-        "name": "halfwipe",
-        "title": "Stream Waiting",
-        "width": 2,
-        "file": "halfwipe.html",
-        "headerColor": "#4286f4"
-      },
-      {
-        "name": "lowerthird",
-        "title": "Lower Third - Data",
-        "width": 3,
-        "file": "lowerthird.html",
-        "headerColor": "#4286f4"
-      },
-      {
-        "name": "persons",
-        "title": "Nameplate",
-        "width": 3,
-        "file": "persons.html",
-        "headerColor": "#4286f4"
-      },
-      {
-        "name": "scoreboard",
-        "title": "Scoreboard",
-        "width": 3,
-        "file": "scoreboard.html",
-        "headerColor": "#4286f4"
       }
     ],
     "graphics": [
@@ -84,6 +48,6 @@
       }
     ]
   },
-  "repository": "https://github.com/nodecg/nodecg.git",
+  "repository": "https://github.com/thebiggame/tbgcg.git",
   "license": "Apache-2.0"
 }
