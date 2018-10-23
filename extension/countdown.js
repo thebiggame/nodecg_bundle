@@ -5,33 +5,32 @@ const TimeObject = require('./classes/time-object');
 module.exports = function (nodecg) {
     let timerCountdown;
 
-    const countdownRep = nodecg.Replicant('countdown', {
-        defaultValue: {
-            time: new TimeObject(600),
-            running: false,
-            name: ''
-        },
+    const countdownData = nodecg.Replicant('countdown:data', {
+        defaultValue: new TimeObject(600),
         persistent: false
     });
+
+    const countdownName = nodecg.Replicant('countdown:name', {defaultValue: '', persistent: true});
+    const countdownActive = nodecg.Replicant('countdown:active', {defaultValue: false, persistent: false});
 
     /* When the replicant is persisted to disk, it's class doesn't survive stringification.
      * We must replace the persisted values (if any) with new class instances based on those values.
      */
 
     // If the countdown was running when NodeCG last stopped, figure out how much time passed.
-    if (countdownRep.value.running && countdownRep.value.time.raw && countdownRep.value.time.timestamp) {
-        const lostSeconds = Math.floor((Date.now() - countdownRep.value.time.timestamp) / 1000);
-        countdownRep.value.time = new TimeObject(countdownRep.value.time.raw + lostSeconds);
+    if (countdownData.running && countdownData.time.raw && countdownData.time.timestamp) {
+        const lostSeconds = Math.floor((Date.now() - countdownData.time.timestamp) / 1000);
+        countdownData.time = new TimeObject(countdownData.time.raw + lostSeconds);
         timerCountdown = setInterval(tick, 1000);
     } else {
-        countdownRep.value.running = false;
+        countdownData.running = false;
     }
 
-    nodecg.listenFor('startCountdown', start);
-    nodecg.listenFor('stopCountdown', stop);
+    nodecg.listenFor('countdown:start', start);
+    nodecg.listenFor('countdown:stop', stop);
 
     function start(startTime) {
-        if (countdownRep.value.running) {
+        if (countdownData.running) {
             return;
         }
 
@@ -40,24 +39,24 @@ module.exports = function (nodecg) {
             return;
         }
 
-        countdownRep.value.running = true;
-        countdownRep.value.time = timeObj;
+        countdownActive.value = true;
+        countdownData.value = timeObj;
         timerCountdown = setInterval(tick, 1000);
     }
 
     function stop() {
-        if (!countdownRep.value.running) {
+        if (!countdownActive) {
             return;
         }
 
-        countdownRep.value.running = false;
+        countdownActive.value = false;
         clearInterval(timerCountdown);
     }
 
     function tick() {
-        TimeObject.decrement(countdownRep.value.time);
+        TimeObject.decrement(countdownData.value);
 
-        if (countdownRep.value.time.raw <= 0) {
+        if (countdownData.value.raw <= 0) {
             stop();
         }
     }

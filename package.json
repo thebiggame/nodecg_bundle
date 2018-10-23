@@ -26,6 +26,13 @@
         "width": 2,
         "file": "alert.html",
         "headerColor": "#ff0000"
+      },
+      {
+        "name": "countdown",
+        "title": "Countdown",
+        "width": 2,
+        "file": "countdown.html",
+        "headerColor": "#ff0000"
       }
     ],
     "graphics": [
