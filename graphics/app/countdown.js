@@ -12,7 +12,6 @@
 	const timeline = window.countdownTL;
 
     countRep.on('change', newVal => {
-    	console.log(newVal);
         timeNode.textContent = newVal.formatted;
         timeline.call(() => {
         });

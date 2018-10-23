@@ -3,13 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 
-	<link rel="import" href="elements/halfwipe/halfwipe.html">
-	<link rel="import" href="elements/lowerthird/lowerthird.html">
-	<link rel="import" href="elements/persons/persons.html">
-	<link rel="import" href="elements/scoreboard/scoreboard.html">
+
 	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Arial+Black" rel="stylesheet">
+	<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+
 	<script src="../bower_components/gsap/src/minified/TweenMax.min.js"></script>
+	<script>
+        (function () {
+            'use strict';
+
+            window.countdownTL = new TimelineLite({autoRemoveChildren: true});
+        })();
+	</script>
+
+	<link rel="import" href="elements/halfwipe/halfwipe.html">
+	<!--<link rel="import" href="elements/lowerthird/lowerthird.html">
+	<link rel="import" href="elements/persons/persons.html">
+	<link rel="import" href="elements/scoreboard/scoreboard.html">-->
+
+
 	<script>try {Typekit.load();} catch (e) {}</script>
 	<style>
 		body {
@@ -93,14 +107,7 @@
 			opacity: 0;
 		}
 	</style>
-	<script>
-		(function () {
-			'use strict';
 
-			window.countdownTL = new TimelineLite({autoRemoveChildren: true});
-			window.wipeTL = new TimelineLite({autoRemoveChildren: true});
-		})();
-	</script>
 </head>
 <body>
 <div id="container">

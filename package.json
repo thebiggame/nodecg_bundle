@@ -33,6 +33,13 @@
         "width": 2,
         "file": "countdown.html",
         "headerColor": "#ff0000"
+      },
+      {
+        "name": "halfwipe",
+        "title": "Halfwipe (stream)",
+        "width": 2,
+        "file": "halfwipe.html",
+        "headerColor": "#ff0000"
       }
     ],
     "graphics": [
