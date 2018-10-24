@@ -47,6 +47,13 @@
         "width": 2,
         "file": "lowerthird.html",
         "headerColor": "#ff0000"
+      },
+      {
+        "name": "persons",
+        "title": "Persons (stream)",
+        "width": 2,
+        "file": "persons.html",
+        "headerColor": "#ff0000"
       }
     ],
     "graphics": [

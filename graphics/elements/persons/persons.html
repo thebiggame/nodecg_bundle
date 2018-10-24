@@ -1,12 +1,10 @@
-<link rel="import" href="../../../bower_components/polymer/polymer.html">
-<link href="../../../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
 <dom-module id="tbg-persons">
     <template>
+		<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
         <style>
             :host {
                 position: absolute;
-            	width: 950px;
+            	width: 1300px;
             	height: 1080px;
             	overflow: hidden;
             	/* #3c438c */
@@ -37,6 +35,7 @@
 				font-weight: 300;
 				font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
 				text-shadow: rgba(0,0,0, 0.5) 0 0 20px;
+                background-color: #3c438c;
 			}
 			.box-elem {
 				height: 60px;
@@ -99,31 +98,33 @@
 			}
         </style>
 
-		<div id="persons-outer" class="fixed-bottom">
-			<div id="persons-inner" class="container-fluid">
-				<div id="event-data" class="row align-items-center">
-					<div id="wipe-title" class="d-flex box-elem bg-info"><b class="event-num" id="persons-event-num">??</b></div>
-					<div id="links-box" class="d-flex box-elem bg-dark align-items-center"><small class="text-info">thebiggame.org</small></div>
-					<div id="sponsor-box-novatech" class="ml-auto d-flex box-border-left box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="../../img/sponsor_novatech.png"/></div>
-					<div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="../../img/sponsor_dominos.png"/></div>
-					<div id="sponsor-box-pgames" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="../../img/sponsor_projgames.png"/></div>
-				</div>
-				<div class="row align-items-center justify-content-center" style="height: 65%">
-					<div class="col p-4 text-center" id="persons-1">
-						<div id="persons-encap-1" class="display-2"><div id="persons-data-1">putty_thing</div></div>
-						<small id="persons-sub-1" class="text-muted">Test</small>
-					</div>
-					<div class="col p-4 text-center" id="persons-2">
-						<div id="persons-encap-2" class="display-2"><div id="persons-data-2">Jynx</div></div>
-						<small id="persons-sub-2" class="text-muted">Test</small>
-					</div>
-					<div class="col p-4 text-center" id="persons-3">
-						<div id="persons-encap-3" class="display-2"><div id="persons-data-3">fish_cake</div></div>
-						<small id="persons-sub-3" class="text-muted">Test</small>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div id="content"> <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
+            <div id="persons-outer" class="fixed-bottom">
+                <div id="persons-inner" class="container-fluid">
+                    <div id="event-data" class="row align-items-center">
+                        <div id="wipe-title" class="d-flex box-elem"><b class="event-num" id="persons-event-num">??</b></div>
+                        <div id="links-box" class="d-flex box-elem bg-dark align-items-center"><small class="text-info">thebiggame.org</small></div>
+                        <div id="sponsor-box-novatech" class="ml-auto d-flex box-border-left box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_novatech.png"/></div>
+                        <div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_dominos.png"/></div>
+                        <div id="sponsor-box-pgames" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_projgames.png"/></div>
+                    </div>
+                    <div class="row align-items-center justify-content-center" style="height: 65%">
+                        <div class="col p-4 text-center" id="persons-1">
+                            <div id="persons-encap-1" class="display-2"><div id="persons-data-1">putty_thing</div></div>
+                            <small id="persons-sub-1" class="text-muted">Test</small>
+                        </div>
+                        <div class="col p-4 text-center" id="persons-2">
+                            <div id="persons-encap-2" class="display-2"><div id="persons-data-2">Jynx</div></div>
+                            <small id="persons-sub-2" class="text-muted">Test</small>
+                        </div>
+                        <div class="col p-4 text-center" id="persons-3">
+                            <div id="persons-encap-3" class="display-2"><div id="persons-data-3">fish_cake</div></div>
+                            <small id="persons-sub-3" class="text-muted">Test</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </template>
 
     <script src="persons.js"></script>

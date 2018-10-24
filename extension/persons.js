@@ -3,9 +3,8 @@
 module.exports = function (nodecg) {
     let timerClock;
 
-    const wipeRep = nodecg.Replicant('persons', {
+    const personsRep = nodecg.Replicant('persons:data', {
         defaultValue: {
-        	live: false,
             person1: 'Person 1',
 			person1desc: 'Person 1 Description',
 			person2: 'Person 2',
@@ -13,25 +12,8 @@ module.exports = function (nodecg) {
 			person3: 'Person 3',
 			person3desc: 'Person 3 Description',
         },
-        persistent: false
+        persistent: true
     });
 
-	nodecg.listenFor('startPersons', start);
-	nodecg.listenFor('stopPersons', stop);
-
-	function start(startTime) {
-		if (wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = true;
-	}
-
-	function stop() {
-		if (!wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = false;
-	}
+    const personsRepActive = nodecg.Replicant('persons:active', {defaultValue: false, persistent: true});
 };
