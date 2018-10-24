@@ -2,34 +2,21 @@
 
 module.exports = function (nodecg) {
 
-    const wipeRep = nodecg.Replicant('scoreboard', {
+    const scoreboardRep = nodecg.Replicant('scoreboard:data', {
         defaultValue: {
-        	live: false,
 			title: "",
-            p1: 'Player 1',
-			p2: 'Player 2',
-			p1score: "",
-			p2score: "",
+            team1: {
+			    name: 'Player 1',
+                score: 0
+            },
+            team2: {
+                name: 'Player 2',
+                score: 0
+            }
         },
-        persistent: false
+        persistent: true
     });
 
-	nodecg.listenFor('startScoreboard', start);
-	nodecg.listenFor('stopScoreboard', stop);
+    const scoreboardRepActive = nodecg.Replicant('scoreboard:active', {defaultValue: false, persistent: true});
 
-	function start(startTime) {
-		if (wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = true;
-	}
-
-	function stop() {
-		if (!wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = false;
-	}
 };

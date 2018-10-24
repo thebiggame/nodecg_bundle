@@ -30,21 +30,21 @@
       {
         "name": "countdown",
         "title": "Countdown",
-        "width": 2,
+        "width": 1,
         "file": "countdown.html",
         "headerColor": "#ff0000"
       },
       {
         "name": "halfwipe",
         "title": "Halfwipe (stream)",
-        "width": 2,
+        "width": 3,
         "file": "halfwipe.html",
         "headerColor": "#ff0000"
       },
       {
         "name": "lowerthird",
         "title": "Lower Third (stream)",
-        "width": 2,
+        "width": 3,
         "file": "lowerthird.html",
         "headerColor": "#ff0000"
       },
@@ -53,6 +53,13 @@
         "title": "Persons (stream)",
         "width": 2,
         "file": "persons.html",
+        "headerColor": "#ff0000"
+      },
+      {
+        "name": "scoreboard",
+        "title": "Scoreboard (stream)",
+        "width": 2,
+        "file": "scoreboard.html",
         "headerColor": "#ff0000"
       }
     ],
