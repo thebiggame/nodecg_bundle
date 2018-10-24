@@ -1,32 +1,10 @@
 'use strict';
 
 module.exports = function (nodecg) {
-    let timerClock;
-
-    const wipeRep = nodecg.Replicant('lowerthird', {
-        defaultValue: {
-        	live: false,
-            body: 'Welcome to The BIG GAME!',
-        },
-        persistent: false
+    const ltRep = nodecg.Replicant('lowerthird:data', {
+        defaultValue: 'theBIGGAME',
+        persistent: true
     });
-
-	nodecg.listenFor('startLowerThird', start);
-	nodecg.listenFor('stopLowerThird', stop);
-
-	function start(startTime) {
-		if (wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = true;
-	}
-
-	function stop() {
-		if (!wipeRep.value.live) {
-			return;
-		}
-
-		wipeRep.value.live = false;
-	}
+    const ltRepActive = nodecg.Replicant('lowerthird:active', {defaultValue: false, persistent: true});
 };
+

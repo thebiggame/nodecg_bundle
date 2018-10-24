@@ -40,6 +40,13 @@
         "width": 2,
         "file": "halfwipe.html",
         "headerColor": "#ff0000"
+      },
+      {
+        "name": "lowerthird",
+        "title": "Lower Third (stream)",
+        "width": 2,
+        "file": "lowerthird.html",
+        "headerColor": "#ff0000"
       }
     ],
     "graphics": [
