@@ -62,6 +62,17 @@
             font-weight: 700;
             margin-top: -10px;
         }
+        #clock {
+			font-weight: 500;
+			font-size: 40px;
+			display: inline;
+		}
+		#clock-period {
+			font-size: 25px;
+			color: #909090;
+			display: inline;
+			vertical-align: text-bottom;
+		}
         #content {
             position: absolute;
             display: flex;
@@ -103,7 +114,7 @@
         #cdown-time {
             font-family: Consolas, monospace;
         }
-		#music {
+		#current_data {
 			position: absolute;
 			top: 0px;
 			right: 0px;
@@ -148,13 +159,19 @@
         		<div id="cdown-time"></div>
             </div>
         </div>
-		<div id="music" class="bg-dark d-flex align-items-center">
-			<img class="img-fluid" src="img/music.png" style="padding-right: 5px;"/><div id="music-title">No Music Playing</div>
+		<div id="current_data" class="bg-dark d-flex align-items-center">
+			<div id="music">
+				<img class="img-fluid" src="img/music.png" style="padding-right: 5px;"/><div id="music-title">No Music Playing</div>
+			</div>
+			<div id="clock-box" class="d-flex box-elem bg-dark border-left">
+                <div id="clock"></div><div id="clock-period">??</div>
+            </div>
 		</div>
 
     </div>
 
     <script src="app/countdown.js"></script>
 	<script src="app/music.js"></script>
+	<script src="app/clock.js"></script>
 </body>
 </html>
