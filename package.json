@@ -23,44 +23,50 @@
       {
         "name": "alert",
         "title": "Alert",
-        "width": 2,
+        "width": 3,
         "file": "alert.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stage"
       },
       {
         "name": "countdown",
         "title": "Countdown",
-        "width": 1,
+        "width": 2,
         "file": "countdown.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stage"
       },
       {
         "name": "halfwipe",
-        "title": "Halfwipe (stream)",
+        "title": "Halfwipe",
         "width": 3,
         "file": "halfwipe.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
       },
       {
         "name": "lowerthird",
-        "title": "Lower Third (stream)",
+        "title": "Lower Third",
         "width": 3,
         "file": "lowerthird.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
       },
       {
         "name": "persons",
-        "title": "Persons (stream)",
+        "title": "Persons",
         "width": 2,
         "file": "persons.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
       },
       {
         "name": "scoreboard",
-        "title": "Scoreboard (stream)",
+        "title": "Scoreboard",
         "width": 2,
         "file": "scoreboard.html",
-        "headerColor": "#ff0000"
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
       }
     ],
     "graphics": [
