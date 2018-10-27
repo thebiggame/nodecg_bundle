@@ -6,7 +6,7 @@ module.exports = function (nodecg) {
             now: 'theBIGGAME',
 			next: ''
         },
-        persistent: false
+        persistent: true
     });
     const wipeRepActive = nodecg.Replicant('halfwipe:active', {defaultValue: false, persistent: true});
 };

@@ -5,6 +5,6 @@ module.exports = function (nodecg) {
         defaultValue: 'theBIGGAME',
         persistent: true
     });
-    const ltRepActive = nodecg.Replicant('lowerthird:active', {defaultValue: false, persistent: true});
+    const ltRepActive = nodecg.Replicant('lowerthird:active', {defaultValue: false, persistent: false});
 };
 
