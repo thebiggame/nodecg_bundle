@@ -1,4 +1,4 @@
-node_modules
-coverage
-bower_components
+thebiggame/node_modules
+thebiggame/coverage
+thebiggame/bower_components
 .idea
