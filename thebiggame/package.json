@@ -1,0 +1,94 @@
+{
+  "name": "thebiggame",
+  "version": "48.0.0",
+  "description": "theBIGGAME graphical assets, etc",
+  "homepage": "http://thebiggame.org",
+  "author": {
+    "name": "duck",
+    "email": "me@duck.me.uk",
+    "url": "http://duck.me.uk"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~1.2.0",
+    "dashboardPanels": [
+      {
+        "name": "alert",
+        "title": "Alert",
+        "width": 3,
+        "file": "alert.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stage"
+      },
+      {
+        "name": "countdown",
+        "title": "Countdown",
+        "width": 2,
+        "file": "countdown.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stage"
+      },
+      {
+        "name": "halfwipe",
+        "title": "Halfwipe",
+        "width": 3,
+        "file": "halfwipe.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
+      },
+      {
+        "name": "lowerthird",
+        "title": "Lower Third",
+        "width": 3,
+        "file": "lowerthird.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
+      },
+      {
+        "name": "persons",
+        "title": "Persons",
+        "width": 2,
+        "file": "persons.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
+      },
+      {
+        "name": "scoreboard",
+        "title": "Scoreboard",
+        "width": 2,
+        "file": "scoreboard.html",
+        "headerColor": "#ff0000",
+        "workspace": "Stream"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "stage.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "stream.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "soundCues": [
+      {
+        "name": "alertCue",
+        "defaultFile": "sound/alert.ogg",
+        "channels": 1
+      }
+    ]
+  },
+  "repository": "https://github.com/thebiggame/tbgcg.git",
+  "license": "Apache-2.0"
+}

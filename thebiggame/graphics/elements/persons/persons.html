@@ -1,0 +1,131 @@
+<dom-module id="tbg-persons">
+    <template>
+		<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <style>
+            :host {
+                position: absolute;
+            	width: 1300px;
+            	height: 1080px;
+            	overflow: hidden;
+            	/* #3c438c */
+            	color: #fff;
+            }
+			#persons-outer {
+				position: absolute;
+				overflow: hidden;
+				text-wrap: normal;
+				top: 750px;
+				left: 100px;
+				right: 0px;
+				bottom: 100px;
+				background-color: #fff;
+			}
+			#persons-inner {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				font-size: 32px;
+				color: white;
+				background-color: #3871d7;
+			}
+			#wipe-title {
+				font-size: 40px;
+				font-weight: 300;
+				font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+				text-shadow: rgba(0,0,0, 0.5) 0 0 20px;
+                background-color: #3c438c;
+			}
+			.box-elem {
+				height: 60px;
+				font-size: 40px;
+				border-bottom: solid #303030 1px;
+				border-right: solid #303030 1px;
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+			.box-border-left {
+				border-left: solid #303030 1px;
+			}
+			.event-num {
+				color: goldenrod;
+			}
+			#clock {
+				font-weight: 500;
+				font-size: 40px;
+				display: inline;
+			}
+			#clock-period {
+				font-size: 25px;
+				color: #909090;
+				display: inline;
+				vertical-align: text-bottom;
+			}
+			.day-trail {
+				font-size: 25px;
+				color: #909090;
+				padding-right: 5px;
+			}
+			#day-box {
+				font-size:40px;
+			}
+			#now-body {
+				font-size: 75px;
+				font-weight: 700;
+			}
+
+			.event-trail {
+				font-size: 30px;
+				font-weight: 300;
+			}
+			#next-body {
+				font-size: 50px;
+				font-weight: 500;
+			}
+			#wipe-next {
+				margin-top: -20px;
+			}
+			.sponsor-boxo > .img-fluid {
+				max-height: 30px;
+			}
+			#persons-encap-1 > .img-fluid {
+				max-height: 20px;
+				padding-right: 5px;
+			}
+			#persons-data-1, #persons-data-2, #persons-data-3 {
+				font-size: 40px;
+			}
+        </style>
+
+        <div id="content"> <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
+            <div id="persons-outer" class="fixed-bottom">
+                <div id="persons-inner" class="container-fluid">
+                    <div id="event-data" class="row align-items-center">
+                        <div id="wipe-title" class="d-flex box-elem"><b class="event-num" id="persons-event-num">??</b></div>
+                        <div id="links-box" class="d-flex box-elem bg-dark align-items-center"><small class="text-info">thebiggame.org</small></div>
+                        <div id="sponsor-box-novatech" class="ml-auto d-flex box-border-left box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_novatech.png"/></div>
+                        <div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_dominos.png"/></div>
+                        <div id="sponsor-box-pgames" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_projgames.png"/></div>
+                    </div>
+                    <div class="row align-items-center justify-content-center" style="height: 65%">
+                        <div class="col p-4 text-center" id="persons-1">
+                            <div id="persons-encap-1" class="display-2"><div id="persons-data-1">putty_thing</div></div>
+                            <small id="persons-sub-1" class="text-muted">Test</small>
+                        </div>
+                        <div class="col p-4 text-center" id="persons-2">
+                            <div id="persons-encap-2" class="display-2"><div id="persons-data-2">Jynx</div></div>
+                            <small id="persons-sub-2" class="text-muted">Test</small>
+                        </div>
+                        <div class="col p-4 text-center" id="persons-3">
+                            <div id="persons-encap-3" class="display-2"><div id="persons-data-3">fish_cake</div></div>
+                            <small id="persons-sub-3" class="text-muted">Test</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="persons.js"></script>
+</dom-module>
