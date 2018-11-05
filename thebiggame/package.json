@@ -18,7 +18,7 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "~1.1.0",
+    "compatibleRange": "~1.2.0",
     "dashboardPanels": [
       {
         "name": "alert",
