@@ -5,11 +5,13 @@ var msgtime = nodecg.bundleConfig.msgtime;		// how long sub message is displayed
 if (msgtime==undefined) msgtime = 5;
 var update = nodecg.bundleConfig.update;		// how often the title is updated, in seconds
 if (update==undefined) update = 1;
-var apikey = nodecg.bundleConfig.apikey;		// your last.fm API key (last.fm/api)
+//var apikey = nodecg.bundleConfig.apikey;		// your last.fm API key (last.fm/api)
+var apikey = "2f3b91506c384e7c4a238294c6cebea9";		// your last.fm API key (last.fm/api)
 
 var auto = 0;
 var showing = 0;
-var songsource = nodecg.bundleConfig.songsource;
+//var songsource = nodecg.bundleConfig.songsource;
+var songsource = "adamcathersides";
 var lastsong = "";
 
 var curline = -1;
