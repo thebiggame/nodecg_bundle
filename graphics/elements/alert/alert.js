@@ -21,24 +21,26 @@
         	const darkenNode = document.getElementById('darkener');
         	const alertFlair = Polymer.dom(this.root).querySelector('#alert-flair');
             const alertExclaim = Polymer.dom(this.root).querySelector('.exclaim');
-            const border = Polymer.dom(this.root).querySelector('.border');
+
+            const outerNode = Polymer.dom(this.root).querySelector('#wipe-outer');
+            const innerNode = Polymer.dom(this.root).querySelector('#wipe-inner');
 
             // Fade out stuff
         	TweenLite.to(darkenNode, 2.5, {
-				opacity: 0.5,
+				opacity: 0.75,
 				ease: Power4.easeOut
 			});
 
             this.tl.call(() => {
-                this.$['name-body'].innerHTML = name;
+                this.$['name-content'].innerHTML = name;
 
                 // Shrink name to fit if necessary
-                const nameClientWidth = this.$['name-body'].clientWidth;
-                const nameScrollWidth = this.$['name-body'].scrollWidth;
+                const nameClientWidth = this.$['name-content'].clientWidth;
+                const nameScrollWidth = this.$['name-content'].scrollWidth;
                 if (nameScrollWidth > nameClientWidth) {
-                    TweenLite.set(this.$['name-body'], {scaleX: nameClientWidth / nameScrollWidth});
+                    TweenLite.set(this.$['name-content'], {scaleX: nameClientWidth / nameScrollWidth});
                 } else {
-                    TweenLite.set(this.$['name-body'], {scaleX: 1});
+                    TweenLite.set(this.$['name-content'], {scaleX: 1});
                 }
 
 				if (flair) {
@@ -48,54 +50,65 @@
                 }
             });
 
-            this.tl.add('start');
+            this.tl.clear().add('start');
 
 			if(flair) {
             	this.tl.add('enter', "start+=3");
-            	this.tl.to(alertExclaim, 3, {
-                	y: 150,
+                this.tl.to(alertExclaim, {
+                    duration: 0.5,
 					opacity: 1,
-                	ease: Bounce.easeOut
+            	}, 'start');
+            	this.tl.to(alertExclaim, {
+                    duration: 3,
+                	y: 150,
+                	ease: "elastic.out(1.2, 0.3)"
             	}, 'start');
             } else {
             	this.tl.add('enter');
             }
 
-            this.tl.to([border], 0.5, {
-                scaleX: 1,
-                ease: Power2.easeInOut
-            }, 'enter');
-
 			if(flair) {
 				this.tl.to(alertExclaim, 0.75, {
-					opacity: 0.5,
-					y: -240,
+					opacity: 0.9,
+					y: -150,
                 	ease: Power2.easeInOut
             	}, 'enter');
 			}
 
-            this.tl.to(this.$['name-content'], 0.5, {
-                onStart() {
-                },
-                y: '0%',
-                ease: Power2.easeInOut
-            }, '-=0.1');
-
-            this.tl.to(this.$['name-body'], 3, {
-                x: '20%',
-                ease: Circ.easeOut
+            this.tl.to(outerNode, 0.25, {
+                left: "100px",
+                // marginRight: "0px",
+                ease: Quart.easeOut
             }, 'enter');
+            this.tl.to(outerNode, 1, {
+                marginRight: "0px",
+                ease: Quart.easeOut
+            }, 'enter+=0.5');
+            this.tl.to(innerNode, 0.75, {
+                marginRight: "0px",
+                ease: Quart.easeOut
+            }, 'enter+=0.75');
+            this.tl.to(outerNode, 1, {
+                borderRadius: "0px 150px 150px 0px",
+                ease: Quart.easeOut
+            }, 'enter+=0.75');
 
             // Exit
             this.tl.add('exit', '+=25');
 
-            this.tl.to(this.$.cover, 0.511, {
-                scaleY: 1,
-                ease: Power2.easeIn,
-                onComplete: function () {
-                    this.$.cover.style.transformOrigin = 'top center';
-                }.bind(this)
+            this.tl.to(innerNode, 1, {
+                marginRight: "100%",
+                ease: Quart.easeInOut
             }, 'exit');
+            this.tl.to(outerNode, 1, {
+                marginRight: "1900px",
+                borderRadius: "0px 0px 0px 0px",
+                ease: Quart.easeInOut
+            }, 'exit+=0.5');
+            this.tl.to(outerNode, 1, {
+                left: "-50px",
+                ease: Quart.easeInOut
+            }, 'exit+=1');
 
             if(flair) {
 				this.tl.to(alertExclaim, 0.5, {
@@ -106,20 +119,7 @@
 			}
 
             this.tl.set([
-                border,
-                this.$['name-body'],
                 this.$['name-content']
-            ], {
-                clearProps: 'all'
-            });
-
-            this.tl.to(this.$.cover, 0.511, {
-                scaleY: 0,
-                ease: Power2.easeOut
-            });
-
-            this.tl.set([
-                this.$.cover
             ], {
                 clearProps: 'all'
             });
@@ -136,8 +136,7 @@
 
 
         handleExit() {
-        	console.log('exiting');
-            this.tl.gotoAndPlay("exit");
+            this.tl.play("exit");
         }
     }
 

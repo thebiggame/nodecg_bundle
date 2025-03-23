@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "48.0.0",
+  "version": "ng-48.0.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -18,7 +18,7 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "~1.2.0",
+    "compatibleRange": "~2.1.0",
     "dashboardPanels": [
       {
         "name": "alert",
@@ -67,6 +67,38 @@
         "file": "scoreboard.html",
         "headerColor": "#ff0000",
         "workspace": "Stream"
+      },
+      {
+        "name": "ng-info",
+        "title": "Information",
+        "width": 4,
+        "file": "ng-info.html",
+        "headerColor": "#ff0000",
+        "workspace": "NG Stage"
+      },
+      {
+        "name": "databoard",
+        "title": "Databoard",
+        "width": 4,
+        "file": "ng-databoard.html",
+        "headerColor": "#000000",
+        "workspace": "NG Stage"
+      },
+      {
+        "name": "ng-alert",
+        "title": "Alert",
+        "width": 4,
+        "file": "alert.html",
+        "headerColor": "#ff0000",
+        "workspace": "NG Stage"
+      },
+      {
+        "name": "ng-countdown",
+        "title": "Countdown",
+        "width": 2,
+        "file": "countdown.html",
+        "headerColor": "#ff0000",
+        "workspace": "NG Stage"
       }
     ],
     "graphics": [
@@ -79,6 +111,11 @@
         "file": "stream.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "ng-stage.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "soundCues": [
@@ -86,12 +123,18 @@
         "name": "alertCue",
         "defaultFile": "sound/alert.ogg",
         "channels": 1
+      },
+      {
+        "name": "announcementCue",
+        "defaultFile": "sound/announcement.ogg",
+        "channels": 1
       }
     ]
   },
   "repository": "https://github.com/thebiggame/tbgcg.git",
   "license": "Apache-2.0",
   "dependencies": {
-    "nodecg": "^2.5.3"
+    "nodecg": "^2.5.3",
+    "net-snmp": "^3.19.*"
   }
 }

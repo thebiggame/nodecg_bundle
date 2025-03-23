@@ -8,7 +8,7 @@
 
         ready() {
             super.ready();
-            this.tl = new TimelineLite({autoRemoveChildren: true});
+            this.tl = new gsap.timeline({autoRemoveChildren: true});
 
             const hwData = nodecg.Replicant('halfwipe:data');
             const hwActive = nodecg.Replicant('halfwipe:active');

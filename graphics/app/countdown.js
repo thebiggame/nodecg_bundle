@@ -31,28 +31,38 @@
         timeline.call(() => {
         });
         if (newVal) {
-            timeline.add('in');
-            timeline.to(timerNode, 0.75, {
+            timeline.clear().add('in');
+            timeline.to(timerNode, 0.5, {
                 opacity: 1,
-                left: "0%",
-                ease: Circ.easeOut
+                top: "50px",
+                // marginRight: "0px",
+                ease: Quart.easeOut
             }, 'in');
-            timeline.to(innerNode, 0.75, {
-                left: "0%",
-                ease: Circ.easeOut
-            }, 'in+=0.3');
+            timeline.to(timerNode, 1, {
+                marginRight: "0px",
+                borderRadius: "0px 150px 150px 0px",
+                ease: Quart.easeOut
+            }, 'in+=0.5');
+            timeline.to(innerNode, 1, {
+                marginRight: "0px",
+                ease: Quart.easeOut
+            }, 'in+=1.0');
             timeline.play('in');
         } else {
-            timeline.add('out');
-            timeline.to(innerNode, 0.75, {
-                left: "-100%",
-                ease: Circ.easeIn
+            timeline.clear().add('out');
+            timeline.to(innerNode, 1, {
+                marginRight: "-500px",
+                ease: Quart.easeInOut
             }, 'out');
-            timeline.to(timerNode, 0.75, {
-                opacity: 0,
-                left: "-100%",
-                ease: Circ.easeIn
-            }, 'out+=0.2');
+            timeline.to(timerNode, 1, {
+                marginRight: "1900px",
+                borderRadius: "0px 0px 0px 0px",
+                ease: Quart.easeInOut
+            }, 'out+=0.5');
+            timeline.to(timerNode, 1, {
+                top: "-500px",
+                ease: Quart.easeInOut
+            }, 'out+=1.5');
             timeline.play('out');
         }
     });

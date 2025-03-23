@@ -8,7 +8,7 @@
 
         ready() {
             super.ready();
-            this.tl = new TimelineLite({autoRemoveChildren: true});
+            this.tl = new gsap.timeline({autoRemoveChildren: true});
 
             const hwData = nodecg.Replicant('lowerthird:data');
             const hwActive = nodecg.Replicant('lowerthird:active');

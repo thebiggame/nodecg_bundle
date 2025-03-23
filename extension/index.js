@@ -11,6 +11,18 @@ module.exports = function (nodecg) {
         nodecg.log.error('Failed to load "alert" lib:', e.stack);
         process.exit(1);
     }
+	try {
+		require('./ng-info')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load NG "info" lib:', e.stack);
+		process.exit(1);
+	}
+	try {
+		require('./ng-network')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load NG "network" lib:', e.stack);
+		process.exit(1);
+	}
     try {
         require('./countdown')(nodecg);
     } catch (e) {
@@ -39,6 +51,12 @@ module.exports = function (nodecg) {
 		require('./lowerthird')(nodecg);
 	} catch (e) {
 		nodecg.log.error('Failed to load "lowerthird" lib:', e.stack);
+		process.exit(1);
+	}
+	try {
+		require('./ng-databoard')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load NG "databoard" lib:', e.stack);
 		process.exit(1);
 	}
 	try {

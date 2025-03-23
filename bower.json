@@ -2,7 +2,7 @@
   "name": "thebiggame",
   "dependencies": {
     "autosize": "~4.0.2",
-    "gsap": "^2.0.2",
+    "gsap": "^3.12.0",
     "iron-image": "PolymerElements/iron-image#^2.0.0",
     "iron-input": "PolymerElements/iron-input#^2.0.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",

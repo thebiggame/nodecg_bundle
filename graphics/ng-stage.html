@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
 
-	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Arial+Black" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Doto:wght@100..900&family=Arial+Black" rel="stylesheet">
 	<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
     <link rel="import" href="elements/alert/alert.html">
+    <link rel="import" href="elements/ng-databoard/databoard.html">
     <script src="../bower_components/gsap/dist/gsap.min.js"></script>
     <script>try {Typekit.load();} catch (e) {}</script>
     <style>
@@ -19,7 +20,7 @@
             width: 1920px;
             height: 1080px;
             overflow: hidden;
-            font-family: "Droid Sans";
+            font-family: "Arial";
             /* #3c438c */
             color: #fff;
             /*background: url("http://i.imgur.com/EcIltyp.png");
@@ -34,18 +35,24 @@
         }
         #timer-outer {
             position: absolute;
-            top: 0px;
-            left: 0px;
+            overflow: hidden;
+            top: 50px;
+            left: 1475px;
             background-color: #fff;
-            padding-right: 5px;
+            border-top: solid #fff 5px;
+            border-bottom: solid #fff 5px;
+            border-left: solid #fff 20px;
+            border-right: solid #fff 5px;
+            border-radius: 0px 150px 150px 0px;
         }
         #timer-inner {
         	position: relative;
         	font-size: 32px;
             color: white;
-        	background-color: #3c438c;
-			padding-left: 50px;
+        	background-color: #5762d4;
+			padding-left: 10px;
             padding-right: 50px;
+            overflow: hidden;
         }
         #cdown-name {
             font-size: 25px;
@@ -59,7 +66,11 @@
 		}
         #cdown-time {
             font-size: 100px;
-            font-weight: 700;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            font-variation-settings:
+                "ROND" 0;
             margin-top: -10px;
         }
         #clock {
@@ -112,7 +123,8 @@
 			z-index: 9001;
 		}
         #cdown-time {
-            font-family: Consolas, monospace;
+            font-family: "Doto", Consolas, monospace;
+            font-weight: 900;
         }
 		#current_data {
 			position: absolute;
@@ -159,19 +171,16 @@
         		<div id="cdown-time"></div>
             </div>
         </div>
-		<div id="current_data" class="bg-dark d-flex align-items-center">
+		<!--<div id="current_data" class="bg-dark d-flex align-items-center">
 			<div id="music">
 				<img class="img-fluid" src="img/music.png" style="padding-right: 5px;"/><div id="music-title">No Music Playing</div>
 			</div>
-			<div id="clock-box" class="d-flex box-elem bg-dark border-left">
-                <div id="clock"></div><div id="clock-period">??</div>
-            </div>
-		</div>
+		</div> -->
+        <tbg-databoard></tbg-databoard>
 
     </div>
 
     <script src="app/countdown.js"></script>
 	<script src="app/music.js"></script>
-	<script src="app/clock.js"></script>
 </body>
 </html>

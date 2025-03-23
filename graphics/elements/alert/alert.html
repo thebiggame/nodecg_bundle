@@ -1,131 +1,90 @@
-<link rel="import" href="../../../bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
 
 <dom-module id="tbg-alert">
-    <template>
-        <style>
-            :host {
-                position: absolute;
-            	width: 1920px;
-            	height: 1080px;
-            	overflow: hidden;
-            	/* #3c438c */
-            	color: #fff;
-            }
-            #alert-banner {
-            	width: 100%;
-            	margin: 0 auto;
-    			position: relative;
-  				top: 50%;
-  				transform: translateY(-50%);
-                right: 0;
-                display: flex;
-                white-space: nowrap;
-                align-items: stretch
-            }
-            #name {
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                flex-grow: 1;
-            }
-			#name-lead {
-				--iron-icon-height: 75px;
-    			--iron-icon-width: 75px;
-				color: red;
+	<template>
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+		<style>
+			:host {
+				position: absolute;
+				width: 1920px;
+				height: 1080px;
+				overflow: hidden;
+				/* #3c438c */
+				color: #fff;
 			}
-            #name-content {
-                font-size: 90px;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #3c438c;
-                padding: 0em 0.5em 0.1em;
-                flex-grow: 1;
-                color: white;
-                /* prep for animation */
-                transform: translateY(100%);
-            }
-            #name-body {
-                flex-shrink: 1;
-                min-width: 0;
-                transform-origin: left;
-            }
-            #borders {
-                width: 100%;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                display: flex;
-            }
-            .border {
-                height: 14px;
-                background-color: #3c438c;
-                width: 100%;
-                /* prep for animation */
-                transform: scaleX(0);
-                transform-origin: left;
-				border-color: #3c438c !important;
+			#wipe-outer {
+				position: absolute;
+				overflow: hidden;
+				white-space: nowrap;
+				top: 500px;
+				/* left: 100px; */
+				right: 100px;
+				bottom: 400px;
+				background-color: #fff;
+				border-top: solid #fff 5px;
+				border-bottom: solid #fff 5px;
+				border-left: solid #fff 20px;
+				border-right: solid #fff 5px;
+				border-radius: 0px 150px 150px 0px;
+                /*  Prepare for animation */
+                margin-right: 100%;
+                left: "-50px"
+			}
+			#wipe-inner {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				color: white;
+				background-color: #3c438c;
+				overflow: hidden;
+                /*  Prepare for animation */
+                margin-right: 100%;
+			}
+			#name-content {
+				font-size: 75px;
+				font-weight: 700;
+                font-family: "Arial", sans-serif;
+			}
+            #banner-icon {
+                --iron-icon-height: 160px;
+                --iron-icon-width: 160px;
+                color: red;
+                filter: drop-shadow( 10px 3px 10px rgba(0, 0, 0, .7));
             }
             .exclaim {
 				position: absolute;
                 margin: auto;
-				font-size: 650px;
+				font-size: 33em;
+                font-family: "Arial Black", sans-serif;
 				color: red;
+                text-shadow: 0px 10px 10px #000;
 				opacity: 0;
 				text-align: center;
             }
-            video {
-                display: none;
-                position: absolute;
-                top: -160px;
-            }
-            #cover {
-                position: absolute;
-                width: 100%;
-                height: 110px;
-                bottom: 0;
-                left: 0;
-                background-color: #3c438c;
-                transform-origin: bottom center;
-                /* prepare for animation */
-                transform: scaleY(0);
-            }
-            #alert {
-        		z-index: 9001;
-        		font-size: 32px;
-            	font-weight: 500;
-            	width: 500px;
-    			background-color: #3c438c;
-
-   				margin: 0 auto;
-    			position: relative;
-  				top: 50%;
-  				transform: translateY(-50%);
-        	}
-        	#alert-body {
-    			text-align: right;
-    			padding-right: 20px;
-    		}
-        </style>
-		<div id="exclaim" class="exclaim"><b>ALERT</b></div>
-		<div id="alert-banner">
-			<div id="name">
-            	<div id="name-content">
-					<iron-icon id="name-lead" icon="notification:sms-failed"></iron-icon>
-                	<span id="name-body"></span>
-            	</div>
-        	</div>
-
-        	<div id="borders">
-            	<div class="border"></div>
-        	</div>
-
-
-        	<div id="cover"></div>
+		
+		</style>
+        
+        <div id="content"> <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
+            <div id="wipe-outer">
+                <div id="wipe-inner" class="container-fluid">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="icon">
+                            <iron-icon id="banner-icon" icon="icons:report"></iron-icon>
+                        </div>
+                        <div id="wipe-now" class="pl-3">
+                            <div id="name">
+                                <div id="name-content">Test Content</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div id="exclaim" class="exclaim"><b>ALERT</b></div>
 
-    </template>
+	</template>
 
-    <script src="alert.js"></script>
+	<script src="alert.js"></script>
 </dom-module>
