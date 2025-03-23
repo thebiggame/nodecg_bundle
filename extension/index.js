@@ -54,6 +54,12 @@ module.exports = function (nodecg) {
 		process.exit(1);
 	}
 	try {
+		require('./music')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load "music" lib:', e.stack);
+		process.exit(1);
+	}
+	try {
 		require('./ng-databoard')(nodecg);
 	} catch (e) {
 		nodecg.log.error('Failed to load NG "databoard" lib:', e.stack);
