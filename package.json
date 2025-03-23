@@ -129,6 +129,18 @@
         "defaultFile": "sound/announcement.ogg",
         "channels": 1
       }
+    ],
+    "assetCategories": [
+        {
+            "name": "stage-slides",
+            "title": "Slideshow - Stage",
+            "allowedTypes": [
+                "jpg",
+                "jpeg",
+                "gif",
+                "png"
+            ]
+        }
     ]
   },
   "repository": "https://github.com/thebiggame/tbgcg.git",

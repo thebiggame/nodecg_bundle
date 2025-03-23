@@ -14,8 +14,8 @@
             const schedNext = nodecg.Replicant("schedule:next");
             const dbActive = nodecg.Replicant('databoard:active');
 
-            const repInfoBody = nodecg.Replicant("event:info:body");
-            const repInfoActive = nodecg.Replicant("event:info:active");
+            // const repInfoBody = nodecg.Replicant("event:info:body");
+            // const repInfoActive = nodecg.Replicant("event:info:active");
 
             const clockRep = nodecg.Replicant('clock');
 
@@ -44,12 +44,12 @@
             dbActive.on('change', e => {
                 this.handleWipe(e);
             });
-            repInfoBody.on('change', e => {
-                this.handleNewInfo(e);
-            });
-            repInfoActive.on('change', e => {
-                this.handleInfoVisibilityChange(e);
-            });
+            // repInfoBody.on('change', e => {
+            //     this.handleNewInfo(e);
+            // });
+            // repInfoActive.on('change', e => {
+            //     this.handleInfoVisibilityChange(e);
+            // });
             clockRep.on('change', e => {
                 this.updateClock(e);
             });
@@ -145,37 +145,37 @@
             }
         }
 
-        handleNewInfo(newVal) {
-            const infoNode = Polymer.dom(this.root).querySelector('#info');
-            const infoBodyNode = infoNode.querySelector('#info-body');
+        // handleNewInfo(newVal) {
+        //     const infoNode = Polymer.dom(this.root).querySelector('#info');
+        //     const infoBodyNode = infoNode.querySelector('#info-body');
 
-            infoBodyNode.textContent = newVal;
+        //     infoBodyNode.textContent = newVal;
 
-            if (newVal != "") {
-                // Make sure it's visible.
-                infoNode.classList.remove("d-none");
-            } else {
-                // Hide when no content.
-                infoNode.classList.add("d-none");
-            }
-        }
-        handleInfoVisibilityChange(newVal) {
-            const infoNode = Polymer.dom(this.root).querySelector('#info');
-            const schedNode = Polymer.dom(this.root).querySelector('#schedule')
-            if (newVal) {
-                // Make sure it's visible.
-                schedNode.classList.add("d-none");
-                infoNode.classList.remove("d-none")
-                // Play the announcement chime.
-                setTimeout(() => {
-                    nodecg.playSound('announcementCue');
-                }, 0);
-            } else {
-                // Hide when no content.
-                schedNode.classList.remove("d-none");
-                infoNode.classList.add("d-none");
-            }
-        }
+        //     if (newVal != "") {
+        //         // Make sure it's visible.
+        //         infoNode.classList.remove("d-none");
+        //     } else {
+        //         // Hide when no content.
+        //         infoNode.classList.add("d-none");
+        //     }
+        // }
+        // handleInfoVisibilityChange(newVal) {
+        //     const infoNode = Polymer.dom(this.root).querySelector('#info');
+        //     const schedNode = Polymer.dom(this.root).querySelector('#schedule')
+        //     if (newVal) {
+        //         // Make sure it's visible.
+        //         schedNode.classList.add("d-none");
+        //         infoNode.classList.remove("d-none")
+        //         // Play the announcement chime.
+        //         setTimeout(() => {
+        //             nodecg.playSound('announcementCue');
+        //         }, 0);
+        //     } else {
+        //         // Hide when no content.
+        //         schedNode.classList.remove("d-none");
+        //         infoNode.classList.add("d-none");
+        //     }
+        // }
 
         updateClock(newVal) {
             const clockNode = Polymer.dom(this.root).querySelector('#clock');

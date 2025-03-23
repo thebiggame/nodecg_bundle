@@ -8,6 +8,7 @@
     <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
     <link rel="import" href="elements/alert/alert.html">
     <link rel="import" href="elements/ng-databoard/databoard.html">
+    <link rel="import" href="elements/ng-slideshow/slideshow.html">
     <script src="../bower_components/gsap/dist/gsap.min.js"></script>
     <script>try {Typekit.load();} catch (e) {}</script>
     <style>
@@ -162,7 +163,6 @@
 </head>
 <body>
     <div id="container">
-        <!--<video id="loop" src="img/countdown_loop.mp4" muted loop autoplay></video>-->
         <tbg-alert></tbg-alert>
         <div id="darkener"></div>
         <div id="timer-outer">
@@ -171,11 +171,7 @@
         		<div id="cdown-time"></div>
             </div>
         </div>
-		<!--<div id="current_data" class="bg-dark d-flex align-items-center">
-			<div id="music">
-				<img class="img-fluid" src="img/music.png" style="padding-right: 5px;"/><div id="music-title">No Music Playing</div>
-			</div>
-		</div> -->
+        <tbg-slideshow></tbg-slideshow>
         <tbg-databoard></tbg-databoard>
 
     </div>
