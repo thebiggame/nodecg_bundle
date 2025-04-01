@@ -17,6 +17,9 @@
             // const repInfoBody = nodecg.Replicant("event:info:body");
             // const repInfoActive = nodecg.Replicant("event:info:active");
 
+            // Initialise message slideshow handlers
+            this._initSlideshow();
+
             const clockRep = nodecg.Replicant('clock');
 
             const netWANBwDown = nodecg.Replicant("network:wan:bandwidth:down");
@@ -44,12 +47,6 @@
             dbActive.on('change', e => {
                 this.handleWipe(e);
             });
-            // repInfoBody.on('change', e => {
-            //     this.handleNewInfo(e);
-            // });
-            // repInfoActive.on('change', e => {
-            //     this.handleInfoVisibilityChange(e);
-            // });
             clockRep.on('change', e => {
                 this.updateClock(e);
             });
@@ -112,7 +109,7 @@
             if (newVal) {
                 this.tl.clear().add('in');
                 this.tl.to(outerNode, 0.5, {
-                    top: "800px",
+                    top: "990px",
                     // marginRight: "0px",
                     ease: Quart.easeOut
                 }, 'in');
@@ -195,6 +192,47 @@
                 dayNode.textContent = '?'
             }
 
+        }
+
+        _initSlideshow() {
+            const slides = Polymer.dom(this.root).querySelectorAll("#message-box .is-message");
+
+            let currentSlideIndex = 0;
+
+            gsap.set(slides, { y: "100%" });
+            gsap.set(slides[0], { y: "0%" });
+            
+            const showNextSlide = () => {
+                const slides = Polymer.dom(this.root).querySelectorAll("#message-box .is-message");
+                const totalSlides = slides.length;
+                const currentSlide = slides[currentSlideIndex];
+                const nextSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                const nextSlide = slides[nextSlideIndex];
+
+                if (totalSlides >= 2) {
+                    // There are slides to animate between.
+                    gsap.to(currentSlide, {
+                        duration: 1.5,
+                        y: "-100%",
+                        ease: "power4.inOut",
+                        onComplete: () => {
+                            gsap.set(currentSlide, { y: "100%" });
+                        }
+                    });
+    
+                    gsap.to(nextSlide, {
+                        duration: 1.5,
+                        y: "0%",
+                        ease: "power4.inOut",
+                        onComplete: () => {
+                            currentSlideIndex = nextSlideIndex;
+                        }
+                    });
+                }
+                
+            };
+
+            setInterval(showNextSlide, nodecg.bundleConfig.stage.slideshow_interval * 1000);
         }
     }
 
