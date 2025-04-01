@@ -36,44 +36,6 @@
 
         }
 
-        handleBwValue(newVal, elem) {
-            if (newVal == null || elem == null) {
-                return;
-            }
-            if (newVal == -1) {
-                // Presently unknown bandwidth data
-                elem.innerText = "???";
-            } else {
-                let oldVal = parseInt(elem.InnerText, 10);
-                if (isNaN(oldVal)) { 
-                    oldVal = 0;
-                }
-                const target = Math.floor((newVal / 100) * 10) / 10;
-                gsap.to(elem, {
-                    duration: 1,
-                    ease: 'power1.inOut',
-                    textContent: target,
-                    snap: {
-                        textContent: 0.01,
-                    },
-                    onUpdate: function () {
-                        elem.textContent = parseFloat(elem.textContent).toFixed(1);
-                    },
-                    onComplete: function () {
-                        elem.textContent = target.toFixed(1);
-                    }
-                });
-                if (newVal >= nodecg.bundleConfig.network.bwHighThreshold) {
-                    elem.classList.add("bw-high-anim");
-                } else {
-                    elem.classList.remove("bw-high-anim");
-                }
-                
-            }
-
-            
-        }
-
         handleUpdatedSlideImages(newSlides) {
             // Yeet all existing slides
             const slideNode = Polymer.dom(this.root).querySelector("#slides");
@@ -104,7 +66,7 @@
             const infoNode = Polymer.dom(this.root).querySelector('#info');
             const infoBodyNode = infoNode.querySelector('#info-body');
 
-            infoBodyNode.textContent = newVal;
+            infoBodyNode.innerHTML = newVal;
 
             if (newVal != "") {
                 // Make sure it's visible.
@@ -153,7 +115,7 @@
                     gsap.to(currentSlide, {
                         duration: 1.5,
                         x: "-100%",
-                        ease: "power4.out",
+                        ease: "power4.inOut",
                         onComplete: () => {
                             gsap.set(currentSlide, { x: "100%" });
                         }
@@ -162,7 +124,7 @@
                     gsap.to(nextSlide, {
                         duration: 1.5,
                         x: "0%",
-                        ease: "power4.out",
+                        ease: "power4.inOut",
                         onComplete: () => {
                             currentSlideIndex = nextSlideIndex;
                         }

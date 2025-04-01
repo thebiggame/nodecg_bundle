@@ -1,6 +1,6 @@
 <link rel="import" href=../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html>
 <link rel="import" href=../../../bower_components/paper-button/paper-button.html>
-<link rel="import" href=../../../bower_components/paper-input/paper-input.html>
+<link rel="import" href=../../../bower_components/paper-input/paper-textarea.html>
 <link rel="import" href=../../../bower_components/iron-icons/av-icons.html>
 
 <dom-module id="tbg-info">
@@ -25,7 +25,7 @@
         </style>
 
         <div id="container">
-            <paper-input id="infoBody" label="Information Body" always-float-label value="[[infoBody]]" on-change="_updateReplicants"></paper-input>
+            <paper-textarea id="infoBody" label="Information Body" always-float-label value="[[infoBody]]" on-change="_updateReplicants"></paper-textarea>
 
             <div class="layout horizontal">
                 <paper-button id="start" class="flex" raised on-tap="start" style="margin-left: 0;">

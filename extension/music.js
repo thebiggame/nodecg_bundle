@@ -46,26 +46,26 @@ module.exports = function (nodecg) {
                         if (track) {
                             updateReplicants(track.name, track.artist['#text']);
                         } else {
-                            console.log('Music: No track data found.');
+                            nodecg.log.debug('Music: No track data found.');
                         }
                     } else {
                         // We reached the target server, but it returned an error
-                        console.log('Music: Data error.');
+                        nodecg.log.error('Music: Data error.');
                     }
                 } catch (error) {
-                    console.error('Music: Error parsing JSON:', error);
+                    nodecg.log.error('Music: Error parsing JSON:', error);
                 }
             });
 
         }).on('error', (error) => {
-            console.error('Music: Request error:', error);
+            nodecg.log.error('Music: Request error:', error);
         }).end();
     }
 
     function updateReplicants(song, artist) {
         if (song !== lastsong) {
-            console.log('Music: Old song: ' + lastsong);
-            console.log('Music: New Song detected: ' + song + " / " + artist);
+            nodecg.log.trace('Music: Old song: ' + lastsong);
+            nodecg.log.debug('Music: New Song detected: ' + song + " / " + artist);
             repSong.value = song;
             repArtist.value = artist;
         }
