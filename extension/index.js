@@ -66,6 +66,12 @@ module.exports = function (nodecg) {
 		process.exit(1);
 	}
 	try {
+		require('./ng-projector')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load NG "projector" lib:', e.stack);
+		process.exit(1);
+	}
+	try {
 		require('./persons')(nodecg);
 	} catch (e) {
 		nodecg.log.error('Failed to load "persons" lib:', e.stack);

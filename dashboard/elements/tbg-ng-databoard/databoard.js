@@ -3,7 +3,7 @@
 
     const schedNow = nodecg.Replicant("schedule:now");
     const schedNext = nodecg.Replicant("schedule:next");
-    const dbActive = nodecg.Replicant('databoard:active');
+    const gActive = nodecg.Replicant('projector:active');
 
     class NgTbgDataboard extends Polymer.Element {
         static get is() {
@@ -20,7 +20,7 @@
                     type: String,
                     reflectToAttribute: true
                 },
-                dbActive: {
+                gActive: {
                     type: Boolean,
                     reflectToAttribute: true
                 },
@@ -35,8 +35,8 @@
             schedNext.on("change", newVal => {
                 this.dbNext = newVal;
             });
-            dbActive.on('change', newVal => {
-                this.dbActive = newVal;
+            gActive.on('change', newVal => {
+                this.gActive = newVal;
                 if (newVal) {
                     Polymer.dom(this.root).querySelector('#start').setAttribute('disabled', 'true');
                     Polymer.dom(this.root).querySelector('#stop').removeAttribute('disabled');
@@ -50,12 +50,12 @@
         }
 
         start() {
-            dbActive.value = true;
+            gActive.value = true;
             this._updateReplicants();
         }
 
         stop() {
-            dbActive.value = false;
+            gActive.value = false;
             this._updateReplicants();
         }
         _updateReplicants() {

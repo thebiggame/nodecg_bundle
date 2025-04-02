@@ -9,5 +9,4 @@ module.exports = function (nodecg) {
         defaultValue: '',
         persistent: true
     });
-    const wipeRepActive = nodecg.Replicant('databoard:active', {defaultValue: false, persistent: true});
 };

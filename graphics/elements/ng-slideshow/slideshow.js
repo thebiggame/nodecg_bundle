@@ -14,6 +14,8 @@
 
             this.currentSlideIndex = 0;
 
+            const gActive = nodecg.Replicant('projector:active');
+
             const repInfoBody = nodecg.Replicant("event:info:body");
             const repInfoActive = nodecg.Replicant("event:info:active");
 
@@ -24,11 +26,16 @@
                 this.handleInfoVisibilityChange(e);
             });
 
+            gActive.on('change', e => {
+                this.handleWipe(e);
+            });
+
             // Initialise slideshow handlers
-            this._initSlideshow();
+            // this._initSlideshow();
             
             NodeCG.waitForReplicants(repSlides).then(() => {
                 this.handleUpdatedSlideImages(repSlides.value);
+                this._initSlideshow();
             });
             repSlides.on('change', e => {
                 this.handleUpdatedSlideImages(e);
@@ -59,6 +66,45 @@
                     el.classList.add("is-asset-slide");
                     el.textContent = "No asset slides loaded - crew, fix this!"
                     slideNode.appendChild(el);
+            }
+        }
+
+        handleWipe(newVal) {
+            const outerNode = Polymer.dom(this.root).querySelector('#wipe-outer');
+            const innerNode = Polymer.dom(this.root).querySelector('#wipe-inner');
+            if (newVal) {
+                this.tl.clear().add('in');
+                this.tl.to(outerNode, 0.5, {
+                    left: "10px",
+                    // marginRight: "0px",
+                    ease: Quart.easeOut
+                }, 'in');
+                this.tl.to(outerNode, 1, {
+                    marginRight: "0px",
+                    borderRadius: "0px 15px 15px 0px",
+                    ease: Quart.easeOut
+                }, 'in+=0.5');
+                this.tl.to(innerNode, 1, {
+                    marginRight: "0px",
+                    ease: Quart.easeOut
+                }, 'in+=1.0');
+                this.tl.play('in');
+            } else {
+                this.tl.clear().add('out');
+                this.tl.to(innerNode, 1, {
+                    marginRight: "100%",
+                    ease: Quart.easeInOut
+                }, 'out');
+                this.tl.to(outerNode, 1, {
+                    marginRight: "1900px",
+                    borderRadius: "0px 0px 0px 0px",
+                    ease: Quart.easeInOut
+                }, 'out+=0.5');
+                this.tl.to(outerNode, 1, {
+                    left: "-10%",
+                    ease: Quart.easeInOut
+                }, 'out+=1.5');
+                this.tl.play('out');
             }
         }
 

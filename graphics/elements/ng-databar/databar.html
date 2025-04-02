@@ -1,10 +1,8 @@
-<link rel="import" href="../../../bower_components/iron-icons/notification-icons.html">
-<link rel="import" href="../../../bower_components/iron-icons/device-icons.html">
-<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
-
-<dom-module id="tbg-databoard">
+<dom-module id="tbg-databar">
 	<template>
         <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bower_components/remixicon/fonts/remixicon.css" rel="stylesheet">
+		
 		<style>
 			:host {
 				position: absolute;
@@ -50,13 +48,14 @@
 			}
 			.box-elem {
 				height: 75px;
-				border-right: solid #fff 2px;
+				border-left: solid #fff 2px;
 				padding-left: 5px;
 				padding-right: 5px;
 			}
 			.box-elem-message {
 				height: 75px;
-				padding-left: 10px;
+				border-left: solid #fff 2px;
+				padding-left: 0px;
 				padding-right: 10px;
 				font-size: 50px;
 			}
@@ -102,18 +101,21 @@
 				height: 100%;
 				background-size: cover;
 				background-position: center;
+				padding-left: 5px;
 			}
 
 			.icon-message {
-				--iron-icon-height: 40px;
-                --iron-icon-width: 40px;
 				margin-top: -10px;
 				margin-bottom: -10px;
 			} 
-			
+
+			.anim-wiggle {
+				animation: wobble 1s infinite;
+				display: inline-block;
+			}
 
 			.is-message p {
-				display: inline;
+				display: inline-block;
 			}
 			
 			#day-box {
@@ -142,10 +144,7 @@
 			*/
 
 			.icon-bw {
-				--iron-icon-height: 20px;
-                --iron-icon-width: 20px;
-				margin-top: -10px;
-				margin-bottom: -10px;
+				font-size: 25px;
 			} 
 			.bw-trail {
 				font-size: 15px;
@@ -173,7 +172,12 @@
 				50% { transform: translate(0, 0) rotate(0eg); }
 				75% { transform: translate(-1px, 1px) rotate(-5deg); }
 				100% { transform: translate(0, 0) rotate(0deg); }
-			  }
+			}
+			@keyframes wobble {
+				0% { transform: rotate(-5deg); }
+				50% { transform: rotate(5deg); }
+				100% { transform: rotate(-5deg); }
+			}
 			.event-trail {
 				font-size: 30px;
 				font-weight: 300;
@@ -188,7 +192,7 @@
 				margin-top: -20px;
 			}
 			.sponsor-boxo > .img-fluid {
-				max-height: 30px;
+				max-height: 40px;
 			}
 			#music-box > .img-fluid {
 				max-height: 20px;
@@ -198,10 +202,55 @@
             <div id="wipe-outer">
                 <div id="wipe-inner" class="container-fluid">
                     <div id="event-data" class="row">
-                        <div id="wipe-title" class="d-flex box-elem"><b class="event-num align-self-center" id="event-num">??</b></div>
-						<div id="day-box" class="d-flex box-elem bg-dark align-items-center align-self-center">
+                        <div id="wipe-title" class="d-flex box-elem"><b class="event-num align-self-center">??</b></div>
+						<div id="net-bw-box" class="d-flex flex-column box-elem bg-dark">
+							<div class="d-flex flex-grow">
+								<i class="icon-bw ri-download-cloud-fill"></i>
+								<div id="net-bw-down-content" class="bw-content pl-2">???</div>
+								<div class="align-self-end bw-trail text-muted">Mbps</div>
+							</div>
+							<div class="d-flex flex-grow">
+								<i class="icon-bw ri-upload-cloud-fill"></i>
+								<div id="net-bw-up-content" class="bw-content pl-2">???</div>
+								<div class="align-self-end bw-trail text-muted">Mbps</div>
+							</div>
+                        </div>
+						<div id="message-box" class="d-flex box-elem-message align-self-center">
+							<div class="is-message">
+								<i class="mr-n2 ri-emotion-happy-fill anim-wiggle"></i>
+								<p>Welcome to <b>theBIGGAME</b> <b class="event-num">??</b>!</p>
+							</div>
+							<div class="is-message">
+								<i class="ri-rocket-fill"></i>
+								<p>Powered by <b>NG-tBG</b>, our new AV experience!</p>
+							</div>
+							<div class="is-message d-flex">
+								<i class="ri-hand-heart-fill"></i>
+								<p class="pl-2 pr-3">tBG is possible thanks to</p>
+								<div class="d-flex box-elem align-items-center sponsor-boxo bg-light">
+									<img class="img-fluid mx-2" src="img/sponsor_dominos.png"/>
+								</div>
+								<div class="d-flex box-elem align-items-center sponsor-boxo bg-secondary">
+									<img class="img-fluid mx-2" src="img/sponsor_projgames.png"/>
+								</div>
+								<div class="d-flex box-elem align-items-center sponsor-boxo bg-secondary">
+									<img class="img-fluid mx-2" src="img/sponsor_yayzi.png"/>
+								</div>
+							</div>
+							<div class="is-message">
+								<i class="mr-n2 ri-music-2-fill anim-wiggle"></i>
+								<span id="music-title"></span>
+								<i class="mr-n2 ri-user-line text-muted"></i>
+								<span id="music-artist"></span>
+							</div>
+							<div class="is-message">
+								<i class="mr-n2 ri-shield-user-fill"></i>
+								<p>Please ensure your credentials are visible at all times.</p>
+							</div>
+						</div>
+						<div id="day-box" class="d-flex box-elem bg-dark align-items-center ml-auto align-self-center">
 							<div class="icon-primary text-muted align-self-center">
-								<iron-icon icon="icons:today"></iron-icon>
+								<i class="icon-primary text-muted align-self-center ri-calendar-event-fill"></i>
 							</div>
                             <div id="day">
 								?
@@ -210,50 +259,11 @@
 								/3
 							</div>
                         </div>
-						<div id="net-bw-box" class="d-flex flex-column box-elem bg-dark">
-							<div class="d-flex flex-grow">
-								<div class="icon-bw">
-									<iron-icon icon="icons:cloud-download"></iron-icon>
-								</div>
-								<div id="net-bw-down-content" class="bw-content pl-2">???</div>
-								<div class="align-self-end bw-trail text-muted">Mbps</div>
-							</div>
-							<div class="d-flex flex-grow">
-								<div class="icon-bw">
-									<iron-icon icon="icons:cloud-upload"></iron-icon>
-								</div>
-								<div id="net-bw-up-content" class="bw-content pl-2">???</div>
-								<div class="align-self-end bw-trail text-muted">Mbps</div>
-							</div>
-                        </div>
-						<!-- <div id="net-bw-down-box" class="d-flex box-elem bg-dark">
-							<div class="icon-bw">
-								<iron-icon icon="icons:cloud-download"></iron-icon>
-							</div>
-                            <div id="net-bw-down-content" class="pl-2"></div>
-							<div class="align-self-end bw-trail text-muted">Mbps</div>
-                        </div>
-						<div id="net-bw-up-box" class="d-flex box-elem bg-dark">
-							<div class="icon-bw">
-								<iron-icon icon="icons:cloud-upload"></iron-icon>
-							</div>
-                            <div id="net-bw-up-content" class="pl-2"></div>
-							<div class="align-self-end bw-trail text-muted">Mbps</div>
-                        </div> -->
-                        <div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_dominos.png"/></div>
-						<div id="message-box" class="d-flex box-elem-message align-self-center">
-							<div class="is-message">
-								<iron-icon class="icon-message" icon="icons:today"></iron-icon><p class="pl-3">Welcome to theBIGGAME 53!</p>
-							</div>
-							<div class="is-message">
-								<iron-icon class="icon-message" icon="icons:note"></iron-icon><p class="pl-3">Song information loading...</p>
-							</div>
-						</div>
-						<div id="clock-box" class="d-flex box-elem ml-auto bg-dark">
+						<div id="clock-box" class="d-flex box-elem bg-dark">
 							<div class="icon-primary text-muted align-self-center">
-								<iron-icon icon="device:access-time"></iron-icon>
+								<i class="ri-time-line"></i>
 							</div>
-							<div class="box-clock align-self-center pr-3" id="clock"></div>
+							<div class="box-clock align-self-center pl-1 pr-3" id="clock"></div>
                         </div>
                     </div>
                 </div>
@@ -262,5 +272,5 @@
 
 	</template>
 
-	<script src="databoard.js"></script>
+	<script src="databar.js"></script>
 </dom-module>

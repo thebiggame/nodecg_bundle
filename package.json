@@ -77,10 +77,10 @@
         "workspace": "NG Stage"
       },
       {
-        "name": "databoard",
-        "title": "Databoard",
+        "name": "projector-controls",
+        "title": "Visibility Control",
         "width": 4,
-        "file": "ng-databoard.html",
+        "file": "ng-proj-animate.html",
         "headerColor": "#000000",
         "workspace": "NG Stage"
       },
@@ -131,22 +131,22 @@
       }
     ],
     "assetCategories": [
-        {
-            "name": "stage-slides",
-            "title": "Slideshow - Stage",
-            "allowedTypes": [
-                "jpg",
-                "jpeg",
-                "gif",
-                "png"
-            ]
-        }
+      {
+        "name": "stage-slides",
+        "title": "Slideshow - Stage",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
+      }
     ]
   },
   "repository": "https://github.com/thebiggame/tbgcg.git",
   "license": "Apache-2.0",
   "dependencies": {
-    "nodecg": "^2.5.3",
-    "net-snmp": "^3.19.*"
+    "net-snmp": "^3.19.*",
+    "nodecg": "^2.5.3"
   }
 }

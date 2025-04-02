@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    class NgTbgDataboard extends Polymer.Element {
+    class NgTbgdatabar extends Polymer.Element {
         static get is() {
-            return 'tbg-databoard';
+            return 'tbg-databar';
         }
 
         ready() {
@@ -12,10 +12,13 @@
 
             const schedNow = nodecg.Replicant("schedule:now");
             const schedNext = nodecg.Replicant("schedule:next");
-            const dbActive = nodecg.Replicant('databoard:active');
+            const gActive = nodecg.Replicant('projector:active');
 
             // const repInfoBody = nodecg.Replicant("event:info:body");
             // const repInfoActive = nodecg.Replicant("event:info:active");
+
+            const musicTitle = nodecg.Replicant("music:song");
+            const musicArtist = nodecg.Replicant("music:artist");
 
             // Initialise message slideshow handlers
             this._initSlideshow();
@@ -44,11 +47,18 @@
                     nextNode.style.opacity = 0;
                 }
             });
-            dbActive.on('change', e => {
+            gActive.on('change', e => {
                 this.handleWipe(e);
             });
             clockRep.on('change', e => {
                 this.updateClock(e);
+            });
+
+            musicTitle.on('change', e => {
+                this.updateMusic(e, null);
+            });
+            musicArtist.on('change', e => {
+                this.updateMusic(null, e);
             });
 
             netWANBwDown.on('change', e => {
@@ -60,8 +70,11 @@
                 this.handleBwValue(e, contentNode);
             });
 
-            const eventNode = Polymer.dom(this.root).querySelector('#event-num');
-            eventNode.textContent = nodecg.bundleConfig.event_num;
+            const eventNodes = Polymer.dom(this.root).querySelectorAll('.event-num');
+            for (const eNode of eventNodes) {
+                eNode.textContent = nodecg.bundleConfig.event_num;
+            }
+            
         }
 
         handleBwValue(newVal, elem) {
@@ -142,37 +155,17 @@
             }
         }
 
-        // handleNewInfo(newVal) {
-        //     const infoNode = Polymer.dom(this.root).querySelector('#info');
-        //     const infoBodyNode = infoNode.querySelector('#info-body');
+        updateMusic(title, artist) {
+            const titleNode = Polymer.dom(this.root).querySelector('#music-title');
+            const artistNode = Polymer.dom(this.root).querySelector('#music-artist');
 
-        //     infoBodyNode.textContent = newVal;
-
-        //     if (newVal != "") {
-        //         // Make sure it's visible.
-        //         infoNode.classList.remove("d-none");
-        //     } else {
-        //         // Hide when no content.
-        //         infoNode.classList.add("d-none");
-        //     }
-        // }
-        // handleInfoVisibilityChange(newVal) {
-        //     const infoNode = Polymer.dom(this.root).querySelector('#info');
-        //     const schedNode = Polymer.dom(this.root).querySelector('#schedule')
-        //     if (newVal) {
-        //         // Make sure it's visible.
-        //         schedNode.classList.add("d-none");
-        //         infoNode.classList.remove("d-none")
-        //         // Play the announcement chime.
-        //         setTimeout(() => {
-        //             nodecg.playSound('announcementCue');
-        //         }, 0);
-        //     } else {
-        //         // Hide when no content.
-        //         schedNode.classList.remove("d-none");
-        //         infoNode.classList.add("d-none");
-        //     }
-        // }
+            if (title != null) {
+                titleNode.textContent = title;
+            }
+            if (artist != null) {
+                artistNode.textContent = artist;
+            }
+        }
 
         updateClock(newVal) {
             const clockNode = Polymer.dom(this.root).querySelector('#clock');
@@ -212,7 +205,7 @@
                 if (totalSlides >= 2) {
                     // There are slides to animate between.
                     gsap.to(currentSlide, {
-                        duration: 1.5,
+                        duration: 0.5,
                         y: "-100%",
                         ease: "power4.inOut",
                         onComplete: () => {
@@ -221,7 +214,7 @@
                     });
     
                     gsap.to(nextSlide, {
-                        duration: 1.5,
+                        duration: 0.5,
                         y: "0%",
                         ease: "power4.inOut",
                         onComplete: () => {
@@ -232,9 +225,9 @@
                 
             };
 
-            setInterval(showNextSlide, nodecg.bundleConfig.stage.slideshow_interval * 1000);
+            setInterval(showNextSlide, 7500);
         }
     }
 
-    customElements.define(NgTbgDataboard.is, NgTbgDataboard);
+    customElements.define(NgTbgdatabar.is, NgTbgdatabar);
 })();
