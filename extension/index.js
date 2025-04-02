@@ -72,6 +72,12 @@ module.exports = function (nodecg) {
 		process.exit(1);
 	}
 	try {
+		require('./ng-schedule')(nodecg);
+	} catch (e) {
+		nodecg.log.error('Failed to load NG "schedule" lib:', e.stack);
+		process.exit(1);
+	}
+	try {
 		require('./persons')(nodecg);
 	} catch (e) {
 		nodecg.log.error('Failed to load "persons" lib:', e.stack);

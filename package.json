@@ -147,6 +147,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "net-snmp": "^3.19.*",
+    "node-ical": "^0.20.1",
     "nodecg": "^2.5.3"
   }
 }

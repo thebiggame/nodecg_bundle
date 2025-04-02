@@ -10,8 +10,6 @@
             super.ready();
             this.tl = new gsap.timeline({autoRemoveChildren: true});
 
-            const schedNow = nodecg.Replicant("schedule:now");
-            const schedNext = nodecg.Replicant("schedule:next");
             const gActive = nodecg.Replicant('projector:active');
 
             // const repInfoBody = nodecg.Replicant("event:info:body");
@@ -28,25 +26,6 @@
             const netWANBwDown = nodecg.Replicant("network:wan:bandwidth:down");
             const netWANBwUp = nodecg.Replicant("network:wan:bandwidth:up");
 
-            schedNow.on('change', e => {
-                const nowNode = Polymer.dom(this.root).querySelector('#now-body');
-
-                nowNode.textContent = e;
-            });
-            schedNext.on('change', e => {
-                const nextNode = Polymer.dom(this.root).querySelector('#next-body');
-                const nextHeading = Polymer.dom(this.root).querySelector('#next-heading');
-
-                if (e) {
-                    nextNode.textContent = e;
-                    nextHeading.style.opacity = 1;
-                    nextNode.style.opacity = 1;
-                } else {
-                    nextNode.textContent = "Nothing";
-                    nextHeading.style.opacity = 0.0001;
-                    nextNode.style.opacity = 0;
-                }
-            });
             gActive.on('change', e => {
                 this.handleWipe(e);
             });
