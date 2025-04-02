@@ -83,11 +83,11 @@
                     marginRight: "0px",
                     borderRadius: "0px 15px 15px 0px",
                     ease: Quart.easeOut
-                }, 'in+=0.5');
+                }, 'in+=0.2');
                 this.tl.to(innerNode, 1, {
                     marginRight: "0px",
                     ease: Quart.easeOut
-                }, 'in+=1.0');
+                }, 'in+=0.75');
                 this.tl.play('in');
             } else {
                 this.tl.clear().add('out');
