@@ -38,12 +38,16 @@ module.exports = function (nodecg) {
                     }
                 }
             }
+            // Append dummy events (debugging)
+            for (var i = 0; i < 10; i++) {
+                futureEvents.push({"title": "Test Event", "ts_start": new Date("2025-04-05T23:00:00.000Z"), "ts_end": new Date("2025-04-05T23:30:00.000Z")})
+            }
 
             var expNewData = {"now": nextEvent, "upcoming": futureEvents};
             if (schedData.value != expNewData) {
                 schedData.value = expNewData;
             }
-            nodecg.log.debug(expNewData);
+            nodecg.log.trace(expNewData);
             
             nodecg.log.debug("Schedule updated successfully.");
             return;
