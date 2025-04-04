@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "ng-48.0.0",
+  "version": "53.2.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -19,101 +19,9 @@
   ],
   "nodecg": {
     "compatibleRange": "~2.1.0",
-    "dashboardPanels": [
-      {
-        "name": "alert",
-        "title": "Alert",
-        "width": 3,
-        "file": "alert.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stage"
-      },
-      {
-        "name": "countdown",
-        "title": "Countdown",
-        "width": 2,
-        "file": "countdown.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stage"
-      },
-      {
-        "name": "halfwipe",
-        "title": "Halfwipe",
-        "width": 3,
-        "file": "halfwipe.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stream"
-      },
-      {
-        "name": "lowerthird",
-        "title": "Lower Third",
-        "width": 3,
-        "file": "lowerthird.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stream"
-      },
-      {
-        "name": "persons",
-        "title": "Persons",
-        "width": 2,
-        "file": "persons.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stream"
-      },
-      {
-        "name": "scoreboard",
-        "title": "Scoreboard",
-        "width": 2,
-        "file": "scoreboard.html",
-        "headerColor": "#ff0000",
-        "workspace": "Stream"
-      },
-      {
-        "name": "ng-info",
-        "title": "Information",
-        "width": 4,
-        "file": "ng-info.html",
-        "headerColor": "#ff0000",
-        "workspace": "NG Stage"
-      },
-      {
-        "name": "projector-controls",
-        "title": "Visibility Control",
-        "width": 4,
-        "file": "ng-proj-animate.html",
-        "headerColor": "#000000",
-        "workspace": "NG Stage"
-      },
-      {
-        "name": "ng-alert",
-        "title": "Alert",
-        "width": 4,
-        "file": "alert.html",
-        "headerColor": "#ff0000",
-        "workspace": "NG Stage"
-      },
-      {
-        "name": "ng-countdown",
-        "title": "Countdown",
-        "width": 2,
-        "file": "countdown.html",
-        "headerColor": "#ff0000",
-        "workspace": "NG Stage"
-      }
-    ],
     "graphics": [
       {
         "file": "stage.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "stream.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "ng-stage.html",
         "width": 1920,
         "height": 1080
       }
@@ -145,8 +53,56 @@
   },
   "repository": "https://github.com/thebiggame/tbgcg.git",
   "license": "Apache-2.0",
+  "scripts": {
+    "autofix": "run-s autofix:*",
+    "autofix:browser": "eslint --fix --ext .ts,.vue src/dashboard && eslint --fix --ext .ts,.vue src/graphics",
+    "autofix:extension": "eslint --fix --ext .ts src/extension && eslint --fix --ext .d.ts src/types",
+    "prebuild": "npm run clean",
+    "build": "run-s clean build:*",
+    "build:browser": "vite build",
+    "build:extension": "tsc -b tsconfig.extension.json",
+    "clean": "trash node_modules/.cache && trash shared/dist && trash dashboard && trash graphics && trash extension",
+    "lint": "run-s lint:*",
+    "lint:browser": "eslint --ext .ts,.vue src/dashboard && eslint --ext .ts,.vue src/graphics",
+    "lint:extension": "eslint --ext .ts src/extension && eslint --ext .d.ts src/types",
+    "schema-types": "nodecg schema-types",
+    "start": "nodecg start",
+    "watch": "run-p watch:*",
+    "watch:browser": "vite",
+    "watch:extension": "tsc -b tsconfig.extension.json -w"
+  },
+  "devDependencies": {
+    "@quasar/extras": "^1.16.17",
+    "@quasar/vite-plugin": "^1.9.0",
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vueuse/head": "^2.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-import-resolver-typescript": "^4.3.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "nodecg-types": "^1.9.0",
+    "nodecg-vue-composable": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "quasar": "^2.18.1",
+    "trash-cli": "^6.0.0",
+    "typescript": "^5.8.2",
+    "vite": "^5.0.0",
+    "vite-plugin-checker": "^0.9.1",
+    "vite-plugin-nodecg": "^2.1.0",
+    "vue": "^3.5.13",
+    "vue-eslint-parser": "^10.1.2",
+    "vue-tsc": "^2.2.8"
+  },
   "dependencies": {
-    "net-snmp": "^3.19.*",
+    "bootstrap": "^4.6.2",
+    "gsap": "^3.12.7",
+    "module-alias": "^2.2.3",
+    "net-snmp": "^3.20.*",
     "node-ical": "^0.20.1",
     "nodecg": "^2.5.3"
   }

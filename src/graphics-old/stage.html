@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Arial+Black" rel="stylesheet">
+	<link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="elements/alert/alert.html">
+    <script src="../bower_components/gsap/dist/gsap.min.js"></script>
+    <script>try {Typekit.load();} catch (e) {}</script>
+    <style>
+        body {
+            margin: 0;
+			background-color: rgba(0,0,0,0);
+        }
+        #container {
+            position: absolute;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: "Droid Sans";
+            /* #3c438c */
+            color: #fff;
+            /*background: url("http://i.imgur.com/EcIltyp.png");
+            background: url("http://i.imgur.com/ivbkXt1.png");*/
+        }
+        #loop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1920px;
+            height: 1080px;
+        }
+        #timer-outer {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #fff;
+            padding-right: 5px;
+        }
+        #timer-inner {
+        	position: relative;
+        	font-size: 32px;
+            color: white;
+        	background-color: #3c438c;
+			padding-left: 50px;
+            padding-right: 50px;
+        }
+        #cdown-name {
+            font-size: 25px;
+            font-weight: 300;
+        }
+        #cdown-name:after {
+    		content: "";
+    		height: 1px;
+    		background: linear-gradient(to right,  rgba(147,147,147,1) 0%,rgba(0,0,0,0) 100%);
+    		display: block;
+		}
+        #cdown-time {
+            font-size: 100px;
+            font-weight: 700;
+            margin-top: -10px;
+        }
+        #clock {
+			font-weight: 500;
+			font-size: 40px;
+			display: inline;
+		}
+		#clock-period {
+			font-size: 25px;
+			color: #909090;
+			display: inline;
+			vertical-align: text-bottom;
+		}
+        #content {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 150px;
+            height: 100%;
+            -webkit-filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+        }
+        #darkener {
+        	position: absolute;
+        	top: 0;
+        	left: 0;
+        	height: 100%;
+        	width: 100%;
+        	background-color: #000;
+        	opacity: 0;
+        	z-index: 5000;
+        }
+        #logo {
+            height: 280px;
+        }
+        #flavor {
+            font-size: 42px;
+            margin-top: 12px;
+        }
+        #time {
+            font-size: 192px;
+            -webkit-font-feature-settings: 'tnum';
+            font-weight: 600;
+            transition: opacity 333ms ease;
+            opacity: 0;
+        }
+        tbg-alert {
+			z-index: 9001;
+		}
+        #cdown-time {
+            font-family: Consolas, monospace;
+        }
+		#current_data {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			background-color: #fff;
+			padding-right: 5px;
+			padding-left: 5px;
+		}
+		#music > .img-fluid {
+			max-height: 40px;
+		}
+    </style>
+    <script>
+    (function () {
+	'use strict';
+
+	nodecg.listenFor('alert', data => {
+		const event = new CustomEvent('alert', {detail: data});
+		window.dispatchEvent(event);
+	});
+	nodecg.listenFor('alert-end', data => {
+		const event = new CustomEvent('alert-end', {detail: data});
+		window.dispatchEvent(event);
+	});
+
+	window.alertTL = new gsap.timeline({autoRemoveChildren: true});
+	window.countdownTL = new gsap.timeline({autoRemoveChildren: true});
+	})();
+	</script>
+</head>
+<body>
+    <div id="container">
+        <!--<video id="loop" src="img/countdown_loop.mp4" muted loop autoplay></video>-->
+        <tbg-alert></tbg-alert>
+        <div id="darkener"></div>
+        <div id="timer-outer">
+        	<div id="timer-inner">
+        		<div id="cdown-name"></div>
+        		<div id="cdown-time"></div>
+            </div>
+        </div>
+		<div id="current_data" class="bg-dark d-flex align-items-center">
+			<div id="clock-box" class="d-flex box-elem bg-dark border-left">
+                <div id="clock"></div><div id="clock-period">??</div>
+            </div>
+		</div>
+
+    </div>
+
+    <script src="app/countdown.js"></script>
+	<script src="app/clock.js"></script>
+</body>
+</html>
