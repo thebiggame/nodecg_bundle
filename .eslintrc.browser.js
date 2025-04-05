@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   root: true,
@@ -15,9 +15,7 @@ module.exports = {
     nodecg: 'readonly',
     NodeCG: 'readonly',
   },
-  plugins: [
-    '@typescript-eslint',
-  ],
+  plugins: ['@typescript-eslint'],
   extends: [
     'plugin:vue/essential',
     'airbnb-base',
@@ -39,17 +37,24 @@ module.exports = {
     // Everything is compiled for the browser so dev dependencies are fine.
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     // max-len set to ignore "import" lines (as they usually get long and messy).
-    'max-len': ['error', { code: 100, ignorePattern: '^import\\s.+\\sfrom\\s.+;' }],
+    'max-len': [
+      'error',
+      { code: 100, ignorePattern: '^import\\s.+\\sfrom\\s.+;' },
+    ],
     // I mainly have this off as it ruins auto import sorting in VSCode.
     'object-curly-newline': 'off',
-    // Allows "main.vue" files to be named as such.
-    'vue/multi-word-component-names': ['error', { 'ignores': ['main'] }],
+    // Allows "databar.vue" files to be named as such.
+    'vue/multi-word-component-names': ['error', { ignores: ['main'] }],
     // Not sure how much this is needed anymore?
-    'import/extensions': ['error', 'ignorePackages', {
-      js: 'never',
-      jsx: 'never',
-      ts: 'never',
-      tsx: 'never',
-    }],
-  }
-};
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+  },
+}

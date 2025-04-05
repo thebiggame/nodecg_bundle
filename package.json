@@ -82,6 +82,7 @@
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-typescript": "^4.3.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-vue": "^9.33.0",
@@ -99,11 +100,16 @@
     "vue-tsc": "^2.2.8"
   },
   "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.5",
+    "@fontsource-variable/arimo": "^5.2.5",
+    "@fontsource/dseg14-classic": "^5.2.5",
+    "@remixicon/vue": "^4.6.0",
+    "@types/snmp-native": "^1.2.5",
     "bootstrap": "^4.6.2",
     "gsap": "^3.12.7",
     "module-alias": "^2.2.3",
-    "net-snmp": "^3.20.*",
     "node-ical": "^0.20.1",
-    "nodecg": "^2.5.3"
+    "nodecg": "^2.5.3",
+    "snmp-native": "^1.2.0"
   }
 }

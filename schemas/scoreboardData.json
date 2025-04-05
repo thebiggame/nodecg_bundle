@@ -13,7 +13,7 @@
             "type": "string"
           },
           "score": {
-            "type": "string"
+            "type": "integer"
           }
         }
       },
@@ -24,7 +24,7 @@
             "type": "string"
           },
           "score": {
-            "type": "string"
+            "type": "integer"
           }
         }
       }

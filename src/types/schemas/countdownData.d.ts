@@ -6,4 +6,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type CountdownData = string;
+export type CountdownData = number;

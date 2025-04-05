@@ -1,33 +1,41 @@
 /* eslint-disable */
 // @ts-ignore
-export * from './configschema';
+export * from './configschema'
 // @ts-ignore
-export * from './alertData';
+export * from './alertData'
 // @ts-ignore
-export * from './alertDelay';
+export * from './alertDelay'
 // @ts-ignore
-export * from './alertFlair';
+export * from './alertFlair'
 // @ts-ignore
-export * from './clock';
+export * from './bandwidthData'
 // @ts-ignore
-export * from './countdownActive';
+export * from './clock'
 // @ts-ignore
-export * from './countdownData';
+export * from './countdownActive'
 // @ts-ignore
-export * from './countdownName';
+export * from './countdownData'
 // @ts-ignore
-export * from './halfwipeData';
+export * from './countdownName'
 // @ts-ignore
-export * from './lowerthirdActive';
+export * from './eventInfoActive'
 // @ts-ignore
-export * from './lowerthirdData';
+export * from './eventInfoData'
 // @ts-ignore
-export * from './personsActive';
+export * from './halfwipeData'
 // @ts-ignore
-export * from './personsData';
+export * from './halfwipeActive'
 // @ts-ignore
-export * from './projectorActive';
+export * from './lowerthirdActive'
 // @ts-ignore
-export * from './scoreboardActive';
+export * from './lowerthirdData'
 // @ts-ignore
-export * from './scoreboardData';
+export * from './personsActive'
+// @ts-ignore
+export * from './personsData'
+// @ts-ignore
+export * from './projectorActive'
+// @ts-ignore
+export * from './scoreboardActive'
+// @ts-ignore
+export * from './scoreboardData'

@@ -6,16 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface ScoreboardData {
-	title?: string;
-	team1?: {
-		name?: string;
-		score?: number;
-		[k: string]: unknown;
-	};
-	team2?: {
-		name?: string;
-		score?: number;
-		[k: string]: unknown;
-	};
+export interface BandwidthData {
+	down: number;
+	up: number;
 }
