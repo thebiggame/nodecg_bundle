@@ -36,6 +36,8 @@ export * from './personsData'
 // @ts-ignore
 export * from './projectorActive'
 // @ts-ignore
+export * from './scheduleData'
+// @ts-ignore
 export * from './scoreboardActive'
 // @ts-ignore
 export * from './scoreboardData'

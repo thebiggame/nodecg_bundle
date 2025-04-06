@@ -20,8 +20,9 @@ import {
   ScoreboardActive,
   ScoreboardData,
   BandwidthData,
-} from '@thebiggame/types/schemas';
-import { get as nodecg } from './nodecg';
+  ScheduleData,
+} from '@thebiggame/types/schemas'
+import { get as nodecg } from './nodecg'
 
 /**
  * This is where you can declare all your replicant to import easily into other files,
@@ -32,7 +33,7 @@ import { get as nodecg } from './nodecg';
 export const repClock = nodecg().Replicant<Clock>('clock', {
   defaultValue: Date.now().toString(),
   persistent: false,
-});
+})
 
 // Countdown.
 export const repCountdownData = nodecg().Replicant<CountdownData>(
@@ -41,7 +42,7 @@ export const repCountdownData = nodecg().Replicant<CountdownData>(
     defaultValue: 0,
     persistent: false,
   },
-);
+)
 
 export const repCountdownName = nodecg().Replicant<CountdownName>(
   'countdown:name',
@@ -49,14 +50,14 @@ export const repCountdownName = nodecg().Replicant<CountdownName>(
     defaultValue: '',
     persistent: true,
   },
-);
+)
 export const repCountdownActive = nodecg().Replicant<CountdownActive>(
   'countdown:active',
   {
     defaultValue: false,
     persistent: false,
   },
-);
+)
 
 // Halfwipe.
 export const repHalfwipeData = nodecg().Replicant<HalfwipeData>(
@@ -68,14 +69,14 @@ export const repHalfwipeData = nodecg().Replicant<HalfwipeData>(
     },
     persistent: true,
   },
-);
+)
 export const repHalfwipeActive = nodecg().Replicant<HalfwipeActive>(
   'halfwipe:active',
   {
     defaultValue: false,
     persistent: true,
   },
-);
+)
 
 // Lowerthird.
 export const repLowerthirdData = nodecg().Replicant<LowerthirdData>(
@@ -84,19 +85,19 @@ export const repLowerthirdData = nodecg().Replicant<LowerthirdData>(
     defaultValue: 'theBIGGAME',
     persistent: true,
   },
-);
+)
 export const repLowerthirdActive = nodecg().Replicant<LowerthirdActive>(
   'lowerthird:active',
   {
     defaultValue: false,
     persistent: true,
   },
-);
+)
 
 // Network bandwidth.
 export const repNetworkWANBandwidth = nodecg().Replicant<BandwidthData>(
   'network:wan:bandwidth',
-);
+)
 
 // Notifications - Events.
 export const repEventInfoBody = nodecg().Replicant<EventInfoData>(
@@ -105,28 +106,28 @@ export const repEventInfoBody = nodecg().Replicant<EventInfoData>(
     defaultValue: 'theBIGGAME',
     persistent: true,
   },
-);
+)
 export const repEventInfoActive = nodecg().Replicant<EventInfoActive>(
   'event:info:active',
   {
     defaultValue: false,
     persistent: true,
   },
-);
+)
 
 // Notifications - Alerts.
 export const repAlertData = nodecg().Replicant<AlertData>('alert:data', {
   defaultValue: 'Pay Attention!',
   persistent: false,
-});
+})
 export const repAlertFlair = nodecg().Replicant<AlertFlair>('alert:flair', {
   defaultValue: false,
   persistent: false,
-});
+})
 export const repAlertDelay = nodecg().Replicant<AlertDelay>('alert:delay', {
   defaultValue: 0,
   persistent: false,
-});
+})
 
 export const repScoreboardData = nodecg().Replicant<ScoreboardData>(
   'scoreboard:data',
@@ -144,14 +145,14 @@ export const repScoreboardData = nodecg().Replicant<ScoreboardData>(
     },
     persistent: true,
   },
-);
+)
 export const repScoreboardActive = nodecg().Replicant<ScoreboardActive>(
   'scoreboard:active',
   {
     defaultValue: false,
     persistent: true,
   },
-);
+)
 
 // Projector - global animate in state.
 export const repProjectorActive = nodecg().Replicant<ProjectorActive>(
@@ -160,7 +161,23 @@ export const repProjectorActive = nodecg().Replicant<ProjectorActive>(
     defaultValue: true,
     persistent: true,
   },
-);
+)
+
+// Schedule.
+export const repScheduleData = nodecg().Replicant<ScheduleData>(
+  'schedule:data',
+  {
+    defaultValue: <ScheduleData>{
+      now: {
+        title: 'Synchronisation Error!',
+        ts_start: '0',
+        ts_end: '0',
+      },
+      upcoming: [],
+    },
+    persistent: true,
+  },
+)
 
 // Scoreboard.
 export const repPersonsData = nodecg().Replicant<PersonsData>('persons:data', {
@@ -173,11 +190,11 @@ export const repPersonsData = nodecg().Replicant<PersonsData>('persons:data', {
     person3desc: 'Person 3 Description',
   },
   persistent: true,
-});
+})
 export const repPersonsActive = nodecg().Replicant<PersonsActive>(
   'persons:active',
   {
     defaultValue: false,
     persistent: true,
   },
-);
+)

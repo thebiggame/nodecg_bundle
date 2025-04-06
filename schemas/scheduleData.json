@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "now": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "ts_start": {
+          "type": "string"
+        },
+        "ts_end": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "ts_start",
+        "ts_end"
+      ]
+    },
+    "upcoming": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "ts_start": {
+            "type": "string"
+          },
+          "ts_end": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "ts_start",
+          "ts_end"
+        ]
+      }
+    }
+  },
+  "required": [
+    "now",
+    "upcoming"
+  ]
+}

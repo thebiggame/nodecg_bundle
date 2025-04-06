@@ -1,7 +1,7 @@
 "use strict";
 /* eslint-disable max-len */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.repPersonsActive = exports.repPersonsData = exports.repProjectorActive = exports.repScoreboardActive = exports.repScoreboardData = exports.repAlertDelay = exports.repAlertFlair = exports.repAlertData = exports.repEventInfoActive = exports.repEventInfoBody = exports.repNetworkWANBandwidth = exports.repLowerthirdActive = exports.repLowerthirdData = exports.repHalfwipeActive = exports.repHalfwipeData = exports.repCountdownActive = exports.repCountdownName = exports.repCountdownData = exports.repClock = void 0;
+exports.repPersonsActive = exports.repPersonsData = exports.repScheduleData = exports.repProjectorActive = exports.repScoreboardActive = exports.repScoreboardData = exports.repAlertDelay = exports.repAlertFlair = exports.repAlertData = exports.repEventInfoActive = exports.repEventInfoBody = exports.repNetworkWANBandwidth = exports.repLowerthirdActive = exports.repLowerthirdData = exports.repHalfwipeActive = exports.repHalfwipeData = exports.repCountdownActive = exports.repCountdownName = exports.repCountdownData = exports.repClock = void 0;
 const nodecg_1 = require("./nodecg");
 /**
  * This is where you can declare all your replicant to import easily into other files,
@@ -91,6 +91,18 @@ exports.repScoreboardActive = (0, nodecg_1.get)().Replicant('scoreboard:active',
 // Projector - global animate in state.
 exports.repProjectorActive = (0, nodecg_1.get)().Replicant('projector:active', {
     defaultValue: true,
+    persistent: true,
+});
+// Schedule.
+exports.repScheduleData = (0, nodecg_1.get)().Replicant('schedule:data', {
+    defaultValue: {
+        now: {
+            title: 'Synchronisation Error!',
+            ts_start: '0',
+            ts_end: '0',
+        },
+        upcoming: [],
+    },
     persistent: true,
 });
 // Scoreboard.

@@ -4,24 +4,25 @@ import {
   EventInfoActive,
   EventInfoData,
   ProjectorActive,
-} from '@thebiggame/types/schemas';
-import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable';
-import { gsap, Quart } from 'gsap';
-import { onMounted, toValue, useTemplateRef, watch } from 'vue';
+} from '@thebiggame/types/schemas'
+import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
+import { gsap, Quart } from 'gsap'
+import { onMounted, toValue, useTemplateRef, watch } from 'vue'
+import { RiInformationFill } from '@remixicon/vue'
 
-const config = nodecg.bundleConfig as Configschema;
+const config = nodecg.bundleConfig as Configschema
 
-const tl = gsap.timeline({ autoRemoveChildren: true });
+const tl = gsap.timeline({ autoRemoveChildren: true })
 
-const repAssetStageSlides = useAssetReplicant('stage-slides', 'thebiggame');
+const repAssetStageSlides = useAssetReplicant('stage-slides', 'thebiggame')
 
-const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame');
+const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame')
 
-const repInfoBody = useReplicant<EventInfoData>('event:info:body', 'thebiggame');
+const repInfoBody = useReplicant<EventInfoData>('event:info:body', 'thebiggame')
 const repInfoActive = useReplicant<EventInfoActive>(
   'event:info:active',
   'thebiggame',
-);
+)
 
 // OLD BELOW THIS LINE
 
@@ -30,10 +31,10 @@ const repInfoActive = useReplicant<EventInfoActive>(
 // });
 
 function handleWipe(newVal: boolean) {
-  const outerNode = document.querySelector('#wipe-outer');
-  const innerNode = document.querySelector('#wipe-inner');
+  const outerNode = document.querySelector('#wipe-outer')
+  const innerNode = document.querySelector('#wipe-inner')
   if (newVal) {
-    tl.clear().add('in');
+    tl.clear().add('in')
     tl.to(
       outerNode,
       0.5,
@@ -43,7 +44,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -53,7 +54,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in+=0.2',
-    );
+    )
     tl.to(
       innerNode,
       1,
@@ -62,10 +63,10 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in+=0.75',
-    );
-    tl.play('in');
+    )
+    tl.play('in')
   } else {
-    tl.clear().add('out');
+    tl.clear().add('out')
     tl.to(
       innerNode,
       1,
@@ -74,7 +75,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -84,7 +85,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out+=0.5',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -93,8 +94,8 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out+=1.5',
-    );
-    tl.play('out');
+    )
+    tl.play('out')
   }
 }
 
@@ -102,18 +103,18 @@ watch(
   () => (gActive !== undefined ? gActive.data : null),
   (e) => {
     if (e !== null) {
-      const fieldValue = toValue(e) as ProjectorActive;
-      handleWipe(fieldValue);
+      const fieldValue = toValue(e) as ProjectorActive
+      handleWipe(fieldValue)
     }
   },
-);
+)
 
 function handleInfoVisibilityChange(newVal: boolean) {
   if (newVal) {
     // Play the announcement chime.
     setTimeout(() => {
-      nodecg.playSound('announcementCue');
-    }, 0);
+      nodecg.playSound('announcementCue')
+    }, 0)
   }
 }
 
@@ -121,34 +122,34 @@ watch(
   () => (repInfoActive !== undefined ? repInfoActive.data : null),
   (e) => {
     if (e !== null) {
-      const fieldValue = toValue(e) as EventInfoActive;
-      handleInfoVisibilityChange(fieldValue);
+      const fieldValue = toValue(e) as EventInfoActive
+      handleInfoVisibilityChange(fieldValue)
     }
   },
-);
+)
 
-const refSlidesContainer = useTemplateRef('slides-container');
+const refSlidesContainer = useTemplateRef('slides-container')
 
 function initSlideshow() {
   if (refSlidesContainer.value === null) {
-    return;
+    return
   }
-  const slidesOuter = refSlidesContainer.value.querySelectorAll('.is-slide');
+  const slidesOuter = refSlidesContainer.value.querySelectorAll('.is-slide')
 
-  let currentSlideIndex = 0;
+  let currentSlideIndex = 0
 
-  gsap.set(slidesOuter, { x: '100%' });
-  gsap.set(slidesOuter[0], { x: '0%' });
+  gsap.set(slidesOuter, { x: '100%' })
+  gsap.set(slidesOuter[0], { x: '0%' })
 
   const showNextSlide = () => {
     if (refSlidesContainer.value === null) {
-      return;
+      return
     }
-    const slides = refSlidesContainer.value.querySelectorAll('.is-slide');
-    const totalSlides = slides.length;
-    const currentSlide = slides[currentSlideIndex];
-    const nextSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    const nextSlide = slides[nextSlideIndex];
+    const slides = refSlidesContainer.value.querySelectorAll('.is-slide')
+    const totalSlides = slides.length
+    const currentSlide = slides[currentSlideIndex]
+    const nextSlideIndex = (currentSlideIndex + 1) % totalSlides
+    const nextSlide = slides[nextSlideIndex]
 
     if (totalSlides >= 2) {
       // There are slides to animate between.
@@ -157,27 +158,27 @@ function initSlideshow() {
         x: '-100%',
         ease: 'power4.inOut',
         onComplete: () => {
-          gsap.set(currentSlide, { x: '100%' });
+          gsap.set(currentSlide, { x: '100%' })
         },
-      });
+      })
 
       gsap.to(nextSlide, {
         duration: 1.5,
         x: '0%',
         ease: 'power4.inOut',
         onComplete: () => {
-          currentSlideIndex = nextSlideIndex;
+          currentSlideIndex = nextSlideIndex
         },
-      });
+      })
     }
-  };
-  setInterval(showNextSlide, config.stage.slideshow_interval * 1000);
+  }
+  setInterval(showNextSlide, config.stage.slideshow_interval * 1000)
 }
 
 onMounted(() => {
   // Initialise message slideshow handlers
-  initSlideshow();
-});
+  initSlideshow()
+})
 </script>
 
 <template>
@@ -189,7 +190,7 @@ onMounted(() => {
           <div class="d-flex pt-2">
             <div class="flex-shrink-0">
               <div class="icon-lead">
-                <iron-icon icon="icons:info"></iron-icon>
+                <RiInformationFill size="48px" class="pr-5"></RiInformationFill>
               </div>
             </div>
             <div class="flex-grow-1 ms-3 info-body" id="info-body">
@@ -275,18 +276,6 @@ onMounted(() => {
   height: 100%;
   background-size: cover;
   background-position: center;
-}
-
-.icon-primary {
-  --iron-icon-height: 30px;
-  --iron-icon-width: 30px;
-  padding-right: 5px;
-}
-
-.icon-lead {
-  --iron-icon-height: 100px;
-  --iron-icon-width: 100px;
-  padding-right: 15px;
 }
 
 .info-body {

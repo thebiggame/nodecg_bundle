@@ -6,18 +6,19 @@
 require('module-alias').addAlias(
   '@thebiggame',
   require('path').join(__dirname, '.'),
-);
+)
 
-import type { NodeCG } from 'nodecg-types/types/server';
-import { set } from './util/nodecg';
+import type { NodeCG } from 'nodecg-types/types/server'
+import { set } from './util/nodecg'
 
 export = (nodecg: NodeCG): void => {
   /**
    * Because of how `import`s work, it helps to use `require`s to force
    * things to be loaded *after* the NodeCG context is set.
    */
-  set(nodecg);
-  require('./clock');
-  require('./countdown');
-  require('./network');
-};
+  set(nodecg)
+  require('./clock')
+  require('./countdown')
+  require('./network')
+  require('./schedule')
+}
