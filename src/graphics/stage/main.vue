@@ -4,9 +4,9 @@ import { Configschema } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
 import { ref } from 'vue'
 
-import Slideshow from '../slideshow/slideshow.vue'
-import Databar from '../databar/databar.vue'
-import Schedulebar from '../schedulebar/schedulebar.vue'
+import Slideshow from './slideshow/slideshow.vue'
+import Databar from './databar/databar.vue'
+import Schedulebar from './schedulebar/schedulebar.vue'
 
 // Set the title of this page.
 useHead({ title: 'NodeCG Stage' })
