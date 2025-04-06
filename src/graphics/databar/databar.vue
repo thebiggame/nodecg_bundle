@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types';
+import { ExampleType } from '@thebiggame/types'
 import {
   Configschema,
   ProjectorActive,
   Clock,
   BandwidthData,
-} from '@thebiggame/types/schemas';
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable';
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue';
-import { gsap, Quart } from 'gsap';
+} from '@thebiggame/types/schemas'
+import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
+import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
+import { gsap, Quart } from 'gsap'
 
 import {
   RiDownloadCloudFill,
@@ -23,49 +23,49 @@ import {
   RiLockPasswordLine,
   RiShieldUserFill,
   RiTimeLine,
-} from '@remixicon/vue';
+} from '@remixicon/vue'
 
 // Access the bundle configuration with types.
-const config = nodecg.bundleConfig as Configschema;
+const config = nodecg.bundleConfig as Configschema
 
 // Accessing normal types.
 // const exampleType: ExampleType = { exampleProperty: 'exampleString' };
 
-const tl = gsap.timeline({ autoRemoveChildren: true });
+const tl = gsap.timeline({ autoRemoveChildren: true })
 
-const repAssetSponsorChips = useAssetReplicant('sponsor-chips', 'thebiggame');
+const repAssetSponsorChips = useAssetReplicant('sponsor-chips', 'thebiggame')
 
-const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame');
+const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame')
 
 const repMusicTitle = useReplicant<string>('music:title', 'thebiggame', {
   defaultValue: 'Unknown Song',
-});
+})
 const repMusicArtist = useReplicant<string>('music:artist', 'thebiggame', {
   defaultValue: 'Unknown Artist',
-});
+})
 
-const clockRep = useReplicant<Clock>('clock', 'thebiggame');
+const clockRep = useReplicant<Clock>('clock', 'thebiggame')
 
 const repNetWANBw = useReplicant<BandwidthData>(
   'network:wan:bandwidth',
   'thebiggame',
-);
+)
 
-const refElemOuter = useTemplateRef('wipe-outer');
-const refElemInner = useTemplateRef('wipe-inner');
+const refElemOuter = useTemplateRef('wipe-outer')
+const refElemInner = useTemplateRef('wipe-inner')
 
-const refBwDown = useTemplateRef('net-bw-down');
-const refBwUp = useTemplateRef('net-bw-up');
+const refBwDown = useTemplateRef('net-bw-down')
+const refBwUp = useTemplateRef('net-bw-up')
 
 function handleBwValue(newVal: number, oldVal: number, elem: Element | null) {
   if (newVal == null || elem == null) {
-    return;
+    return
   }
   if (newVal === -1) {
     // Presently unknown bandwidth data
-    elem.textContent = '???';
+    elem.textContent = '???'
   } else {
-    const target = Math.floor((newVal / 100) * 10) / 100;
+    const target = Math.floor((newVal / 100) * 10) / 100
     gsap.to(elem, {
       duration: 1,
       ease: 'power1.inOut',
@@ -76,16 +76,16 @@ function handleBwValue(newVal: number, oldVal: number, elem: Element | null) {
       onUpdate() {
         elem.textContent = parseFloat(
           elem.textContent != null ? elem.textContent : '0',
-        ).toFixed(1);
+        ).toFixed(1)
       },
       onComplete() {
-        elem.textContent = target.toFixed(1);
+        elem.textContent = target.toFixed(1)
       },
-    });
+    })
     if (newVal >= config.network.bwHighThreshold) {
-      elem.classList.add('bw-high-anim');
+      elem.classList.add('bw-high-anim')
     } else {
-      elem.classList.remove('bw-high-anim');
+      elem.classList.remove('bw-high-anim')
     }
   }
 }
@@ -93,19 +93,19 @@ function handleBwValue(newVal: number, oldVal: number, elem: Element | null) {
 watch(
   () => (repNetWANBw !== undefined ? repNetWANBw.data : null),
   (v, oldV) => {
-    if (v !== null) {
+    if (v != undefined) {
       // const fieldValue = toValue(v) as BandwidthData;
-      handleBwValue(v.up, oldV !== undefined ? oldV.up : 0, refBwUp.value);
-      handleBwValue(v.down, oldV !== undefined ? oldV.down : 0, refBwDown.value);
+      handleBwValue(v.up, oldV != undefined ? oldV.up : 0, refBwUp.value)
+      handleBwValue(v.down, oldV != undefined ? oldV.down : 0, refBwDown.value)
     }
   },
-);
+)
 
 function handleWipe(newVal: boolean) {
-  const outerNode = refElemOuter.value;
-  const innerNode = refElemInner.value;
+  const outerNode = refElemOuter.value
+  const innerNode = refElemInner.value
   if (newVal) {
-    tl.clear().add('in');
+    tl.clear().add('in')
     tl.to(
       outerNode,
       0.5,
@@ -115,7 +115,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -125,7 +125,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in+=0.5',
-    );
+    )
     tl.to(
       innerNode,
       1,
@@ -134,10 +134,10 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeOut,
       },
       'in+=1.0',
-    );
-    tl.play('in');
+    )
+    tl.play('in')
   } else {
-    tl.clear().add('out');
+    tl.clear().add('out')
     tl.to(
       innerNode,
       1,
@@ -146,7 +146,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -156,7 +156,7 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out+=0.5',
-    );
+    )
     tl.to(
       outerNode,
       1,
@@ -165,8 +165,8 @@ function handleWipe(newVal: boolean) {
         ease: Quart.easeInOut,
       },
       'out+=1.5',
-    );
-    tl.play('out');
+    )
+    tl.play('out')
   }
 }
 
@@ -174,30 +174,30 @@ watch(
   () => (gActive !== undefined ? gActive.data : null),
   (e) => {
     if (e !== null) {
-      const fieldValue = toValue(e) as ProjectorActive;
-      handleWipe(fieldValue);
+      const fieldValue = toValue(e) as ProjectorActive
+      handleWipe(fieldValue)
     }
   },
-);
+)
 
 const clockTime = computed(() => {
-  const period = new Date(clockRep.data as Clock);
-  return period.toTimeString().replace(/.*(\d{2}:\d{2}):\d{2}.*/, '$1');
-});
+  const period = new Date(clockRep?.data as Clock)
+  return period.toTimeString().replace(/.*(\d{2}:\d{2}):\d{2}.*/, '$1')
+})
 
 const clockEventDay = computed(() => {
-  const period = new Date(clockRep.data as Clock);
+  const period = new Date(clockRep?.data as Clock)
   switch (period.getDay()) {
     case 5:
-      return 1;
+      return 1
     case 6:
-      return 2;
+      return 2
     case 0:
-      return 3;
+      return 3
     default:
-      return '?';
+      return '?'
   }
-});
+})
 
 // watch(
 //   () => (clockRep !== undefined ? clockRep.data : null),
@@ -209,24 +209,24 @@ const clockEventDay = computed(() => {
 //   },
 // );
 
-const refMessages = useTemplateRef('message-box');
+const refMessages = useTemplateRef('message-box')
 
 function initSlideshow() {
   if (refMessages.value === null) {
-    return;
+    return
   }
-  const slides = refMessages.value.querySelectorAll('.is-message');
+  const slides = refMessages.value.querySelectorAll('.is-message')
 
-  let currentSlideIndex = 0;
+  let currentSlideIndex = 0
 
-  gsap.set(slides, { y: '100%' });
-  gsap.set(slides[0], { y: '0%' });
+  gsap.set(slides, { y: '100%' })
+  gsap.set(slides[0], { y: '0%' })
 
   const showNextSlide = () => {
-    const totalSlides = slides.length;
-    const currentSlide = slides[currentSlideIndex];
-    const nextSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    const nextSlide = slides[nextSlideIndex];
+    const totalSlides = slides.length
+    const currentSlide = slides[currentSlideIndex]
+    const nextSlideIndex = (currentSlideIndex + 1) % totalSlides
+    const nextSlide = slides[nextSlideIndex]
 
     if (totalSlides >= 2) {
       // There are slides to animate between.
@@ -235,28 +235,28 @@ function initSlideshow() {
         y: '-100%',
         ease: 'power4.inOut',
         onComplete: () => {
-          gsap.set(currentSlide, { y: '100%' });
+          gsap.set(currentSlide, { y: '100%' })
         },
-      });
+      })
 
       gsap.to(nextSlide, {
         duration: 0.5,
         y: '0%',
         ease: 'power4.inOut',
         onComplete: () => {
-          currentSlideIndex = nextSlideIndex;
+          currentSlideIndex = nextSlideIndex
         },
-      });
+      })
     }
-  };
+  }
 
-  setInterval(showNextSlide, 7500);
+  setInterval(showNextSlide, 7500)
 }
 
 onMounted(() => {
   // Initialise message slideshow handlers
-  initSlideshow();
-});
+  initSlideshow()
+})
 </script>
 
 <style scoped>
@@ -450,7 +450,7 @@ onMounted(() => {
     transform: translate(1px, 1px) rotate(5deg);
   }
   50% {
-    transform: translate(0, 0) rotate(0eg);
+    transform: translate(0, 0) rotate(0deg);
   }
   75% {
     transform: translate(-1px, 1px) rotate(-5deg);
