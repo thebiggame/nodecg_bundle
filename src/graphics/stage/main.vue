@@ -4,12 +4,13 @@ import { Configschema } from '@thebiggame/types/schemas';
 import { useHead } from '@vueuse/head';
 import { ref } from 'vue';
 
+import Slideshow from '../slideshow/slideshow.vue';
 import Databar from '../databar/databar.vue';
 
 // Set the title of this page.
 useHead({ title: 'NodeCG Stage' });
 </script>
-<style>
+<style scoped>
 body {
   margin: 0;
   background-color: rgba(0, 0, 0, 0);
@@ -150,6 +151,7 @@ tbg-alert {
 </style>
 <template>
   <div class="app-container">
+    <Slideshow />
     <Databar />
   </div>
 </template>

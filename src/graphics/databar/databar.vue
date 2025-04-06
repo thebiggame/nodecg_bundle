@@ -6,9 +6,8 @@ import {
   Clock,
   BandwidthData,
 } from '@thebiggame/types/schemas';
-import { useHead } from '@vueuse/head';
 import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable';
-import { onMounted, watch, toValue, computed } from 'vue';
+import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue';
 import { gsap, Quart } from 'gsap';
 
 import {
@@ -52,6 +51,12 @@ const repNetWANBw = useReplicant<BandwidthData>(
   'thebiggame',
 );
 
+const refElemOuter = useTemplateRef('wipe-outer');
+const refElemInner = useTemplateRef('wipe-inner');
+
+const refBwDown = useTemplateRef('net-bw-down');
+const refBwUp = useTemplateRef('net-bw-up');
+
 function handleBwValue(newVal: number, oldVal: number, elem: Element | null) {
   if (newVal == null || elem == null) {
     return;
@@ -90,23 +95,15 @@ watch(
   (v, oldV) => {
     if (v !== null) {
       // const fieldValue = toValue(v) as BandwidthData;
-      handleBwValue(
-        v.up,
-        oldV !== undefined ? oldV.up : 0,
-        document.querySelector('#net-bw-up-content'),
-      );
-      handleBwValue(
-        v.down,
-        oldV !== undefined ? oldV.down : 0,
-        document.querySelector('#net-bw-down-content'),
-      );
+      handleBwValue(v.up, oldV !== undefined ? oldV.up : 0, refBwUp.value);
+      handleBwValue(v.down, oldV !== undefined ? oldV.down : 0, refBwDown.value);
     }
   },
 );
 
 function handleWipe(newVal: boolean) {
-  const outerNode = document.querySelector('#wipe-outer');
-  const innerNode = document.querySelector('#wipe-inner');
+  const outerNode = refElemOuter.value;
+  const innerNode = refElemInner.value;
   if (newVal) {
     tl.clear().add('in');
     tl.to(
@@ -212,8 +209,13 @@ const clockEventDay = computed(() => {
 //   },
 // );
 
+const refMessages = useTemplateRef('message-box');
+
 function initSlideshow() {
-  const slides = document.querySelectorAll('#message-box .is-message');
+  if (refMessages.value === null) {
+    return;
+  }
+  const slides = refMessages.value.querySelectorAll('.is-message');
 
   let currentSlideIndex = 0;
 
@@ -221,7 +223,6 @@ function initSlideshow() {
   gsap.set(slides[0], { y: '0%' });
 
   const showNextSlide = () => {
-    // const slides = document.querySelectorAll('#message-box .is-message');
     const totalSlides = slides.length;
     const currentSlide = slides[currentSlideIndex];
     const nextSlideIndex = (currentSlideIndex + 1) % totalSlides;
@@ -258,7 +259,7 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
 :host {
   position: absolute;
   width: 1920px;
@@ -268,7 +269,7 @@ onMounted(() => {
   color: #fff;
 }
 
-#wipe-outer {
+.wipe-outer {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
@@ -284,7 +285,7 @@ onMounted(() => {
   border-radius: 0px 150px 150px 0px;
 }
 
-#wipe-inner {
+.wipe-inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -499,8 +500,8 @@ onMounted(() => {
 <template>
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
-    <div id="wipe-outer">
-      <div id="wipe-inner" class="container-fluid">
+    <div ref="wipe-outer" class="wipe-outer">
+      <div ref="wipe-inner" class="wipe-inner container-fluid">
         <div id="event-data" class="row">
           <div id="wipe-title" class="d-flex box-elem">
             <b class="event-num align-self-center">{{ config.event_num }}</b>
@@ -511,7 +512,13 @@ onMounted(() => {
                 size="36px"
                 className="icon-bw"
               ></RiDownloadCloudFill>
-              <div id="net-bw-down-content" class="bw-content pl-2">???</div>
+              <div
+                id="net-bw-down-content"
+                ref="net-bw-down"
+                class="bw-content pl-2"
+              >
+                ???
+              </div>
               <div class="align-self-end bw-trail text-muted">Mbps</div>
             </div>
             <div class="d-flex flex-grow">
@@ -519,12 +526,19 @@ onMounted(() => {
                 size="36px"
                 className="icon-bw"
               ></RiUploadCloudFill>
-              <div id="net-bw-up-content" class="bw-content pl-2">???</div>
+              <div
+                id="net-bw-up-content"
+                ref="net-bw-up"
+                class="bw-content pl-2"
+              >
+                ???
+              </div>
               <div class="align-self-end bw-trail text-muted">Mbps</div>
             </div>
           </div>
           <div
             id="message-box"
+            ref="message-box"
             class="d-flex box-elem-message align-self-center"
           >
             <div class="is-message">
