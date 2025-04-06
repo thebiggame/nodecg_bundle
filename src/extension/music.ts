@@ -1,7 +1,7 @@
 import { get as nodecg } from './util/nodecg'
 import { repMusicData } from './util/replicants'
 import { Configschema, MusicData } from '@thebiggame/types/schemas'
-import https from 'http'
+import https from 'https'
 
 nodecg().log.trace('Extension music loaded.')
 
@@ -49,7 +49,7 @@ function updateSong() {
                 artist: track.artist['#text'],
               }
             } else {
-              nodecg().log.debug('Music: No track data found.')
+              nodecg().log.warn('Music: No track data found.')
             }
           } else {
             // We reached the target server, but it returned an error
