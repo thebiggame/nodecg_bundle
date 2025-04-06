@@ -138,8 +138,8 @@ function initSlideshow() {
 
   let currentSlideIndex = 0
 
-  gsap.set(slidesOuter, { x: '100%' })
-  gsap.set(slidesOuter[0], { x: '0%' })
+  // gsap.set(slidesOuter, { x: '100%' })
+  // gsap.set(slidesOuter[0], { x: '0%' })
 
   const showNextSlide = () => {
     if (refSlidesContainer.value === null) {
@@ -189,8 +189,8 @@ onMounted(() => {
         <div id="info" v-bind:class="{ 'd-none': !repInfoActive?.data }">
           <div class="d-flex pt-2">
             <div class="flex-shrink-0">
-              <div class="icon-lead">
-                <RiInformationFill size="48px" class="pr-5"></RiInformationFill>
+              <div class="icon-lead pr-3">
+                <RiInformationFill size="120px"></RiInformationFill>
               </div>
             </div>
             <div class="flex-grow-1 ms-3 info-body" id="info-body">

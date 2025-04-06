@@ -19,6 +19,23 @@
   ],
   "nodecg": {
     "compatibleRange": "~2.1.0",
+    "dashboardPanels": [
+      {
+        "name": "projector",
+        "title": "Animate In / Out",
+        "width": 3,
+        "file": "projector.html",
+        "headerColor": "#ff0000",
+        "workspace": "Projector"
+      },
+      {
+        "name": "notify-announce",
+        "title": "Announcements",
+        "width": 4,
+        "file": "notify-announce.html",
+        "workspace": "Projector"
+      }
+    ],
     "graphics": [
       {
         "file": "stage.html",
