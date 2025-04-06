@@ -48,6 +48,16 @@
           "gif",
           "png"
         ]
+      },
+      {
+        "name": "sponsor-chips",
+        "title": "Sponsor Chips",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
       }
     ]
   },

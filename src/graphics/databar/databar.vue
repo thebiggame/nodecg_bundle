@@ -7,7 +7,7 @@ import {
   BandwidthData,
 } from '@thebiggame/types/schemas';
 import { useHead } from '@vueuse/head';
-import { useReplicant } from 'nodecg-vue-composable';
+import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable';
 import { onMounted, watch, toValue, computed } from 'vue';
 import { gsap, Quart } from 'gsap';
 
@@ -34,7 +34,8 @@ const config = nodecg.bundleConfig as Configschema;
 
 const tl = gsap.timeline({ autoRemoveChildren: true });
 
-// const gActive = nodecg.Replicant('projector:active');
+const repAssetSponsorChips = useAssetReplicant('sponsor-chips', 'thebiggame');
+
 const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame');
 
 const repMusicTitle = useReplicant<string>('music:title', 'thebiggame', {
@@ -44,7 +45,6 @@ const repMusicArtist = useReplicant<string>('music:artist', 'thebiggame', {
   defaultValue: 'Unknown Artist',
 });
 
-// const clockRep = nodecg.Replicant('clock');
 const clockRep = useReplicant<Clock>('clock', 'thebiggame');
 
 const repNetWANBw = useReplicant<BandwidthData>(
@@ -548,23 +548,13 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiHandHeartFill
                 size="50px"
-                className="align-self-center"
+                className="align-self-center pr-3"
               ></RiHandHeartFill>
-              <p class="pl-2 pr-3">tBG is possible thanks to</p>
               <div
+                v-for="chip in repAssetSponsorChips"
                 class="d-flex box-elem align-items-center sponsor-boxo bg-light"
               >
-                <img class="img-fluid mx-2" src="img/sponsor_dominos.png" />
-              </div>
-              <div
-                class="d-flex box-elem align-items-center sponsor-boxo bg-secondary"
-              >
-                <img class="img-fluid mx-2" src="img/sponsor_projgames.png" />
-              </div>
-              <div
-                class="d-flex box-elem align-items-center sponsor-boxo bg-secondary"
-              >
-                <img class="img-fluid mx-2" src="img/sponsor_yayzi.png" />
+                <img class="img-fluid mx-2" :src="chip.url" />
               </div>
             </div>
             <div class="is-message">
