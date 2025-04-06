@@ -1,9 +1,18 @@
-thebiggame is a [NodeCG](http://github.com/nodecg/nodecg) bundle that drives [theBIGGAME](https://thebiggame.org)'s live graphics. 
+# theBIGGAME NodeCG Bundle
 
-# How to Use
+This repository stores a [NodeCG](http://github.com/nodecg/nodecg) bundle that
+drives [theBIGGAME](https://thebiggame.org)'s live graphics.
 
-This project still uses the old Bower package manager for client side dependencies.
+## Technical Details
 
-Install Bower and NPM, then run `bower install` and `npm install` from the root.
+In _v53.2_ and newer, this bundle was heavily refactored to use Vue 5, Typescript (targetting TS2016), and Vite for
+compilation.
 
-You should then be able to do `npx nodecg start` (this bundle supports the new NodeCG instantiation method).
+Before then, it was a horrific mangling of raw Javascript and Polymer 2.
+
+## How to Use
+
+You should just be able to do `npm install`, `npm run build`, then `nodecg start`.
+
+For Development, `npm run watch` is available for automatic builds. Updates will appear automagically in your NodeCG
+instance's graphics.
