@@ -14,5 +14,6 @@ module.exports = (nodecg) => {
     require('./clock');
     require('./countdown');
     require('./network');
+    require('./music');
     require('./schedule');
 };

@@ -1,7 +1,7 @@
 "use strict";
 /* eslint-disable max-len */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.repPersonsActive = exports.repPersonsData = exports.repScheduleData = exports.repProjectorActive = exports.repScoreboardActive = exports.repScoreboardData = exports.repAlertDelay = exports.repAlertFlair = exports.repAlertData = exports.repEventInfoActive = exports.repEventInfoBody = exports.repNetworkWANBandwidth = exports.repLowerthirdActive = exports.repLowerthirdData = exports.repHalfwipeActive = exports.repHalfwipeData = exports.repCountdownActive = exports.repCountdownName = exports.repCountdownData = exports.repClock = void 0;
+exports.repScoreboardActive = exports.repScoreboardData = exports.repScheduleData = exports.repProjectorActive = exports.repPersonsActive = exports.repPersonsData = exports.repAlertDelay = exports.repAlertFlair = exports.repAlertData = exports.repEventInfoActive = exports.repEventInfoBody = exports.repNetworkWANBandwidth = exports.repMusicData = exports.repLowerthirdActive = exports.repLowerthirdData = exports.repHalfwipeActive = exports.repHalfwipeData = exports.repCountdownActive = exports.repCountdownName = exports.repCountdownData = exports.repClock = void 0;
 const nodecg_1 = require("./nodecg");
 /**
  * This is where you can declare all your replicant to import easily into other files,
@@ -46,6 +46,11 @@ exports.repLowerthirdActive = (0, nodecg_1.get)().Replicant('lowerthird:active',
     defaultValue: false,
     persistent: true,
 });
+// Music data.
+exports.repMusicData = (0, nodecg_1.get)().Replicant('music:data', {
+    defaultValue: { title: 'Unknown Song', artist: 'Unknown Artist' },
+    persistent: false,
+});
 // Network bandwidth.
 exports.repNetworkWANBandwidth = (0, nodecg_1.get)().Replicant('network:wan:bandwidth');
 // Notifications - Events.
@@ -70,21 +75,19 @@ exports.repAlertDelay = (0, nodecg_1.get)().Replicant('alert:delay', {
     defaultValue: 0,
     persistent: false,
 });
-exports.repScoreboardData = (0, nodecg_1.get)().Replicant('scoreboard:data', {
+// Persons.
+exports.repPersonsData = (0, nodecg_1.get)().Replicant('persons:data', {
     defaultValue: {
-        title: '',
-        team1: {
-            name: 'Player 1',
-            score: 0,
-        },
-        team2: {
-            name: 'Player 2',
-            score: 0,
-        },
+        person1: 'Person 1',
+        person1desc: 'Person 1 Description',
+        person2: 'Person 2',
+        person2desc: 'Person 2 Description',
+        person3: 'Person 3',
+        person3desc: 'Person 3 Description',
     },
     persistent: true,
 });
-exports.repScoreboardActive = (0, nodecg_1.get)().Replicant('scoreboard:active', {
+exports.repPersonsActive = (0, nodecg_1.get)().Replicant('persons:active', {
     defaultValue: false,
     persistent: true,
 });
@@ -106,18 +109,21 @@ exports.repScheduleData = (0, nodecg_1.get)().Replicant('schedule:data', {
     persistent: true,
 });
 // Scoreboard.
-exports.repPersonsData = (0, nodecg_1.get)().Replicant('persons:data', {
+exports.repScoreboardData = (0, nodecg_1.get)().Replicant('scoreboard:data', {
     defaultValue: {
-        person1: 'Person 1',
-        person1desc: 'Person 1 Description',
-        person2: 'Person 2',
-        person2desc: 'Person 2 Description',
-        person3: 'Person 3',
-        person3desc: 'Person 3 Description',
+        title: '',
+        team1: {
+            name: 'Player 1',
+            score: 0,
+        },
+        team2: {
+            name: 'Player 2',
+            score: 0,
+        },
     },
     persistent: true,
 });
-exports.repPersonsActive = (0, nodecg_1.get)().Replicant('persons:active', {
+exports.repScoreboardActive = (0, nodecg_1.get)().Replicant('scoreboard:active', {
     defaultValue: false,
     persistent: true,
 });

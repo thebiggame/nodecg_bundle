@@ -14,6 +14,7 @@ import {
   type HalfwipeActive,
   type LowerthirdData,
   type LowerthirdActive,
+  type MusicData,
   type PersonsActive,
   type PersonsData,
   type ProjectorActive,
@@ -94,6 +95,12 @@ export const repLowerthirdActive = nodecg().Replicant<LowerthirdActive>(
   },
 )
 
+// Music data.
+export const repMusicData = nodecg().Replicant<MusicData>('music:data', {
+  defaultValue: <MusicData>{ title: 'Unknown Song', artist: 'Unknown Artist' },
+  persistent: false,
+})
+
 // Network bandwidth.
 export const repNetworkWANBandwidth = nodecg().Replicant<BandwidthData>(
   'network:wan:bandwidth',
@@ -129,25 +136,20 @@ export const repAlertDelay = nodecg().Replicant<AlertDelay>('alert:delay', {
   persistent: false,
 })
 
-export const repScoreboardData = nodecg().Replicant<ScoreboardData>(
-  'scoreboard:data',
-  {
-    defaultValue: {
-      title: '',
-      team1: {
-        name: 'Player 1',
-        score: 0,
-      },
-      team2: {
-        name: 'Player 2',
-        score: 0,
-      },
-    },
-    persistent: true,
+// Persons.
+export const repPersonsData = nodecg().Replicant<PersonsData>('persons:data', {
+  defaultValue: {
+    person1: 'Person 1',
+    person1desc: 'Person 1 Description',
+    person2: 'Person 2',
+    person2desc: 'Person 2 Description',
+    person3: 'Person 3',
+    person3desc: 'Person 3 Description',
   },
-)
-export const repScoreboardActive = nodecg().Replicant<ScoreboardActive>(
-  'scoreboard:active',
+  persistent: true,
+})
+export const repPersonsActive = nodecg().Replicant<PersonsActive>(
+  'persons:active',
   {
     defaultValue: false,
     persistent: true,
@@ -180,19 +182,25 @@ export const repScheduleData = nodecg().Replicant<ScheduleData>(
 )
 
 // Scoreboard.
-export const repPersonsData = nodecg().Replicant<PersonsData>('persons:data', {
-  defaultValue: {
-    person1: 'Person 1',
-    person1desc: 'Person 1 Description',
-    person2: 'Person 2',
-    person2desc: 'Person 2 Description',
-    person3: 'Person 3',
-    person3desc: 'Person 3 Description',
+export const repScoreboardData = nodecg().Replicant<ScoreboardData>(
+  'scoreboard:data',
+  {
+    defaultValue: {
+      title: '',
+      team1: {
+        name: 'Player 1',
+        score: 0,
+      },
+      team2: {
+        name: 'Player 2',
+        score: 0,
+      },
+    },
+    persistent: true,
   },
-  persistent: true,
-})
-export const repPersonsActive = nodecg().Replicant<PersonsActive>(
-  'persons:active',
+)
+export const repScoreboardActive = nodecg().Replicant<ScoreboardActive>(
+  'scoreboard:active',
   {
     defaultValue: false,
     persistent: true,

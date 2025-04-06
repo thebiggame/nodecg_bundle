@@ -5,6 +5,7 @@ import {
   ProjectorActive,
   Clock,
   BandwidthData,
+  MusicData,
 } from '@thebiggame/types/schemas'
 import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
 import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
@@ -37,12 +38,7 @@ const repAssetSponsorChips = useAssetReplicant('sponsor-chips', 'thebiggame')
 
 const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame')
 
-const repMusicTitle = useReplicant<string>('music:title', 'thebiggame', {
-  defaultValue: 'Unknown Song',
-})
-const repMusicArtist = useReplicant<string>('music:artist', 'thebiggame', {
-  defaultValue: 'Unknown Artist',
-})
+const repMusicData = useReplicant<MusicData>('music:data', 'thebiggame')
 
 const clockRep = useReplicant<Clock>('clock', 'thebiggame')
 
@@ -576,12 +572,12 @@ onMounted(() => {
                 size="50px"
                 className="align-self-center anim-wiggle"
               ></RiMusic2Fill>
-              <span id="music-title">{{ repMusicTitle?.data }}</span>
+              <span id="music-title">{{ repMusicData?.data?.title }}</span>
               <RiUserLine
                 size="50px"
                 className="align-self-center text-muted"
               ></RiUserLine>
-              <span id="music-artist">{{ repMusicArtist?.data }}</span>
+              <span id="music-artist">{{ repMusicData?.data?.artist }}</span>
             </div>
             <div class="is-message">
               <RiWifiFill
