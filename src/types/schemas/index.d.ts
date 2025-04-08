@@ -4,9 +4,7 @@ export * from './configschema'
 // @ts-ignore
 export * from './alertData'
 // @ts-ignore
-export * from './alertDelay'
-// @ts-ignore
-export * from './alertFlair'
+export * from './alertActive'
 // @ts-ignore
 export * from './bandwidthData'
 // @ts-ignore

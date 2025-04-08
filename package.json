@@ -34,6 +34,14 @@
         "width": 4,
         "file": "notify-announce.html",
         "workspace": "Projector"
+      },
+      {
+        "name": "notify-alert",
+        "title": "Alerts",
+        "width": 3,
+        "file": "notify-alert.html",
+        "headerColor": "#ff0000",
+        "workspace": "Projector"
       }
     ],
     "graphics": [

@@ -6,9 +6,4 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface AlertData {
-	body: string;
-	flair: boolean;
-	delay: number;
-	[k: string]: unknown;
-}
+export type AlertActive = boolean;

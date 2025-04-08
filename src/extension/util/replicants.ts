@@ -3,8 +3,6 @@
 import {
   type Clock,
   type AlertData,
-  type AlertDelay,
-  type AlertFlair,
   type CountdownActive,
   type CountdownName,
   type CountdownData,
@@ -123,16 +121,12 @@ export const repEventInfoActive = nodecg().Replicant<EventInfoActive>(
 )
 
 // Notifications - Alerts.
-export const repAlertData = nodecg().Replicant<AlertData>('alert:data', {
-  defaultValue: 'Pay Attention!',
-  persistent: false,
-})
-export const repAlertFlair = nodecg().Replicant<AlertFlair>('alert:flair', {
-  defaultValue: false,
-  persistent: false,
-})
-export const repAlertDelay = nodecg().Replicant<AlertDelay>('alert:delay', {
-  defaultValue: 0,
+export const repAlertData = nodecg().Replicant<AlertData>('notify:alert:data', {
+  defaultValue: <AlertData>{
+    body: 'Test Alert, Please Ignore',
+    flair: false,
+    delay: 0,
+  },
   persistent: false,
 })
 

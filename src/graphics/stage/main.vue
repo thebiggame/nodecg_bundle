@@ -4,12 +4,19 @@ import { Configschema } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
 import { ref } from 'vue'
 
+import Alert from './alert/alert.vue'
 import Slideshow from './slideshow/slideshow.vue'
 import Databar from './databar/databar.vue'
 import Schedulebar from './schedulebar/schedulebar.vue'
 
 // Set the title of this page.
 useHead({ title: 'NodeCG Stage' })
+
+const stageIsFaded = ref(false)
+
+const setPageFadeState = (state: boolean) => {
+  state ? (stageIsFaded.value = true) : (stageIsFaded.value = false)
+}
 </script>
 <style scoped>
 body {
@@ -152,8 +159,13 @@ tbg-alert {
 </style>
 <template>
   <div class="app-container">
+    <Alert @alert-darkener="setPageFadeState" />
     <Slideshow />
     <Schedulebar />
     <Databar />
+    <div
+      class="page-fader modal-backdrop fade"
+      v-bind:class="{ show: stageIsFaded }"
+    ></div>
   </div>
 </template>
