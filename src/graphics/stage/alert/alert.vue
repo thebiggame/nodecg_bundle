@@ -61,18 +61,15 @@ function handleAlert() {
   //  ease: Power4.easeOut,
   //})
 
-  tl.call(() => {
-    if (flair) {
-      setTimeout(() => {
-        nodecg.playSound('alertCue')
-      }, 0)
-    }
-  })
-
   tl.clear().add('start')
 
   if (flair) {
     tl.add('enter', 'start+=3')
+    tl.call(() => {
+      setTimeout(() => {
+        nodecg.playSound('alertCue')
+      }, 0)
+    })
     tl.to(
       refExclaimText.value,
       {
