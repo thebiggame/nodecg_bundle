@@ -26,6 +26,7 @@ import {
   RiShieldUserFill,
   RiTimeLine,
   RiFilePaperFill,
+  RiAlarmWarningLine,
 } from '@remixicon/vue'
 
 // Access the bundle configuration with types.
@@ -284,7 +285,7 @@ function handleExit() {
       <div ref="wipe-inner" class="wipe-inner container-fluid">
         <div class="d-flex flex-row align-items-center">
           <div class="icon">
-            <RiFilePaperFill size="150px" />
+            <RiAlarmWarningLine size="150px" />
           </div>
           <div id="wipe-now" class="pl-3">
             <div id="name">
