@@ -1,36 +1,10 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import {
-  Configschema,
-  ProjectorActive,
-  Clock,
-  BandwidthData,
-  AlertData,
-  AlertActive,
-} from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
+import { Configschema, AlertData, AlertActive } from '@thebiggame/types/schemas'
+import { useReplicant } from 'nodecg-vue-composable'
+import { watch, toValue, useTemplateRef } from 'vue'
 import { gsap, Quart, Power2 } from 'gsap'
 
-import {
-  RiDownloadCloudFill,
-  RiUploadCloudFill,
-  RiCalendarEventFill,
-  RiHandHeartFill,
-  RiEmotionHappyFill,
-  RiRocketFill,
-  RiMusic2Fill,
-  RiUserLine,
-  RiWifiFill,
-  RiLockPasswordLine,
-  RiShieldUserFill,
-  RiTimeLine,
-  RiFilePaperFill,
-  RiAlarmWarningLine,
-} from '@remixicon/vue'
-
-// Access the bundle configuration with types.
-const config = nodecg.bundleConfig as Configschema
+import { RiAlarmWarningLine } from '@remixicon/vue'
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
 

@@ -1,37 +1,12 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
 import {
-  Configschema,
   CountdownActive,
-  Clock,
-  BandwidthData,
   CountdownData,
   CountdownName,
 } from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
+import { useReplicant } from 'nodecg-vue-composable'
+import { watch, toValue, useTemplateRef, computed } from 'vue'
 import { gsap, Quart } from 'gsap'
-
-import {
-  RiDownloadCloudFill,
-  RiUploadCloudFill,
-  RiCalendarEventFill,
-  RiHandHeartFill,
-  RiEmotionHappyFill,
-  RiRocketFill,
-  RiMusic2Fill,
-  RiUserLine,
-  RiWifiFill,
-  RiLockPasswordLine,
-  RiShieldUserFill,
-  RiTimeLine,
-} from '@remixicon/vue'
-
-// Access the bundle configuration with types.
-const config = nodecg.bundleConfig as Configschema
-
-// Accessing normal types.
-// const exampleType: ExampleType = { exampleProperty: 'exampleString' };
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
 
@@ -212,7 +187,7 @@ watch(
   border-bottom: solid #fff 5px;
   border-left: solid #fff 20px;
   border-right: solid #fff 5px;
-  border-radius: 0px 150px 150px 0px;
+  border-radius: 0 150px 150px 0;
 }
 
 .timer-inner {
