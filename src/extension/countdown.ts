@@ -1,26 +1,18 @@
-import { get as nodecg } from './util/nodecg';
-import { repCountdownData, repCountdownActive } from './util/replicants';
+import { get as nodecg } from './util/nodecg'
+import { repCountdownData, repCountdownActive } from './util/replicants'
 
-nodecg().log.trace('Extension countdown loaded.');
+nodecg().log.trace('Extension countdown loaded.')
 
-let timerCountdown: NodeJS.Timeout;
+let timerCountdown: NodeJS.Timeout
 
 function start() {
-  if (repCountdownActive.value) {
-    return;
-  }
-
-  repCountdownActive.value = true;
-  timerCountdown = setInterval(tick, 1000);
+  repCountdownActive.value = true
+  timerCountdown = setInterval(tick, 1000)
 }
 
 function stop() {
-  if (!repCountdownActive.value) {
-    return;
-  }
-
-  repCountdownActive.value = false;
-  clearInterval(timerCountdown);
+  repCountdownActive.value = false
+  clearInterval(timerCountdown)
 }
 
 function tick() {
@@ -28,19 +20,19 @@ function tick() {
     // Tick.
     if (repCountdownData.value <= 0) {
       // The countdown has ended, stop the count!
-      stop();
-      return;
+      stop()
+      return
     }
-    repCountdownData.value = repCountdownData.value--;
+    repCountdownData.value -= 1
   }
 }
 
 repCountdownActive.on('change', (e) => {
   if (e) {
     // Start
-    start();
+    start()
   } else {
     // Stop
-    stop();
+    stop()
   }
-});
+})

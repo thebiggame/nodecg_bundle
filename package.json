@@ -49,6 +49,14 @@
         "file": "notify-alert.html",
         "headerColor": "#ff0000",
         "workspace": "Projector"
+      },
+      {
+        "name": "countdown",
+        "title": "Countdown Timer",
+        "width": 3,
+        "file": "countdown.html",
+        "headerColor": "#ff0000",
+        "workspace": "Projector"
       }
     ],
     "graphics": [
