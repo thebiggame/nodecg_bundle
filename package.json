@@ -21,6 +21,13 @@
     "compatibleRange": "~2.1.0",
     "dashboardPanels": [
       {
+        "name": "guide",
+        "title": "Welcome",
+        "width": 2,
+        "file": "guide.html",
+        "workspace": "Projector"
+      },
+      {
         "name": "projector",
         "title": "Animate In / Out",
         "width": 3,
