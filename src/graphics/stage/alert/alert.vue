@@ -28,23 +28,23 @@ const refExclaimText = useTemplateRef('exclaim')
 function handleAlert() {
   // const alertFlair = Polymer.dom(this.root).querySelector('#alert-flair')
   const flair = repAlertData?.data?.flair
+  const delay = repAlertData?.data?.delay
 
-  // Fade out stuff
-  sendAlertDarkenerEvent(true)
-  //TweenLite.to(darkenNode, 2.5, {
-  //  opacity: 0.75,
-  //  ease: Power4.easeOut,
-  //})
-
-  tl.clear().add('start')
+  tl.clear().add('start', delay)
 
   if (flair) {
     tl.add('enter', 'start+=3')
-    tl.call(() => {
-      setTimeout(() => {
-        nodecg.playSound('alertCue')
-      }, 0)
-    })
+    tl.call(
+      () => {
+        setTimeout(() => {
+          nodecg.playSound('alertCue')
+          // Fade out stuff
+          sendAlertDarkenerEvent(true)
+        }, 0)
+      },
+      undefined,
+      'start',
+    )
     tl.to(
       refExclaimText.value,
       {
