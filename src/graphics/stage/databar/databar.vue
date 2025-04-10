@@ -24,10 +24,15 @@ import {
   RiLockPasswordLine,
   RiShieldUserFill,
   RiTimeLine,
+  RiBugLine,
+  RiGameFill,
+  RiGamepadLine,
 } from '@remixicon/vue'
 
 // Access the bundle configuration with types.
 const config = nodecg.bundleConfig as Configschema
+
+const versionString = 'Bundle-' + nodecg.bundleVersion
 
 // Accessing normal types.
 // const exampleType: ExampleType = { exampleProperty: 'exampleString' };
@@ -106,7 +111,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       0.5,
       {
-        top: '990px',
+        x: '0%',
         // marginRight: "0px",
         ease: Quart.easeOut,
       },
@@ -157,7 +162,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       1,
       {
-        top: '100%',
+        x: '-200%',
         ease: Quart.easeInOut,
       },
       'out+=1.5',
@@ -211,7 +216,7 @@ function initSlideshow() {
   if (refMessages.value === null) {
     return
   }
-  const slides = refMessages.value.querySelectorAll('.is-message')
+  let slides = refMessages.value.querySelectorAll('.is-message')
 
   let currentSlideIndex = 0
 
@@ -224,6 +229,7 @@ function initSlideshow() {
     const nextSlideIndex = (currentSlideIndex + 1) % totalSlides
     const nextSlide = slides[nextSlideIndex]
 
+    let shouldStepForward = true
     if (totalSlides >= 2) {
       // There are slides to animate between.
       gsap.to(currentSlide, {
@@ -231,7 +237,17 @@ function initSlideshow() {
         y: '-100%',
         ease: 'power4.inOut',
         onComplete: () => {
-          gsap.set(currentSlide, { y: '100%' })
+          if (currentSlide.classList.contains('message-display-once')) {
+            currentSlide.remove()
+            // Need to step the current understanding back one to compensate.
+            shouldStepForward = false
+            // Update understanding of slide list.
+            if (refMessages.value !== null) {
+              slides = refMessages.value.querySelectorAll('.is-message')
+            }
+          } else {
+            gsap.set(currentSlide, { y: '100%' })
+          }
         },
       })
 
@@ -240,7 +256,9 @@ function initSlideshow() {
         y: '0%',
         ease: 'power4.inOut',
         onComplete: () => {
-          currentSlideIndex = nextSlideIndex
+          if (shouldStepForward) {
+            currentSlideIndex = nextSlideIndex
+          }
         },
       })
     }
@@ -502,7 +520,82 @@ onMounted(() => {
           <div id="wipe-title" class="d-flex box-elem">
             <b class="event-num align-self-center">{{ config.event_num }}</b>
           </div>
-          <div id="net-bw-box" class="d-flex flex-column box-elem bg-dark">
+          <div
+            id="message-box"
+            ref="message-box"
+            class="d-flex box-elem-message align-items-center align-self-center"
+          >
+            <div class="is-message message-display-once">
+              <RiGamepadLine
+                size="50px"
+                className="align-self-center anim-wiggle"
+              ></RiGamepadLine>
+              <p>
+                <b>NG-TBG</b>
+                <i>{{ versionString }}</i>
+              </p>
+            </div>
+            <div class="is-message">
+              <RiEmotionHappyFill
+                size="50px"
+                className="align-self-center anim-wiggle mr-2"
+              ></RiEmotionHappyFill>
+              <p>
+                Welcome to <b>theBIGGAME</b>
+                <b class="event-num">{{ config.event_num }}</b
+                >!
+              </p>
+            </div>
+            <div class="is-message d-flex">
+              <RiHandHeartFill
+                size="50px"
+                className="align-self-center mr-3"
+              ></RiHandHeartFill>
+              <div
+                v-for="chip in repAssetSponsorChips"
+                class="d-flex box-elem align-items-center sponsor-boxo bg-light"
+              >
+                <img class="img-fluid mx-2" :src="chip.url" />
+              </div>
+            </div>
+            <div class="is-message">
+              <RiMusic2Fill
+                size="50px"
+                className="align-self-center anim-wiggle mr-2"
+              ></RiMusic2Fill>
+              <span id="music-title">{{ repMusicData?.data?.title }}</span>
+              <RiUserLine
+                size="50px"
+                className="align-self-center ml-4 mr-2"
+              ></RiUserLine>
+              <span id="music-artist">{{ repMusicData?.data?.artist }}</span>
+            </div>
+            <div class="is-message">
+              <RiWifiFill
+                size="50px"
+                className="align-self-center mr-2"
+              ></RiWifiFill>
+              <p>
+                thebiggame
+                <RiLockPasswordLine
+                  size="36px"
+                  className="align-self-center mx-2"
+                ></RiLockPasswordLine>
+                thebiggame
+              </p>
+            </div>
+            <div class="is-message">
+              <RiShieldUserFill
+                size="50px"
+                className="align-self-center mr-2"
+              ></RiShieldUserFill>
+              <p>Please ensure your credentials are visible at all times.</p>
+            </div>
+          </div>
+          <div
+            id="net-bw-box"
+            class="d-flex flex-column box-elem ml-auto bg-dark"
+          >
             <div class="d-flex flex-grow">
               <RiDownloadCloudFill
                 size="36px"
@@ -533,77 +626,8 @@ onMounted(() => {
             </div>
           </div>
           <div
-            id="message-box"
-            ref="message-box"
-            class="d-flex box-elem-message align-self-center"
-          >
-            <div class="is-message">
-              <RiEmotionHappyFill
-                size="50px"
-                className="align-self-center anim-wiggle"
-              ></RiEmotionHappyFill>
-              <p>
-                Welcome to <b>theBIGGAME</b>
-                <b class="event-num">{{ config.event_num }}</b
-                >!
-              </p>
-            </div>
-            <div class="is-message">
-              <RiRocketFill
-                size="50px"
-                className="align-self-center"
-              ></RiRocketFill>
-              <p>Powered by <b>NG-tBG</b>, our new AV experience!</p>
-            </div>
-            <div class="is-message d-flex">
-              <RiHandHeartFill
-                size="50px"
-                className="align-self-center pr-3"
-              ></RiHandHeartFill>
-              <div
-                v-for="chip in repAssetSponsorChips"
-                class="d-flex box-elem align-items-center sponsor-boxo bg-light"
-              >
-                <img class="img-fluid mx-2" :src="chip.url" />
-              </div>
-            </div>
-            <div class="is-message">
-              <RiMusic2Fill
-                size="50px"
-                className="align-self-center anim-wiggle"
-              ></RiMusic2Fill>
-              <span id="music-title">{{ repMusicData?.data?.title }}</span>
-              <RiUserLine
-                size="50px"
-                className="align-self-center text-muted"
-              ></RiUserLine>
-              <span id="music-artist">{{ repMusicData?.data?.artist }}</span>
-            </div>
-            <div class="is-message">
-              <RiWifiFill
-                size="50px"
-                className="align-self-center"
-              ></RiWifiFill>
-              <p>
-                thebiggame /
-                <RiLockPasswordLine
-                  size="36px"
-                  className="align-self-center"
-                ></RiLockPasswordLine>
-                thebiggame
-              </p>
-            </div>
-            <div class="is-message">
-              <RiShieldUserFill
-                size="50px"
-                className="align-self-center"
-              ></RiShieldUserFill>
-              <p>Please ensure your credentials are visible at all times.</p>
-            </div>
-          </div>
-          <div
             id="day-box"
-            class="d-flex box-elem bg-dark align-items-center ml-auto align-self-center"
+            class="d-flex box-elem bg-dark align-items-center align-self-center"
           >
             <div class="icon-primary text-muted align-self-center">
               <RiCalendarEventFill
