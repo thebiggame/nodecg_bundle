@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "steamID": {
+          "type": "number"
+        },
+        "avatar_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "steamID",
+        "avatar_url"
+      ]
+    }
+  },
+  "required": [
+    "timestamp",
+    "message",
+    "user"
+  ]
+}

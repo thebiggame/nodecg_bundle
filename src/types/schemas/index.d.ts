@@ -41,3 +41,7 @@ export * from './scheduleData'
 export * from './scoreboardActive'
 // @ts-ignore
 export * from './scoreboardData'
+// @ts-ignore
+export * from './shoutboxShout'
+// @ts-ignore
+export * from './shoutboxShouts'
