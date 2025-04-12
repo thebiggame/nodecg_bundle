@@ -64,6 +64,11 @@
         "file": "stage.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "stage-prep.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "soundCues": [
