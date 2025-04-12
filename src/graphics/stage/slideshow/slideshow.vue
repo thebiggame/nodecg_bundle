@@ -23,23 +23,23 @@ const repInfoActive = useReplicant<EventInfoActive>(
   'event:info:active',
   'thebiggame',
 )
-
-// OLD BELOW THIS LINE
-
 // repInfoActive.on('change', (e) => {
 //  this.handleInfoVisibilityChange(e);
 // });
 
+const refElemOuter = useTemplateRef('slideshow-outer')
+const refElemInner = useTemplateRef('slideshow-inner')
+
 function handleWipe(newVal: boolean) {
-  const outerNode = document.querySelector('#wipe-outer')
-  const innerNode = document.querySelector('#wipe-inner')
+  const outerNode = refElemOuter.value
+  const innerNode = refElemInner.value
   if (newVal) {
     tl.clear().add('in')
     tl.to(
       outerNode,
       0.5,
       {
-        left: '10px',
+        x: '0%',
         // marginRight: "0px",
         ease: Quart.easeOut,
       },
@@ -90,7 +90,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       1,
       {
-        left: '-10%',
+        x: '-200%',
         ease: Quart.easeInOut,
       },
       'out+=1.5',
@@ -184,8 +184,11 @@ onMounted(() => {
 <template>
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
-    <div id="wipe-outer">
-      <div id="wipe-inner" class="container-fluid pl-0 pr-0">
+    <div ref="slideshow-outer" class="slideshow-outer">
+      <div
+        ref="slideshow-inner"
+        class="slideshow-inner container-fluid pl-0 pr-0"
+      >
         <div id="info" v-bind:class="{ 'd-none': !repInfoActive?.data }">
           <div class="d-flex pt-2">
             <div class="flex-shrink-0">
@@ -235,7 +238,7 @@ onMounted(() => {
   color: #fff;
 }
 
-#wipe-outer {
+.slideshow-outer {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
@@ -251,7 +254,7 @@ onMounted(() => {
   border-radius: 0px 15px 15px 0px;
 }
 
-#wipe-inner {
+.slideshow-inner {
   position: absolute;
   top: 0;
   left: 0;

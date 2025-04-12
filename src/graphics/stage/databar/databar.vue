@@ -10,7 +10,7 @@ import {
 import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
 import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
 import { gsap, Quart } from 'gsap'
-
+import assetTBGText from './tbgText.svg?raw'
 import {
   RiDownloadCloudFill,
   RiUploadCloudFill,
@@ -27,6 +27,7 @@ import {
   RiBugLine,
   RiGameFill,
   RiGamepadLine,
+  RiProjector2Line,
 } from '@remixicon/vue'
 
 // Access the bundle configuration with types.
@@ -448,6 +449,8 @@ onMounted(() => {
 
 .bw-content {
   font-size: 25px;
+  font-family: 'DSEG14 Classic', 'Archivo Variable', sans-serif;
+  font-weight: 300;
 }
 
 .bw-high-anim {
@@ -526,20 +529,22 @@ onMounted(() => {
             class="d-flex box-elem-message align-items-center align-self-center"
           >
             <div class="is-message message-display-once">
-              <RiGamepadLine
+              <RiProjector2Line
                 size="50px"
-                className="align-self-center anim-wiggle"
-              ></RiGamepadLine>
+                className="align-self-center anim-wiggle mx-2"
+              ></RiProjector2Line>
               <p>
-                <b>NG-TBG</b>
+                <b class="pr-2">NG-TBG</b>
                 <i>{{ versionString }}</i>
               </p>
             </div>
             <div class="is-message">
-              <RiEmotionHappyFill
-                size="50px"
-                className="align-self-center anim-wiggle mr-2"
-              ></RiEmotionHappyFill>
+              <svg
+                v-html="assetTBGText"
+                class="align-self-center mr-2"
+                width="50px"
+                height="50px"
+              ></svg>
               <p>
                 Welcome to <b>theBIGGAME</b>
                 <b class="event-num">{{ config.event_num }}</b

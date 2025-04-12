@@ -40,7 +40,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       0.5,
       {
-        left: '10px',
+        x: '0%',
         // marginRight: "0px",
         ease: Quart.easeOut,
       },
@@ -91,7 +91,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       1,
       {
-        left: '-20%',
+        x: '-200%',
         ease: Quart.easeInOut,
       },
       'out+=1.2',

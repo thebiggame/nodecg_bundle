@@ -9,6 +9,7 @@ import Slideshow from './slideshow/slideshow.vue'
 import Databar from './databar/databar.vue'
 import Schedulebar from './schedulebar/schedulebar.vue'
 import Countdown from './countdown/countdown.vue'
+import Shoutbox from './shoutbox/shoutbox.vue'
 
 // Set the title of this page.
 useHead({ title: 'NodeCG Stage' })
@@ -162,6 +163,7 @@ tbg-alert {
   <div class="app-container">
     <Alert @alert-darkener="setPageFadeState" />
     <Slideshow />
+    <Shoutbox />
     <Schedulebar />
     <Databar />
     <Countdown />
