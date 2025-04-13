@@ -8,19 +8,21 @@ import {
 } from '@thebiggame/types/schemas'
 import { gsap, Quart } from 'gsap'
 import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
-import { computed, onMounted, toValue, useTemplateRef, watch } from 'vue'
+import { computed, onMounted, ref, toValue, useTemplateRef, watch } from 'vue'
 import {
   RiArrowRightLine,
   RiCalendarScheduleLine,
   RiCalendarTodoLine,
   RiHandHeartFill,
   RiMusic2Fill,
+  RiMusicAiFill,
   RiMusicFill,
 } from '@remixicon/vue'
 
 const config = nodecg.bundleConfig as Configschema
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
+const musicTl = gsap.timeline({ autoRemoveChildren: true })
 
 const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame')
 
@@ -30,6 +32,9 @@ const repMusicState = useReplicant<MusicPlaybackData>(
   'music:playbackState',
   'thebiggame',
 )
+
+const dispMusicNow = ref(<MusicData>{})
+const dispMusicNext = ref(<MusicData>{})
 
 const musicProgressServer = computed(() => {
   const total = repMusicState?.data?.length
@@ -55,6 +60,11 @@ const musicProgress = computed(() => {
 // Refs
 const refElemOuter = useTemplateRef('wipe-outer')
 const refElemInner = useTemplateRef('wipe-inner')
+const refMusicNow = useTemplateRef('music-now')
+const refMusicNowProgress = useTemplateRef('music-now-progress')
+const refMusicNext = useTemplateRef('music-next')
+const refMusicNextArt = useTemplateRef('music-next-art')
+const refMusicNextArrow = useTemplateRef('music-next-arrow')
 
 function handleWipe(newVal: boolean) {
   const outerNode = refElemOuter.value
@@ -142,6 +152,116 @@ function formatMs(ms: number) {
   const seconds = Math.floor((ms % 60000) / 1000)
   return mins + ':' + (seconds < 10 ? '0' : '') + seconds
 }
+
+function transitionNextToNow() {
+  // Calculate the required animation distance.
+  const musicNowWidth = refMusicNow.value?.offsetWidth
+
+  dispMusicNext.value = repMusicNow?.data!
+
+  musicTl.clear().add('start')
+
+  musicTl.to(
+    refMusicNow.value,
+    {
+      duration: 1,
+      x: '-100%',
+      ease: 'power4.inOut',
+    },
+    'start',
+  )
+  musicTl.to(
+    refMusicNextArt.value,
+    {
+      duration: 1,
+      opacity: '100%',
+    },
+    'start',
+  )
+  musicTl.to(
+    refMusicNextArrow.value,
+    {
+      duration: 1,
+      opacity: 0,
+    },
+    'start',
+  )
+  musicTl.to(
+    refMusicNext.value,
+    {
+      duration: 1,
+      x: `-${musicNowWidth!}`,
+      ease: 'power4.inOut',
+    },
+    'start',
+  )
+  musicTl.add('mid')
+  musicTl.call(
+    () => {
+      // Set the new data to be correct.
+      dispMusicNow.value = repMusicNow?.data!
+      // Set the new next data to be correct.
+      dispMusicNext.value = repMusicNext?.data!
+    },
+    undefined,
+    'mid',
+  )
+  // Now: Make the progress bar invisible so we can fade it in gently. (this matches the design of Next)
+  musicTl.set(refMusicNowProgress.value, { opacity: 0 }, 'mid')
+  // Now: Snap back into its rightful place.
+  musicTl.set(refMusicNow.value, { x: '0%' }, 'mid')
+  // Next: Set to be invisible, so we can mess with it behind the scenes.
+  musicTl.set(refMusicNext.value, { opacity: 0 }, 'mid')
+  // Next: Set the art state to be correct for when Next takes up its mantle again.
+  musicTl.set(
+    refMusicNextArt.value,
+    {
+      opacity: 0,
+    },
+    'mid',
+  )
+  musicTl.set(
+    refMusicNextArrow.value,
+    {
+      opacity: '100%',
+    },
+    'mid',
+  )
+  // Next: Move back to original place, and tween back into visibility.
+  musicTl.set(refMusicNext.value, { x: '0%' }, 'mid')
+  // Now: Fade the progress bar in.
+  musicTl.to(
+    refMusicNowProgress.value,
+    {
+      duration: 2,
+      opacity: '100%',
+    },
+    'mid',
+  )
+  // Next: Fade back in.
+  musicTl.to(
+    refMusicNext.value,
+    {
+      duration: 1,
+      opacity: '100%',
+    },
+    'mid+=2',
+  )
+  musicTl.play('start')
+}
+
+watch(
+  () => (repMusicNow !== undefined ? repMusicNow.data : null),
+  (newValue, oldValue) => {
+    if (newValue !== null && newValue?.name !== oldValue?.name) {
+      // const fieldValue = toValue(e) as ProjectorActive
+      transitionNextToNow()
+    } else {
+      dispMusicNow.value = repMusicNow?.data!
+      dispMusicNext.value = repMusicNext?.data!
+    }
+  },
+)
 </script>
 
 <template>
@@ -157,23 +277,24 @@ function formatMs(ms: number) {
           </div>
           <div
             id="music-now-box"
-            class="d-flex flex-column position-relative box-elem lead-music"
+            ref="music-now"
+            class="d-flex flex-column position-relative box-elem lead-music overflow-hidden"
           >
             <div class="art-bg h-100">
-              <img :src="repMusicNow?.data?.album_art" />
+              <img :src="dispMusicNow?.album_art" />
             </div>
             <div class="music-inner pl-5">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
-                    {{ repMusicNow?.data?.name }}
+                    {{ dispMusicNow?.name }}
                   </div>
                   <div class="px-2 py-0 h5 m-0">
-                    {{ repMusicNow?.data?.artist }}
+                    {{ dispMusicNow?.artist }}
                   </div>
                 </div>
               </div>
-              <div class="progress">
+              <div class="progress" ref="music-now-progress">
                 <div
                   class="progress-bar"
                   role="progressbar"
@@ -184,16 +305,33 @@ function formatMs(ms: number) {
           </div>
           <div
             id="music-next-box"
-            class="d-flex flex-column box-elem box-elem-sched-now"
+            ref="music-next"
+            class="d-flex flex-column position-relative box-elem lead-music overflow-hidden"
           >
-            <div class="d-flex mt-n1 align-items-center schedule-header">
-              <RiArrowRightLine size="50px"></RiArrowRightLine>
-              <div class="d-flex flex-column">
-                <div class="px-2 py-0 mb-n2">
-                  {{ repMusicNext?.data?.name }}
-                </div>
-                <div class="px-2 py-0 h5 m-0">
-                  {{ repMusicNext?.data?.artist }}
+            <div class="art-bg h-100">
+              <img
+                ref="music-next-art"
+                style="opacity: 0%"
+                class="music-art"
+                :src="dispMusicNext?.album_art"
+              />
+              <div
+                ref="music-next-arrow"
+                class="music-art-arrow"
+                style="opacity: 100%"
+              >
+                <RiArrowRightLine size="50px"></RiArrowRightLine>
+              </div>
+            </div>
+            <div class="music-inner pl-5">
+              <div class="d-flex mt-n1 align-items-center schedule-header">
+                <div class="d-flex flex-column">
+                  <div class="px-2 py-0 mb-n2">
+                    {{ dispMusicNext?.name }}
+                  </div>
+                  <div class="px-2 py-0 h5 m-0">
+                    {{ dispMusicNext?.artist }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -218,10 +356,10 @@ function formatMs(ms: number) {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
-  top: 785px;
+  top: 790px;
   left: 10px;
   right: 500px;
-  bottom: 205px;
+  bottom: 210px;
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;
@@ -251,6 +389,7 @@ function formatMs(ms: number) {
 .box-lead {
   border-right: solid #fff 5px;
   background-color: #5762d7;
+  z-index: 10;
 }
 
 .art-bg {
@@ -270,11 +409,24 @@ function formatMs(ms: number) {
     rgba(0, 0, 0, 0) 75%,
     transparent 100%
   );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 75%,
+    transparent 100%
+  );
+}
+
+.art-bg .music-art-arrow {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .music-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .progress-bar {
@@ -433,6 +585,7 @@ function formatMs(ms: number) {
 
 .lead-music {
   padding-left: 0px;
+  min-width: 400px;
 }
 
 #next-body {

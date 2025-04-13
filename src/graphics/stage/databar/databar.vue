@@ -28,6 +28,7 @@ import {
   RiGameFill,
   RiGamepadLine,
   RiProjector2Line,
+  RiMusicAiFill,
 } from '@remixicon/vue'
 
 // Access the bundle configuration with types.
@@ -563,17 +564,15 @@ onMounted(() => {
                 <img class="img-fluid mx-2" :src="chip.url" />
               </div>
             </div>
-            <div class="is-message">
-              <RiMusic2Fill
+            <div class="is-message" v-if="config.music.party?.enabled">
+              <RiMusicAiFill
                 size="50px"
-                className="align-self-center anim-wiggle mr-2"
-              ></RiMusic2Fill>
-              <span id="music-title">{{ repMusicData?.data?.name }}</span>
-              <RiUserLine
-                size="50px"
-                className="align-self-center ml-4 mr-2"
-              ></RiUserLine>
-              <span id="music-artist">{{ repMusicData?.data?.artist }}</span>
+                className="align-self-center mr-2"
+              ></RiMusicAiFill>
+              <p>
+                Add your own music:
+                {{ config.music.party?.url }}
+              </p>
             </div>
             <div class="is-message">
               <RiWifiFill
