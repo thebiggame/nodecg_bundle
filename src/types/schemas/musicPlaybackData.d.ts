@@ -6,14 +6,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface MusicData {
-	name: string;
-	album_name?: string;
-	album_art?: string;
-	artist: string;
-	party?: {
-		rating?: number;
-		userName?: string;
-		[k: string]: unknown;
-	};
+export interface MusicPlaybackData {
+	playhead?: number;
+	length?: number;
+	updatedAt?: string;
 }

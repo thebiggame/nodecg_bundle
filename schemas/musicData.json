@@ -3,17 +3,36 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "title": {
+    "name": {
       "type": "string",
       "default": "Unknown"
+    },
+    "album_name": {
+      "type": "string",
+      "default": "Unknown Album"
+    },
+    "album_art": {
+      "type": "string"
     },
     "artist": {
       "type": "string",
       "default": ""
+    },
+    "party": {
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "number",
+          "default": 0
+        },
+        "userName": {
+          "type": "string"
+        }
+      }
     }
   },
   "required": [
-    "title",
+    "name",
     "artist"
   ]
 }

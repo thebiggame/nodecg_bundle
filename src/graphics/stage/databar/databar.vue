@@ -44,7 +44,7 @@ const repAssetSponsorChips = useAssetReplicant('sponsor-chips', 'thebiggame')
 
 const gActive = useReplicant<ProjectorActive>('projector:active', 'thebiggame')
 
-const repMusicData = useReplicant<MusicData>('music:data', 'thebiggame')
+const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
 
 const clockRep = useReplicant<Clock>('clock', 'thebiggame')
 
@@ -568,7 +568,7 @@ onMounted(() => {
                 size="50px"
                 className="align-self-center anim-wiggle mr-2"
               ></RiMusic2Fill>
-              <span id="music-title">{{ repMusicData?.data?.title }}</span>
+              <span id="music-title">{{ repMusicData?.data?.name }}</span>
               <RiUserLine
                 size="50px"
                 className="align-self-center ml-4 mr-2"

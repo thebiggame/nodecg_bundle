@@ -30,6 +30,8 @@ export * from './lowerthirdData'
 // @ts-ignore
 export * from './musicData'
 // @ts-ignore
+export * from './musicPlaybackData'
+// @ts-ignore
 export * from './personsActive'
 // @ts-ignore
 export * from './personsData'

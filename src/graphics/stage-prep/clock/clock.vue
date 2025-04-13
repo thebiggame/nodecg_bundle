@@ -39,7 +39,7 @@ const versionString = 'Bundle-' + nodecg.bundleVersion
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
 
-const repMusicData = useReplicant<MusicData>('music:data', 'thebiggame')
+const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
 
 const clockRep = useReplicant<Clock>('clock', 'thebiggame')
 

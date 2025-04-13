@@ -20,6 +20,7 @@ import {
   ScoreboardData,
   BandwidthData,
   ScheduleData,
+  MusicPlaybackData,
 } from '@thebiggame/types/schemas'
 import { get as nodecg } from './nodecg'
 
@@ -94,10 +95,22 @@ export const repLowerthirdActive = nodecg().Replicant<LowerthirdActive>(
 )
 
 // Music data.
-export const repMusicData = nodecg().Replicant<MusicData>('music:data', {
-  defaultValue: <MusicData>{ title: 'Unknown Song', artist: 'Unknown Artist' },
+export const repMusicNow = nodecg().Replicant<MusicData>('music:now', {
+  defaultValue: <MusicData>{ name: 'Unknown Song', artist: 'Unknown Artist' },
   persistent: false,
 })
+
+export const repMusicNext = nodecg().Replicant<MusicData>('music:next', {
+  defaultValue: <MusicData>{ name: 'Unknown Song', artist: 'Unknown Artist' },
+  persistent: false,
+})
+
+export const repMusicPlaybackState = nodecg().Replicant<MusicPlaybackData>(
+  'music:playbackState',
+  {
+    persistent: false,
+  },
+)
 
 // Network bandwidth.
 export const repNetworkWANBandwidth = nodecg().Replicant<BandwidthData>(

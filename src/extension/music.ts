@@ -1,5 +1,5 @@
 import { get as nodecg } from './util/nodecg'
-import { repMusicData } from './util/replicants'
+import { repMusicNow } from './util/replicants'
 import { Configschema, MusicData } from '@thebiggame/types/schemas'
 import https from 'https'
 
@@ -7,17 +7,17 @@ nodecg().log.trace('Extension music loaded.')
 
 const config = nodecg().bundleConfig as Configschema
 
-const songSource = config.music.source
+const songSource = config.music?.lastfm?.source
 let update = config.music.updateInterval // how often the title is updated, in seconds
 if (update == undefined) update = 1
-const apikey = config.music.apiKey // your last.fm API key (last.fm/api)
+const apikey = config.music?.lastfm?.apiKey // your last.fm API key (last.fm/api)
 
 if (config.music.enabled) {
-  setInterval(updateSong, config.music.updateInterval * 1000)
+  setInterval(updateSong, update * 1000)
 }
 
 function updateSong() {
-  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${encodeURIComponent(songSource)}&api_key=${encodeURIComponent(apikey)}&limit=2&format=json&callback=`
+  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${encodeURIComponent(songSource!)}&api_key=${encodeURIComponent(apikey!)}&limit=2&format=json&callback=`
 
   // Parse the URL into its components
   const options = new URL(url)
@@ -44,8 +44,8 @@ function updateSong() {
             const track = body.recenttracks.track[0]
             if (track) {
               // Update the replicant.
-              repMusicData.value = <MusicData>{
-                title: track.name,
+              repMusicNow.value = <MusicData>{
+                name: track.name,
                 artist: track.artist['#text'],
               }
             } else {

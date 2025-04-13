@@ -7,6 +7,7 @@ import { ref } from 'vue'
 import Alert from './alert/alert.vue'
 import Slideshow from './slideshow/slideshow.vue'
 import Databar from './databar/databar.vue'
+import Musicbar from './musicbar/musicbar.vue'
 import Schedulebar from './schedulebar/schedulebar.vue'
 import Countdown from './countdown/countdown.vue'
 import Shoutbox from './shoutbox/shoutbox.vue'
@@ -164,6 +165,7 @@ tbg-alert {
     <Alert @alert-darkener="setPageFadeState" />
     <Slideshow />
     <Shoutbox />
+    <Musicbar />
     <Schedulebar />
     <Databar />
     <Countdown />

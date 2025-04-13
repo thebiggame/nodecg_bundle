@@ -21,5 +21,6 @@ export = (nodecg: NodeCG): void => {
   require('./countdown')
   require('./network')
   require('./music')
+  require('./musicParty')
   require('./schedule')
 }

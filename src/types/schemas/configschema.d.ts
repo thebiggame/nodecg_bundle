@@ -14,10 +14,19 @@ export interface Configschema {
 		[k: string]: unknown;
 	};
 	music: {
-		enabled: boolean;
-		updateInterval: number;
-		apiKey: string;
-		source: string;
+		updateInterval?: number;
+		lastfm?: {
+			enabled?: boolean;
+			apiKey?: string;
+			source?: string;
+			[k: string]: unknown;
+		};
+		party?: {
+			enabled?: boolean;
+			url?: string;
+			id?: string;
+			[k: string]: unknown;
+		};
 		[k: string]: unknown;
 	};
 	network: {

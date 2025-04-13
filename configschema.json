@@ -1,116 +1,129 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-      "event_num": {
-        "type": "integer"
-      },
-      "stage": {
-        "type": "object",
-        "properties": {
-          "slideshow_interval": {
-            "type": "integer"
-          },
-          "schedule_scroll_interval": {
-            "type": "integer"
-          }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "event_num": {
+      "type": "integer"
+    },
+    "stage": {
+      "type": "object",
+      "properties": {
+        "slideshow_interval": {
+          "type": "integer"
         },
-        "required": [
-          "slideshow_interval",
-          "schedule_scroll_interval"
-        ]
+        "schedule_scroll_interval": {
+          "type": "integer"
+        }
       },
-      "music": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean"
-          },
-          "updateInterval": {
-            "type": "integer"
-          },
-          "apiKey": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string"
-          }
+      "required": [
+        "slideshow_interval",
+        "schedule_scroll_interval"
+      ]
+    },
+    "music": {
+      "type": "object",
+      "properties": {
+        "updateInterval": {
+          "type": "integer"
         },
-        "required": [
-          "enabled",
-          "updateInterval",
-          "apiKey",
-          "source"
-        ]
-      },
-      "network": {
-        "type": "object",
-        "properties": {
-          "snmp": {
-            "type": "object",
-            "properties": {
-              "enabled": {
-                "type": "boolean"
-              },
-              "host": {
-                "type": "string"
-              },
-              "community": {
-                "type": "string"
-              },
-              "interval": {
-                "type": "integer"
-              },
-              "oids": {
-                "type": "object",
-                "properties": {
-                  "down": {
-                    "type": "string"
-                  },
-                  "up": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "down",
-                  "up"
-                ]
-              }
+        "lastfm": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
             },
-            "required": [
-              "enabled",
-              "host",
-              "community",
-              "interval",
-              "oids"
-            ]
-          },
-          "bwHighThreshold": {
-            "type": "integer"
+            "apiKey": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            }
           }
         },
-        "required": [
-          "snmp",
-          "bwHighThreshold"
-        ]
-      },
-      "schedule": {
-        "type": "object",
-        "properties": {
-          "icalAddress": {
-            "type": "string"
+        "party": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            }
           }
-        },
-        "required": [
-          "icalAddress"
-        ]
+        }
       }
     },
-    "required": [
-      "event_num",
-      "stage",
-      "music",
-      "network",
-      "schedule"
-    ]
-  }
+    "network": {
+      "type": "object",
+      "properties": {
+        "snmp": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "host": {
+              "type": "string"
+            },
+            "community": {
+              "type": "string"
+            },
+            "interval": {
+              "type": "integer"
+            },
+            "oids": {
+              "type": "object",
+              "properties": {
+                "down": {
+                  "type": "string"
+                },
+                "up": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "down",
+                "up"
+              ]
+            }
+          },
+          "required": [
+            "enabled",
+            "host",
+            "community",
+            "interval",
+            "oids"
+          ]
+        },
+        "bwHighThreshold": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "snmp",
+        "bwHighThreshold"
+      ]
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "icalAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "icalAddress"
+      ]
+    }
+  },
+  "required": [
+    "event_num",
+    "stage",
+    "music",
+    "network",
+    "schedule"
+  ]
+}

@@ -39,7 +39,7 @@ const versionString = 'Bundle-' + nodecg.bundleVersion
 // const exampleType: ExampleType = { exampleProperty: 'exampleString' };
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
-const repMusicData = useReplicant<MusicData>('music:data', 'thebiggame')
+const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
 </script>
 
 <style scoped>
@@ -307,7 +307,7 @@ const repMusicData = useReplicant<MusicData>('music:data', 'thebiggame')
                 size="50px"
                 className="align-self-center anim-wiggle mr-2"
               ></RiMusic2Fill>
-              <span id="music-title">{{ repMusicData?.data?.title }}</span>
+              <span id="music-title">{{ repMusicData?.data?.name }}</span>
               <RiUserLine
                 size="50px"
                 className="align-self-center ml-4 mr-2"
