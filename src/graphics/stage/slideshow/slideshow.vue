@@ -244,8 +244,8 @@ onMounted(() => {
   white-space: nowrap;
   top: 10px;
   left: 10px;
-  right: 500px;
-  bottom: 300px;
+  right: 600px;
+  bottom: 345px;
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;

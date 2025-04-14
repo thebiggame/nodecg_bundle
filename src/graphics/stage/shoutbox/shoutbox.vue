@@ -155,9 +155,9 @@ watch(
   position: absolute;
   overflow: hidden;
   top: 10px;
-  left: 1425px;
+  left: 1350px;
   right: 10px;
-  bottom: 300px;
+  bottom: 240px;
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;

@@ -529,7 +529,7 @@ onMounted(() => {
             ref="message-box"
             class="d-flex box-elem-message align-items-center align-self-center"
           >
-            <div class="is-message message-display-once">
+            <div class="is-message d-flex message-display-once">
               <RiProjector2Line
                 size="50px"
                 className="align-self-center anim-wiggle mx-2"
@@ -539,7 +539,7 @@ onMounted(() => {
                 <i>{{ versionString }}</i>
               </p>
             </div>
-            <div class="is-message">
+            <div class="is-message d-flex">
               <svg
                 v-html="assetTBGText"
                 class="align-self-center mr-2"
@@ -564,7 +564,7 @@ onMounted(() => {
                 <img class="img-fluid mx-2" :src="chip.url" />
               </div>
             </div>
-            <div class="is-message" v-if="config.music.party?.enabled">
+            <div class="is-message d-flex" v-if="config.music.party?.enabled">
               <RiMusicAiFill
                 size="50px"
                 className="align-self-center mr-2"
@@ -574,21 +574,19 @@ onMounted(() => {
                 {{ config.music.party?.url }}
               </p>
             </div>
-            <div class="is-message">
+            <div class="is-message d-flex">
               <RiWifiFill
                 size="50px"
                 className="align-self-center mr-2"
               ></RiWifiFill>
-              <p>
-                thebiggame
-                <RiLockPasswordLine
-                  size="36px"
-                  className="align-self-center mx-2"
-                ></RiLockPasswordLine>
-                thebiggame
-              </p>
+              <span>thebiggame</span>
+              <RiLockPasswordLine
+                size="36px"
+                className="align-self-center mx-2"
+              ></RiLockPasswordLine>
+              <span>thebiggame</span>
             </div>
-            <div class="is-message">
+            <div class="is-message d-flex">
               <RiShieldUserFill
                 size="50px"
                 className="align-self-center mr-2"

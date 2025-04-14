@@ -440,10 +440,10 @@ onMounted(() => {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
-  top: 880px;
+  top: 860px;
   left: 10px;
   right: 10px;
-  bottom: 95px;
+  bottom: 110px;
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;

@@ -284,7 +284,7 @@ watch(
             <div class="art-bg h-100">
               <img :src="dispMusicNow?.album_art" />
             </div>
-            <div class="music-inner ml-5">
+            <div class="music-inner ml-1">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
@@ -318,13 +318,13 @@ watch(
               />
               <div
                 ref="music-next-arrow"
-                class="music-art-arrow"
+                class="music-art-arrow text-muted"
                 style="opacity: 100%"
               >
                 <RiArrowRightLine size="50px"></RiArrowRightLine>
               </div>
             </div>
-            <div class="music-inner ml-5">
+            <div class="music-inner ml-1">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
@@ -357,14 +357,14 @@ watch(
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
-  top: 760px;
-  left: 10px;
-  right: 600px;
-  bottom: 240px;
+  top: 790px;
+  left: 1425px;
+  right: 10px;
+  bottom: 210px;
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
+  border-left: solid #fff 10px;
   border-right: solid #fff 5px;
   border-radius: 0px 150px 150px 0px;
 }
