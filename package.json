@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "53.3.1",
+  "version": "53.3.2",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -162,6 +162,7 @@
     "@remixicon/vue": "^4.6.0",
     "@types/snmp-native": "^1.2.5",
     "bootstrap": "^5.2.3",
+    "discord.js": "^14.18.0",
     "gsap": "^3.12.7",
     "module-alias": "^2.2.3",
     "node-ical": "^0.20.1",

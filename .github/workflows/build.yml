@@ -1,0 +1,92 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+
+jobs:
+  cri:
+    strategy:
+      matrix:
+        arch:
+          - os: ubuntu-24.04
+            name: linux/amd64
+            label: linux-amd64
+          - os: ubuntu-24.04-arm
+            name: linux/arm64
+            label: linux-arm64
+    runs-on: ${{ matrix.arch.os }}
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+
+      - name: Generate CRI metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ghcr.io/${{ github.repository_owner }}/nodecg_bundle
+          labels: |
+            org.opencontainers.image.title=theBIGGAME NodeCG
+            org.opencontainers.image.description=A NodeCG appliance that is pre-set up for theBIGGAME AV purposes.
+            org.opencontainers.image.url=https://github.com/thebiggame/nodecg_bundle
+            org.opencontainers.image.source=https://github.com/thebiggame/nodecg_bundle
+            org.opencontainers.image.vendor=theBIGGAME
+          tags: |
+            type=sha,format=long,suffix=-${{ matrix.arch.label }}
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to GHCI
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          file: ./Dockerfile
+          platforms: ${{ matrix.arch.name }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: false
+
+  release-bundle-manifest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: cri
+
+    steps:
+      - name: Login to Github Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push manifest (version tagged)
+        uses: Noelware/docker-manifest-action@0.4.2
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          inputs: ghcr.io/${{ github.repository_owner }}/nodecg_bundle:${{ github.ref_name }},ghcr.io/${{ github.repository_owner }}/nodecg_bundle:latest
+          images: ghcr.io/${{ github.repository_owner }}/nodecg_bundle:sha-${{ github.sha }}-linux-amd64,ghcr.io/${{ github.repository_owner }}/nodecg_bundle:sha-${{ github.sha }}-linux-arm64
+          push: true
+
+      - name: Create and push manifest (commit)
+        uses: Noelware/docker-manifest-action@0.4.2
+        if: ${{!startsWith(github.ref, 'refs/tags')}}
+        with:
+          inputs: ghcr.io/${{ github.repository_owner }}/nodecg_bundle:sha-${{ github.sha }}-linux
+          images: ghcr.io/${{ github.repository_owner }}/nodecg_bundle:sha-${{ github.sha }}-linux-amd64,ghcr.io/${{ github.repository_owner }}/nodecg_bundle:sha-${{ github.sha }}-linux-arm64
+          push: true
