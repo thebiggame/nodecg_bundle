@@ -42,30 +42,17 @@ const tl = gsap.timeline({ autoRemoveChildren: true })
 const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .wipe-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px, 150px);
   top: 990px;
   left: 10px;
   right: 10px;
   bottom: 5px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 150px 150px 0px;
 }
 
 .wipe-inner {
@@ -286,8 +273,8 @@ const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="wipe-outer" class="wipe-outer">
-      <div ref="wipe-inner" class="wipe-inner container-fluid">
-        <div id="event-data" class="row">
+      <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
+        <div id="event-data" class="d-flex">
           <div id="wipe-title" class="d-flex box-elem">
             <b class="event-num align-self-center">{{ config.event_num }}</b>
           </div>
@@ -302,15 +289,15 @@ const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
                 <i>{{ versionString }}</i>
               </span>
             </div>
-            <div id="music" class="ml-auto mr-2">
+            <div id="music" class="ms-auto me-2">
               <RiMusic2Fill
                 size="50px"
-                className="align-self-center anim-wiggle mr-2"
+                className="align-self-center anim-wiggle me-2"
               ></RiMusic2Fill>
               <span id="music-title">{{ repMusicData?.data?.name }}</span>
               <RiUserLine
                 size="50px"
-                className="align-self-center ml-4 mr-2"
+                className="align-self-center ms-4 me-2"
               ></RiUserLine>
               <span id="music-artist">{{ repMusicData?.data?.artist }}</span>
             </div>

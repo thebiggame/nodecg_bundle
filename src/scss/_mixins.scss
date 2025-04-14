@@ -1,0 +1,23 @@
+@mixin tbg-bar-host {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  /* #3c438c */
+  color: #fff;
+}
+
+@mixin tbg-bar-outer($presenter: 20px, $border: 5px, $curve-radius: 150px) {
+  position: absolute;
+  overflow: hidden;
+  top: 10px;
+  left: 10px;
+  right: 600px;
+  bottom: 345px;
+  background-color: #fff;
+  border-top: solid #fff $border;
+  border-bottom: solid #fff $border;
+  border-left: solid #fff $presenter;
+  border-right: solid #fff $border;
+  border-radius: 0px $curve-radius $curve-radius 0px;
+}

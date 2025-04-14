@@ -118,7 +118,7 @@ watch(
     <div ref="shoutbox-outer" class="shoutbox-outer" id="shoutbox">
       <div
         ref="shoutbox-inner"
-        class="shoutbox-inner pl-0 pr-0 container-fluid d-flex flex-column-reverse justify-content-start align-items-end"
+        class="shoutbox-inner ps-0 pe-0 container-fluid d-flex flex-column-reverse justify-content-start align-items-end"
       >
         <TransitionGroup tag="div" name="list-join" class="">
           <div class="w-100 rounded-0 p-0 card text-dark bg-light">
@@ -128,8 +128,8 @@ watch(
                 src="./entrapta.jpg"
                 alt="duck."
               />
-              <div class="pl-2 text-muted">duck.</div>
-              <div class="ml-auto text-muted text-time">00:30</div>
+              <div class="ps-2 text-muted">duck.</div>
+              <div class="ms-auto text-muted text-time">00:30</div>
             </div>
             <div class="card-body card-text p-2">
               Welcome to theBIGGAME 53, featuring this shiny new shoutbox!
@@ -141,29 +141,17 @@ watch(
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .shoutbox-outer {
-  position: absolute;
-  overflow: hidden;
+  @include tbg-bar-outer(10px, 5px, 15px);
   top: 10px;
   left: 1350px;
   right: 10px;
   bottom: 240px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 10px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 15px 15px 0px;
 }
 
 .shoutbox-inner {
@@ -174,7 +162,7 @@ watch(
   bottom: 0;
   font-size: 24px;
   color: white;
-  background-color: #282c5d;
+  background-color: $color-tbg-dark;
   overflow: hidden;
 }
 

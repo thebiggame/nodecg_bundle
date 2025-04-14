@@ -1,0 +1,9 @@
+// Bootstrap config:
+// Enable features
+$enable-negative-margins: true;
+
+// Color overrides
+$secondary: #adb5bd;
+
+// End Bootstrap Config; import bootstrap.
+@import "~bootstrap/scss/bootstrap";

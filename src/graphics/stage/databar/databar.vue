@@ -275,24 +275,24 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
+}
+
+.wipe-outer {
+  @include tbg-bar-outer(20px, 5px);
+  top: 990px;
+  left: 10px;
+  right: 10px;
+  bottom: 5px;
 }
 
 .wipe-outer {
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
-  top: 990px;
-  left: 10px;
-  right: 10px;
-  bottom: 5px;
+
   background-color: #fff;
   border-top: solid #fff 5px;
   border-bottom: solid #fff 5px;
@@ -318,7 +318,7 @@ onMounted(() => {
   font-weight: 300;
   font-family: 'Archivo Variable', 'Arial Black', 'Arial Bold', sans-serif;
   text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
-  background-color: #5762d7;
+  background-color: $color-tbg-primary;
   border-right: solid #fff 2px;
 }
 
@@ -342,7 +342,7 @@ onMounted(() => {
 }
 
 .event-num {
-  color: goldenrod;
+  color: $color-tbg-event-highlight;
   font-family: 'Archivo Variable', sans-serif;
   font-weight: 800;
 }
@@ -519,8 +519,8 @@ onMounted(() => {
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="wipe-outer" class="wipe-outer">
-      <div ref="wipe-inner" class="wipe-inner container-fluid">
-        <div id="event-data" class="row">
+      <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
+        <div id="event-data" class="d-flex">
           <div id="wipe-title" class="d-flex box-elem">
             <b class="event-num align-self-center">{{ config.event_num }}</b>
           </div>
@@ -535,7 +535,7 @@ onMounted(() => {
                 className="align-self-center anim-wiggle mx-2"
               ></RiProjector2Line>
               <p>
-                <b class="pr-2">NG-TBG</b>
+                <b class="pe-2">NG-TBG</b>
                 <i>{{ versionString }}</i>
               </p>
             </div>
@@ -559,7 +559,7 @@ onMounted(() => {
               ></RiHandHeartFill>
               <div
                 v-for="chip in repAssetSponsorChips"
-                class="d-flex box-elem align-items-center sponsor-boxo bg-light"
+                class="d-flex box-elem align-items-center sponsor-boxo bg-secondary"
               >
                 <img class="img-fluid mx-2" :src="chip.url" />
               </div>
@@ -596,7 +596,7 @@ onMounted(() => {
           </div>
           <div
             id="net-bw-box"
-            class="d-flex flex-column box-elem ml-auto bg-dark"
+            class="d-flex flex-column box-elem ms-auto bg-dark"
           >
             <div class="d-flex flex-grow">
               <RiDownloadCloudFill
@@ -606,11 +606,11 @@ onMounted(() => {
               <div
                 id="net-bw-down-content"
                 ref="net-bw-down"
-                class="bw-content pl-2"
+                class="bw-content ps-2"
               >
                 ???
               </div>
-              <div class="align-self-end bw-trail text-muted">Mbps</div>
+              <div class="align-self-end bw-trail text-white-50">Mbps</div>
             </div>
             <div class="d-flex flex-grow">
               <RiUploadCloudFill
@@ -620,31 +620,31 @@ onMounted(() => {
               <div
                 id="net-bw-up-content"
                 ref="net-bw-up"
-                class="bw-content pl-2"
+                class="bw-content ps-2"
               >
                 ???
               </div>
-              <div class="align-self-end bw-trail text-muted">Mbps</div>
+              <div class="align-self-end bw-trail text-white-50">Mbps</div>
             </div>
           </div>
           <div
             id="day-box"
             class="d-flex box-elem bg-dark align-items-center align-self-center"
           >
-            <div class="icon-primary text-muted align-self-center">
+            <div class="icon-primary text-white-50 align-self-center">
               <RiCalendarEventFill
                 size="50px"
-                className="icon-primary text-muted align-self-center"
+                className="icon-primary text-white-50 align-self-center"
               ></RiCalendarEventFill>
             </div>
             <div id="day">{{ clockEventDay }}</div>
-            <div class="align-self-end day-trail text-muted">/3</div>
+            <div class="align-self-end day-trail text-white-50">/3</div>
           </div>
           <div id="clock-box" class="d-flex box-elem bg-dark">
-            <div class="icon-primary text-muted align-self-center">
+            <div class="icon-primary text-white-50 align-self-center">
               <RiTimeLine size="50px"></RiTimeLine>
             </div>
-            <div class="box-clock align-self-center pl-1 pr-3" id="clock">
+            <div class="box-clock align-self-center ps-1 pe-3" id="clock">
               {{ clockTime }}
             </div>
           </div>
