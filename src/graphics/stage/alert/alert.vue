@@ -248,7 +248,7 @@ function handleExit() {
           <div class="icon">
             <RiAlarmWarningLine size="150px" />
           </div>
-          <div id="wipe-now" class="pl-3">
+          <div id="wipe-now" class="ps-3">
             <div id="name">
               <div id="name-content" class="name-content">
                 {{ repAlertData?.data?.body }}

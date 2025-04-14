@@ -228,7 +228,7 @@ watch(
         ref="wipe-inner"
         class="timer-inner container-fluid d-flex flex-column"
       >
-        <div class="row timer-name mr-5 align-self-center">
+        <div class="row timer-name me-5 align-self-center">
           {{ repCountdownName?.data }}
         </div>
         <div

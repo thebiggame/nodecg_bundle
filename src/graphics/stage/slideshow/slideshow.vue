@@ -189,7 +189,7 @@ onMounted(() => {
         <div id="info" v-bind:class="{ 'd-none': !repInfoActive?.data }">
           <div class="d-flex pt-2">
             <div class="flex-shrink-0">
-              <div class="icon-lead pr-3">
+              <div class="icon-lead pe-3">
                 <RiInformationFill size="120px"></RiInformationFill>
               </div>
             </div>

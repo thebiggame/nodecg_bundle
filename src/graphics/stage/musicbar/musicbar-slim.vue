@@ -284,7 +284,7 @@ watch(
             <div class="art-bg h-100">
               <img :src="dispMusicNow?.album_art" />
             </div>
-            <div class="music-inner ml-1">
+            <div class="music-inner ms-1">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
@@ -295,7 +295,7 @@ watch(
                   </div>
                 </div>
               </div>
-              <div class="progress ml-2" ref="music-now-progress">
+              <div class="progress ms-2" ref="music-now-progress">
                 <div
                   class="progress-bar"
                   role="progressbar"
@@ -324,7 +324,7 @@ watch(
                 <RiArrowRightLine size="50px"></RiArrowRightLine>
               </div>
             </div>
-            <div class="music-inner ml-1">
+            <div class="music-inner ms-1">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">

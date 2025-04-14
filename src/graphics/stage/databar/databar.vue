@@ -542,7 +542,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <svg
                 v-html="assetTBGText"
-                class="align-self-center mr-2"
+                class="align-self-center me-2"
                 width="50px"
                 height="50px"
               ></svg>
@@ -555,7 +555,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiHandHeartFill
                 size="50px"
-                className="align-self-center mr-3"
+                className="align-self-center me-3"
               ></RiHandHeartFill>
               <div
                 v-for="chip in repAssetSponsorChips"
@@ -567,7 +567,7 @@ onMounted(() => {
             <div class="is-message d-flex" v-if="config.music.party?.enabled">
               <RiMusicAiFill
                 size="50px"
-                className="align-self-center mr-2"
+                className="align-self-center me-2"
               ></RiMusicAiFill>
               <p>
                 Add your own music:
@@ -577,7 +577,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiWifiFill
                 size="50px"
-                className="align-self-center mr-2"
+                className="align-self-center me-2"
               ></RiWifiFill>
               <span>thebiggame</span>
               <RiLockPasswordLine
@@ -589,7 +589,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiShieldUserFill
                 size="50px"
-                className="align-self-center mr-2"
+                className="align-self-center me-2"
               ></RiShieldUserFill>
               <p>Please ensure your credentials are visible at all times.</p>
             </div>

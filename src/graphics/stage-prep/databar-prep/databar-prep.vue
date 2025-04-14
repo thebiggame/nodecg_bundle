@@ -285,7 +285,7 @@ const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
                 className="align-self-center anim-wiggle mx-2"
               ></RiProjector2Line>
               <span>
-                <b class="pr-2">NG-TBG</b>
+                <b class="pe-2">NG-TBG</b>
                 <i>{{ versionString }}</i>
               </span>
             </div>
