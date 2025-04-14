@@ -22,6 +22,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
+          @import "@thebiggame/scss/_fonts.scss";
           @import "@thebiggame/scss/_variables.scss";
           @import "@thebiggame/scss/_mixins.scss";
         `,
@@ -32,6 +33,8 @@ export default defineConfig({
     alias: {
       '@thebiggame': `${__dirname}/src/`,
       '~bootstrap': `${__dirname}/node_modules/bootstrap`,
+      '~fontsource': `${__dirname}/node_modules/@fontsource`,
+      '~fontsource-variable': `${__dirname}/node_modules/@fontsource-variable`,
     },
   },
 })
