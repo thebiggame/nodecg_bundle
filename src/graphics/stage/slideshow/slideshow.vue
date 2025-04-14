@@ -185,10 +185,7 @@ onMounted(() => {
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="slideshow-outer" class="slideshow-outer">
-      <div
-        ref="slideshow-inner"
-        class="slideshow-inner container-fluid pl-0 pr-0"
-      >
+      <div ref="slideshow-inner" class="slideshow-inner container-fluid p-0">
         <div id="info" v-bind:class="{ 'd-none': !repInfoActive?.data }">
           <div class="d-flex pt-2">
             <div class="flex-shrink-0">
@@ -228,30 +225,17 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .slideshow-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px, 15px);
   top: 10px;
   left: 10px;
   right: 600px;
   bottom: 345px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 15px 15px 0px;
 }
 
 .slideshow-inner {

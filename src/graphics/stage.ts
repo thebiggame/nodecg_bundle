@@ -2,7 +2,7 @@ import { createHead } from '@vueuse/head'
 import { createApp } from 'vue'
 import App from './stage/main.vue'
 
-import 'bootstrap/dist/css/bootstrap.css'
+import '../scss/styles_graphics.scss'
 
 // Fonts
 import '@fontsource/dseg14-classic/700.css'

@@ -63,30 +63,17 @@ const clockEventDay = computed(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .wipe-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px, 500px);
   top: 10px;
   left: 10px;
   right: 10px;
   bottom: 500px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 500px 500px 0px;
 }
 
 .wipe-inner {
@@ -307,14 +294,14 @@ const clockEventDay = computed(() => {
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="wipe-outer" class="wipe-outer">
-      <div ref="wipe-inner" class="wipe-inner container-fluid">
-        <div id="body" class="row">
+      <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
+        <div id="body" class="d-flex">
           <div
             id="clock-box"
             class="d-flex flex-fill align-items-center justify-content-center align-items-center"
           >
             <div
-              class="box-clock align-self-center pl-1 pr-3"
+              class="box-clock align-self-center ps-1 pe-3"
               style="font-size: 350px"
               id="clock"
             >

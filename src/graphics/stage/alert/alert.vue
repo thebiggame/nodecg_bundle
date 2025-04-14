@@ -185,31 +185,18 @@ function handleExit() {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .wipe-outer {
-  position: absolute;
-  z-index: 1055;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px);
   top: 500px;
   /* left: 100px; */
   right: 100px;
   bottom: 400px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 150px 150px 0px;
+  z-index: 1055;
   /*  Prepare for animation */
   margin-right: 100%;
   left: -50px;

@@ -1,116 +1,138 @@
 <link rel="import" href="../../../bower_components/iron-icons/notification-icons.html">
 
 <dom-module id="tbg-halfwipe">
-	<template>
+    <template>
         <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-		<style>
-			:host {
-				position: absolute;
-				width: 1920px;
-				height: 1080px;
-				overflow: hidden;
-				/* #3c438c */
-				color: #fff;
-			}
-			#wipe-outer {
-				position: absolute;
-				overflow: hidden;
-				white-space: nowrap;
-				top: 850px;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background-color: #fff;
-			}
-			#wipe-inner {
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				font-size: 32px;
-				color: white;
-				background-color: #3871d7;
-			}
-			#wipe-title {
-				font-size: 40px;
-				font-weight: 300;
-				font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-				text-shadow: rgba(0,0,0, 0.5) 0 0 20px;
-				background-color: #3c438c;
-			}
-			.box-elem {
-				height: 60px;
-				font-size: 40px;
-				border-bottom: solid #303030 1px;
-				border-right: solid #303030 1px;
-				padding-left: 5px;
-				padding-right: 5px;
-			}
-			.box-border-left {
-				border-left: solid #303030 1px;
-			}
-			.event-num {
-				color: goldenrod;
-			}
-			#clock {
-				font-weight: 500;
-				font-size: 40px;
-				display: inline;
-			}
-			#clock-period {
-				font-size: 25px;
-				color: #909090;
-				display: inline;
-				vertical-align: text-bottom;
-			}
-			.day-trail {
-				font-size: 25px;
-				color: #909090;
-				padding-right: 5px;
-			}
-			#day-box {
-				font-size:40px;
-			}
-			#now-body {
-				font-size: 75px;
-				font-weight: 700;
-			}
+        <style>
+            :host {
+                position: absolute;
+                width: 1920px;
+                height: 1080px;
+                overflow: hidden;
+                /* #3c438c */
+                color: #fff;
+            }
 
-			.event-trail {
-				font-size: 30px;
-				font-weight: 300;
-				padding-right: 10px;
-			}
-			#next-body {
-				font-size: 50px;
-				font-weight: 500;
-			}
-			#wipe-next {
-				margin-top: -20px;
-			}
-			.sponsor-boxo > .img-fluid {
-				max-height: 30px;
-			}
-			#music-box > .img-fluid {
-				max-height: 20px;
-			}
-		</style>
+            #wipe-outer {
+                position: absolute;
+                overflow: hidden;
+                white-space: nowrap;
+                top: 850px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #fff;
+            }
+
+            #wipe-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                font-size: 32px;
+                color: white;
+                background-color: #3871d7;
+            }
+
+            #wipe-title {
+                font-size: 40px;
+                font-weight: 300;
+                font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+                text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
+                background-color: #3c438c;
+            }
+
+            .box-elem {
+                height: 60px;
+                font-size: 40px;
+                border-bottom: solid #303030 1px;
+                border-right: solid #303030 1px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .box-border-left {
+                border-left: solid #303030 1px;
+            }
+
+            .event-num {
+                color: goldenrod;
+            }
+
+            #clock {
+                font-weight: 500;
+                font-size: 40px;
+                display: inline;
+            }
+
+            #clock-period {
+                font-size: 25px;
+                color: #909090;
+                display: inline;
+                vertical-align: text-bottom;
+            }
+
+            .day-trail {
+                font-size: 25px;
+                color: #909090;
+                padding-right: 5px;
+            }
+
+            #day-box {
+                font-size: 40px;
+            }
+
+            #now-body {
+                font-size: 75px;
+                font-weight: 700;
+            }
+
+            .event-trail {
+                font-size: 30px;
+                font-weight: 300;
+                padding-right: 10px;
+            }
+
+            #next-body {
+                font-size: 50px;
+                font-weight: 500;
+            }
+
+            #wipe-next {
+                margin-top: -20px;
+            }
+
+            .sponsor-boxo > .img-fluid {
+                max-height: 30px;
+            }
+
+            #music-box > .img-fluid {
+                max-height: 20px;
+            }
+        </style>
         <div id="content"> <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
             <div id="wipe-outer">
                 <div id="wipe-inner" class="container-fluid">
                     <div id="event-data" class="row align-items-center">
                         <div id="wipe-title" class="d-flex box-elem"><b class="event-num" id="event-num">??</b></div>
-                        <div id="links-box" class="d-flex box-elem bg-dark align-items-center"><small class="text-info">thebiggame.org</small></div>
+                        <div id="links-box" class="d-flex box-elem bg-dark align-items-center"><small class="text-info">thebiggame.org</small>
+                        </div>
                         <div id="day-box" class="d-flex box-elem bg-dark align-items-center">
-                            <div class="day-trail text-muted">Day</div> <div id="day">?/?</div>
+                            <div class="day-trail text-muted">Day</div>
+                            <div id="day">?/?</div>
                         </div>
                         <div id="clock-box" class="d-flex box-elem bg-dark">
-                            <div id="clock"></div><div id="clock-period">??</div>
+                            <div id="clock"></div>
+                            <div id="clock-period">??</div>
                         </div>
-                        <div id="sponsor-box-novatech" class="ml-auto d-flex box-border-left box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_novatech.png"/></div>
-                        <div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_dominos.png"/></div>
-                        <div id="sponsor-box-pgames" class="d-flex box-elem align-items-center sponsor-boxo bg-light"><img class="img-fluid" src="img/sponsor_projgames.png"/></div>
+                        <div id="sponsor-box-novatech"
+                             class="ms-auto d-flex box-border-left box-elem align-items-center sponsor-boxo bg-light">
+                            <img class="img-fluid" src="img/sponsor_novatech.png"/></div>
+                        <div id="sponsor-box-pizza" class="d-flex box-elem align-items-center sponsor-boxo bg-light">
+                            <img class="img-fluid" src="img/sponsor_dominos.png"/></div>
+                        <div id="sponsor-box-pgames" class="d-flex box-elem align-items-center sponsor-boxo bg-light">
+                            <img class="img-fluid" src="img/sponsor_projgames.png"/></div>
                     </div>
                     <div class="row align-items-center">
                         <div id="wipe-now" class="d-flex">
@@ -128,8 +150,8 @@
             </div>
         </div>
 
-	</template>
+    </template>
 
-	<script src="halfwipe.js"></script>
-	<!--<script src="../../app/music.js"></script>-->
+    <script src="halfwipe.js"></script>
+    <!--<script src="../../app/music.js"></script>-->
 </dom-module>

@@ -134,14 +134,17 @@ watch(
 )
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
+}
+
+.timer-outer {
+  @include tbg-bar-outer(20px, 5px);
+  top: 10px;
+  left: 1425px;
+  right: 10px;
+  bottom: 875px;
 }
 
 @keyframes tilt-shaking {
@@ -174,22 +177,6 @@ watch(
   }
 }
 
-.timer-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
-  top: 10px;
-  left: 1425px;
-  right: 10px;
-  bottom: 875px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0 150px 150px 0;
-}
-
 .timer-inner {
   position: absolute;
   top: 0;
@@ -198,7 +185,7 @@ watch(
   bottom: 0;
   font-size: 35px;
   color: white;
-  background-color: #3c438c;
+  background-color: $color-tbg-secondary;
   overflow: hidden;
 }
 

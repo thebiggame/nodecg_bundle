@@ -268,9 +268,9 @@ watch(
 <template>
   <div>
     <div ref="wipe-outer" class="wipe-outer">
-      <div ref="wipe-inner" class="wipe-inner container-fluid">
-        <div id="music-data" class="row schedule-data">
-          <div class="d-flex box-elem box-lead">
+      <div ref="wipe-inner" class="wipe-inner container-fluid px-0">
+        <div id="music-data" class="d-flex schedule-data">
+          <div class="d-flex box-elem box-lead h-100">
             <RiMusic2Fill
               size="60px"
               className="align-self-center"
@@ -284,7 +284,7 @@ watch(
             <div class="art-bg h-100">
               <img :src="dispMusicNow?.album_art" />
             </div>
-            <div class="music-inner ml-5">
+            <div class="music-inner ms-5">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
@@ -295,7 +295,7 @@ watch(
                   </div>
                 </div>
               </div>
-              <div class="progress ml-2" ref="music-now-progress">
+              <div class="progress ms-2" ref="music-now-progress">
                 <div
                   class="progress-bar"
                   role="progressbar"
@@ -324,7 +324,7 @@ watch(
                 <RiArrowRightLine size="50px"></RiArrowRightLine>
               </div>
             </div>
-            <div class="music-inner ml-5">
+            <div class="music-inner ms-5">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
                   <div class="px-2 py-0 mb-n2">
@@ -343,30 +343,17 @@ watch(
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .wipe-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px);
   top: 760px;
   left: 10px;
   right: 600px;
   bottom: 240px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 150px 150px 0px;
 }
 
 .wipe-inner {
@@ -378,7 +365,7 @@ watch(
   font-size: 35px;
   color: white;
   /* Darker tBG color. */
-  background-color: #262a5a;
+  background-color: $color-tbg-dark;
   overflow: hidden;
 }
 
@@ -389,7 +376,7 @@ watch(
 
 .box-lead {
   border-right: solid #fff 5px;
-  background-color: #5762d7;
+  background-color: $color-tbg-primary;
   z-index: 10;
 }
 
@@ -445,7 +432,7 @@ watch(
 }
 
 .event-num {
-  color: goldenrod;
+  color: $color-tbg-event-highlight;
   font-family: 'Arial Black', sans-serif;
 }
 
@@ -544,6 +531,7 @@ watch(
 
 .bw-high-anim {
   color: rgb(255, 127, 127);
+  background-color: $secondary;
   animation: tilt-shaking 0.15s infinite;
   transition: color 2s ease-in-out;
 }

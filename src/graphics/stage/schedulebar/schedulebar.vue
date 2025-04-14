@@ -300,8 +300,8 @@ onMounted(() => {
   <div>
     <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="wipe-outer" class="wipe-outer">
-      <div ref="wipe-inner" class="wipe-inner container-fluid">
-        <div id="schedule-data" class="row schedule-data">
+      <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
+        <div id="schedule-data" class="d-flex schedule-data">
           <div
             id="sched-now-box"
             v-bind:class="{
@@ -316,10 +316,10 @@ onMounted(() => {
           >
             <div class="d-flex align-items-center mt-n1 schedule-header">
               <RiCalendarTodoLine
-                class="icon-lead pr-0"
+                class="icon-lead pe-0"
                 size="50px"
               ></RiCalendarTodoLine>
-              <RiArrowRightLine class="icon-lead pr-1" size="50px">
+              <RiArrowRightLine class="icon-lead pe-1" size="50px">
               </RiArrowRightLine>
               <div
                 id="sched-now-time"
@@ -360,7 +360,7 @@ onMounted(() => {
               </div>
               <div
                 id="sched-now-time"
-                class="alert alert-dark text-muted px-1 py-0 my-0 mx-2"
+                class="alert alert-dark text-50 px-1 py-0 my-0 mx-2"
               >
                 {{
                   _formatSeconds(
@@ -389,14 +389,14 @@ onMounted(() => {
               >
                 <div class="is-sched-item box-elem">
                   <div
-                    class="d-flex align-items-center mt-n1 mr-5 schedule-header"
+                    class="d-flex align-items-center mt-n1 me-5 schedule-header"
                   >
                     <RiCalendarScheduleLine
-                      class="pr-2 text-muted"
+                      class="pe-2 text-white-50"
                       size="50px"
                     ></RiCalendarScheduleLine>
                     <template v-if="!_eventIsToday(item.ts_start)">
-                      <span class="badge badge-secondary px-1 py-1 m-0 mr-2">{{
+                      <span class="alert alert-info h5 px-1 py-1 m-0 me-2">{{
                         _formatDay(item.ts_start)
                       }}</span>
                     </template>
@@ -426,30 +426,18 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :host {
-  position: absolute;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* #3c438c */
-  color: #fff;
+  @include tbg-bar-host;
 }
 
 .wipe-outer {
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
+  @include tbg-bar-outer(20px, 5px);
   top: 860px;
   left: 10px;
   right: 10px;
   bottom: 110px;
-  background-color: #fff;
-  border-top: solid #fff 5px;
-  border-bottom: solid #fff 5px;
-  border-left: solid #fff 20px;
-  border-right: solid #fff 5px;
-  border-radius: 0px 150px 150px 0px;
+  white-space: nowrap;
 }
 
 .wipe-inner {
@@ -461,7 +449,7 @@ onMounted(() => {
   font-size: 35px;
   color: white;
   /* Darker tBG color. */
-  background-color: #262a5a;
+  background-color: $color-tbg-dark;
   overflow: hidden;
 }
 
@@ -470,20 +458,20 @@ onMounted(() => {
   font-weight: 300;
   font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
   text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
-  background-color: #5762d7;
-  border-right: solid #fff 2px;
+  background-color: $color-tbg-primary;
+  border-right: solid #ffffff 2px;
 }
 
 .box-elem {
   height: 160px;
-  border-left: solid #fff 2px;
+  border-left: solid #ffffff 2px;
   padding-left: 5px;
   padding-right: 5px;
   min-width: 300px;
 }
 
 .box-elem-sched-now {
-  border-right: solid #fff 5px;
+  border-right: solid #ffffff 5px;
 }
 
 .schedule-data {
@@ -495,7 +483,7 @@ onMounted(() => {
 }
 
 .event-num {
-  color: goldenrod;
+  color: $color-tbg-event-highlight;
   font-family: 'Arial Black', sans-serif;
 }
 
@@ -556,19 +544,6 @@ onMounted(() => {
   padding-top: 10px;
   padding-left: 10px;
 }
-
-/*
-.icon-bw {
-  --iron-icon-height: 30px;
-          --iron-icon-width: 30px;
-}
-.bw-trail {
-  font-size: 15px;
-  color: #909090;
-  padding-left: 2px;
-  vertical-align:bottom;
-}
-*/
 
 .icon-bw {
   font-size: 25px;
