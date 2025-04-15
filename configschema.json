@@ -117,25 +117,6 @@
       "required": [
         "icalAddress"
       ]
-    },
-    "shout": {
-      "type": "object",
-      "properties": {
-        "discord": {
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "type": "boolean"
-            },
-            "token": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "enabled"
-          ]
-        }
-      }
     }
   },
   "required": [
