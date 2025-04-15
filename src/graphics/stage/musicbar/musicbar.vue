@@ -287,10 +287,10 @@ watch(
             <div class="music-inner ms-5">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
-                  <div class="px-2 py-0 mb-n2">
+                  <div class="d-block text-truncate px-2 py-0 mb-n2">
                     {{ dispMusicNow?.name }}
                   </div>
-                  <div class="px-2 py-0 h5 m-0">
+                  <div class="d-block text-truncate px-2 py-0 h5 m-0">
                     {{ dispMusicNow?.artist }}
                   </div>
                 </div>
@@ -327,10 +327,10 @@ watch(
             <div class="music-inner ms-5">
               <div class="d-flex mt-n1 align-items-center schedule-header">
                 <div class="d-flex flex-column">
-                  <div class="px-2 py-0 mb-n2">
+                  <div class="d-inline-block text-truncate px-2 py-0 mb-n2">
                     {{ dispMusicNext?.name }}
                   </div>
-                  <div class="px-2 py-0 h5 m-0">
+                  <div class="d-inline-block text-truncate px-2 py-0 h5 m-0">
                     {{ dispMusicNext?.artist }}
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "53.3.2",
+  "version": "53.3.3",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -81,6 +81,11 @@
         "name": "announcementCue",
         "defaultFile": "sound/announcement.ogg",
         "channels": 1
+      },
+      {
+        "name": "shoutCue",
+        "defaultFile": "sound/bikebell.ogg",
+        "channels": 1
       }
     ],
     "assetCategories": [
@@ -130,6 +135,7 @@
     "@quasar/extras": "^1.16.17",
     "@quasar/vite-plugin": "^1.9.0",
     "@types/node": "^22.14.0",
+    "@types/sanitize-html": "^2.15.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "@vitejs/plugin-vue": "^5.2.3",
@@ -162,11 +168,12 @@
     "@remixicon/vue": "^4.6.0",
     "@types/snmp-native": "^1.2.5",
     "bootstrap": "^5.2.3",
-    "discord.js": "^14.18.0",
     "gsap": "^3.12.7",
+    "marked": "^15.0.8",
     "module-alias": "^2.2.3",
     "node-ical": "^0.20.1",
     "nodecg": "^2.5.3",
+    "sanitize-html": "^2.15.0",
     "snmp-native": "^1.2.0"
   }
 }

@@ -21,6 +21,7 @@ import {
   BandwidthData,
   ScheduleData,
   MusicPlaybackData,
+  ShoutboxShouts,
 } from '@thebiggame/types/schemas'
 import { get as nodecg } from './nodecg'
 
@@ -210,6 +211,17 @@ export const repScoreboardActive = nodecg().Replicant<ScoreboardActive>(
   'scoreboard:active',
   {
     defaultValue: false,
+    persistent: true,
+  },
+)
+
+// Shoutbox.
+export const repShoutboxShouts = nodecg().Replicant<ShoutboxShouts>(
+  'shoutbox:messages',
+  {
+    defaultValue: {
+      shouts: [],
+    },
     persistent: true,
   },
 )

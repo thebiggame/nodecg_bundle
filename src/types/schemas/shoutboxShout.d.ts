@@ -7,11 +7,11 @@
  */
 
 export interface ShoutboxShout {
+	id: string;
 	timestamp: string;
 	message: string;
 	user: {
 		name: string;
-		steamID: number;
 		avatar_url: string;
 		[k: string]: unknown;
 	};

@@ -7,6 +7,9 @@
       "items": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "timestamp": {
             "type": "string"
           },
@@ -19,21 +22,18 @@
               "name": {
                 "type": "string"
               },
-              "steamID": {
-                "type": "number"
-              },
               "avatar_url": {
                 "type": "string"
               }
             },
             "required": [
               "name",
-              "steamID",
               "avatar_url"
             ]
           }
         },
         "required": [
+          "id",
           "timestamp",
           "message",
           "user"

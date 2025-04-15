@@ -7,7 +7,8 @@ import {
 import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
 import { gsap, Quart } from 'gsap'
 import { onMounted, toValue, useTemplateRef, watch } from 'vue'
-import { RiInformationFill } from '@remixicon/vue'
+import { RiDiscordFill, RiInformationFill } from '@remixicon/vue'
+import ShoutMessage from './shoutMessage.vue'
 
 const config = nodecg.bundleConfig as Configschema
 
@@ -61,7 +62,7 @@ function handleWipe(newVal: boolean) {
       innerNode,
       1,
       {
-        marginRight: '0px',
+        x: '0%',
         ease: Quart.easeOut,
       },
       'in+=0.75',
@@ -73,7 +74,7 @@ function handleWipe(newVal: boolean) {
       innerNode,
       1,
       {
-        marginRight: '100%',
+        x: '-100%',
         ease: Quart.easeInOut,
       },
       'out',
@@ -92,7 +93,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       1,
       {
-        y: '-100%',
+        y: '-120%',
         ease: Quart.easeInOut,
       },
       'out+=0.75',
@@ -110,31 +111,66 @@ watch(
     }
   },
 )
+
+nodecg.listenFor('shoutbox:chime', (data) => {
+  setTimeout(() => {
+    nodecg.playSound('shoutCue')
+  }, 0)
+})
+
+function _formatTime(timestamp: string): string {
+  var time = new Date(timestamp)
+  return time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+function _eventIsToday(timestamp: string): boolean {
+  var time = new Date(timestamp)
+  if (time.getDate() == new Date().getDate()) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function _formatDay(timestamp: string): string {
+  var time = new Date(timestamp)
+  if (!_eventIsToday(timestamp)) {
+    // The event isn't today - prepend the day.
+    switch (time.getDay()) {
+      case 4:
+        return 'Day 0'
+      case 5:
+        return 'Day 1'
+      case 6:
+        return 'Day 2'
+      case 0:
+        return 'Day 3'
+      default:
+        return 'Day ?'
+    }
+  } else {
+    return 'Today'
+  }
+}
 </script>
 
 <template>
   <div>
-    <!--DON'T REMOVE THIS DIV OTHERWISE ANIMATION BREAKS JUST TRUST ME OKAY-->
     <div ref="shoutbox-outer" class="shoutbox-outer" id="shoutbox">
-      <div
-        ref="shoutbox-inner"
-        class="shoutbox-inner ps-0 pe-0 container-fluid d-flex flex-column-reverse justify-content-start align-items-end"
-      >
-        <TransitionGroup tag="div" name="list-join" class="">
-          <div class="w-100 rounded-0 p-0 card text-dark bg-light">
-            <div class="card-header d-flex align-items-center p-2">
-              <img
-                class="img-fluid rounded-lg avatar"
-                src="./entrapta.jpg"
-                alt="duck."
-              />
-              <div class="ps-2 text-muted">duck.</div>
-              <div class="ms-auto text-muted text-time">00:30</div>
-            </div>
-            <div class="card-body card-text p-2">
-              Welcome to theBIGGAME 53, featuring this shiny new shoutbox!
-            </div>
-          </div>
+      <div class="shoutbox-inner" ref="shoutbox-inner">
+        <!-- weird flex but ok -->
+        <TransitionGroup
+          tag="div"
+          ref="shoutbox-data"
+          class="shoutbox-inner ps-0 pe-0 container-fluid d-flex flex-column-reverse justify-content-start align-items-end"
+          name="list-join"
+        >
+          <template
+            v-for="shout in repShoutboxMessages?.data?.shouts"
+            :key="shout.id"
+          >
+            <ShoutMessage :shout="shout"></ShoutMessage>
+          </template>
         </TransitionGroup>
       </div>
     </div>
@@ -166,28 +202,16 @@ watch(
   overflow: hidden;
 }
 
-img.avatar {
-  height: 40px;
-  width: 40px;
-}
-
-.text-time {
-  font-family: 'DSEG14 Classic', 'Archivo Variable', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
-
 .list-join-move,
 .list-join-enter-active,
 .list-join-leave-active {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: all 0.5s ease;
 }
 
 .list-join-enter-from,
 .list-join-leave-to {
   opacity: 0;
-  transform: scaleY(0.01) translate(30px, 0);
+  transform: translate(0px, 75px);
 }
 
 /* ensure leaving items are taken out of layout flow so that moving animations can be calculated correctly */

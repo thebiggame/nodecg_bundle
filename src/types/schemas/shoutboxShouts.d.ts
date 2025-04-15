@@ -8,11 +8,11 @@
 
 export interface ShoutboxShouts {
 	shouts: {
+		id: string;
 		timestamp: string;
 		message: string;
 		user: {
 			name: string;
-			steamID: number;
 			avatar_url: string;
 			[k: string]: unknown;
 		};

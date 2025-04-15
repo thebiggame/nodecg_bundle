@@ -410,6 +410,7 @@ watch(
     rgba(0, 0, 0, 0) 90%,
     transparent 100%
   );
+  /*noinspection CssInvalidPropertyValue*/
   -webkit-mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 1) 0%,

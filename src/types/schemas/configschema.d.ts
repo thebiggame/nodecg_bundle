@@ -49,5 +49,13 @@ export interface Configschema {
 		icalAddress: string;
 		[k: string]: unknown;
 	};
+	shout?: {
+		discord?: {
+			enabled: boolean;
+			token?: string;
+			[k: string]: unknown;
+		};
+		[k: string]: unknown;
+	};
 	[k: string]: unknown;
 }
