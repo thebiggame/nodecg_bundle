@@ -8,3 +8,20 @@ $secondary: #adb5bd;
 // End Bootstrap Config; import bootstrap.
 @import "~bootstrap/scss/bootstrap";
 
+
+body {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.app-container {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  font-family: 'Archivo Variable', sans-serif;
+  /* #3c438c */
+  color: #fff;
+  /*background: url("http://i.imgur.com/EcIltyp.png");
+  background: url("http://i.imgur.com/ivbkXt1.png");*/
+}

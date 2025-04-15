@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "53.3.3",
+  "version": "53.4.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "http://thebiggame.org",
   "author": {
@@ -57,6 +57,14 @@
         "file": "countdown.html",
         "headerColor": "#ff0000",
         "workspace": "Projector"
+      },
+      {
+        "name": "scoreboard",
+        "title": "Scoreboard",
+        "width": 3,
+        "file": "scoreboard.html",
+        "headerColor": "#000000",
+        "workspace": "Presentation"
       }
     ],
     "graphics": [
@@ -67,6 +75,11 @@
       },
       {
         "file": "stage-prep.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "gameplay.html",
         "width": 1920,
         "height": 1080
       }
