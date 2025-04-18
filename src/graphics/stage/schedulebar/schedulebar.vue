@@ -355,12 +355,13 @@ onMounted(() => {
                     class="icon-lead px-0"
                     size="50px"
                   ></RiArrowRightLine>
-                  >{{ _formatTime(repScheduleData?.data?.now.ts_end!) }}
+                  {{ _formatTime(repScheduleData?.data?.now.ts_end!) }}
                 </template>
               </div>
               <div
                 id="sched-now-time"
                 class="alert alert-dark text-50 px-1 py-0 my-0 mx-2"
+                v-if="_eventIsFuture(repScheduleData?.data?.now.ts_start!)"
               >
                 {{
                   _formatSeconds(
