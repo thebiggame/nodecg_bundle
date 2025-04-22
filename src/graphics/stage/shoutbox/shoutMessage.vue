@@ -26,6 +26,12 @@ function _formatDay(timestamp: string): string {
   if (!_eventIsToday(timestamp)) {
     // The event isn't today - prepend the day.
     switch (time.getDay()) {
+      case 1:
+        return 'Day -3'
+      case 2:
+        return 'Day -2'
+      case 3:
+        return 'Day -1'
       case 4:
         return 'Day 0'
       case 5:
@@ -56,11 +62,15 @@ function _formatDay(timestamp: string): string {
         class="ms-1"
       ></RiDiscordFill>
       <div class="ps-2 text-muted">{{ props.shout?.user.name }}</div>
-      <div class="ms-auto text-muted text-time">
-        {{ _formatTime(props.shout?.timestamp!) }}
-      </div>
-      <div v-if="!_eventIsToday(props.shout?.timestamp!)" class="">
+      <div class="ms-auto"></div>
+      <span
+        v-if="!_eventIsToday(props.shout?.timestamp!)"
+        class="day-pill badge rounded-pill text-bg-warning"
+      >
         {{ _formatDay(props.shout?.timestamp!) }}
+      </span>
+      <div class="text-muted text-time">
+        {{ _formatTime(props.shout?.timestamp!) }}
       </div>
     </div>
     <div
@@ -81,6 +91,11 @@ img.avatar {
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
+}
+
+.day-pill {
+  font-family: 'Archivo Variable', sans-serif;
+  font-size: 1rem;
 }
 
 .shout-message {

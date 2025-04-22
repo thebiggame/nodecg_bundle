@@ -161,6 +161,12 @@ function _formatDay(timestamp: string): string {
   if (!_eventIsToday(timestamp)) {
     // The event isn't today - prepend the day.
     switch (time.getDay()) {
+      case 1:
+        return 'Tues'
+      case 2:
+        return 'Weds'
+      case 3:
+        return 'Thurs'
       case 4:
         return 'Day 0'
       case 5:
