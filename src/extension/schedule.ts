@@ -1,6 +1,7 @@
 import { get as nodecg } from './util/nodecg'
 import { repScheduleData } from './util/replicants'
 import { Configschema, ScheduleData } from '@thebiggame/types/schemas'
+import { type CalendarComponent, type VEvent } from 'node-ical'
 
 nodecg().log.trace('Extension schedule loaded.')
 
@@ -12,34 +13,37 @@ var icalAddress = config.schedule.icalAddress
 function updateSchedule() {
   nodecg().log.debug('Updating schedule...')
   ;(async () => {
-    var webEvents
+    var webEvents: VEvent[]
     try {
       webEvents = await ical.async.fromURL(icalAddress)
     } catch (error) {
       nodecg().log.error(error)
       return
     }
+    // Filter for VEVENTS - we're not bothered about anything else
+    const events: VEvent[] = Object.values(webEvents).filter(
+      (component): component is VEvent =>
+        component.type === 'VEVENT' && Date.now() <= component.end.getTime(),
+    )
+
+    // Sort the events by start datetime
+    events.sort((a, b) => a.start.getTime() - b.start.getTime())
+
     var nextEvent
     var futureEvents = []
-    for (let k in webEvents) {
-      if (webEvents.hasOwnProperty(k)) {
-        const ev = webEvents[k]
-        if (webEvents[k].type === 'VEVENT') {
-          if (Date.now() <= ev.end) {
-            // Valid event, in the future.
-            var event = {
-              title: ev.summary,
-              ts_start: ev.start,
-              ts_end: ev.end,
-            }
-            // Is this the first event?
-            if (nextEvent === undefined) {
-              nextEvent = event
-            } else {
-              futureEvents.push(event)
-            }
-          }
-        }
+
+    for (const ev of events) {
+      // Valid event, in the future.
+      var event = {
+        title: ev.summary,
+        ts_start: ev.start.toISOString(),
+        ts_end: ev.end.toISOString(),
+      }
+      // Is this the first event?
+      if (nextEvent === undefined) {
+        nextEvent = event
+      } else {
+        futureEvents.push(event)
       }
     }
     // Append dummy events (debugging)
