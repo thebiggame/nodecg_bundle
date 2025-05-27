@@ -254,11 +254,13 @@ function initSlideshow() {
 
     // Otherwise, we need to animate to show the whole bar.
 
+    const transitionTime = 2 + (slideInner.offsetWidth / 160) * 1.75
+    console.log('transitionTime', transitionTime)
     tl.clear()
     tl.to(
       slideInner,
       {
-        duration: 20,
+        duration: transitionTime,
         x: availableSpace + 'px',
         ease: 'sine.inOut',
       },
