@@ -1,7 +1,7 @@
 import { get as nodecg } from './util/nodecg'
 import { repScheduleData } from './util/replicants'
 import { Configschema, ScheduleData } from '@thebiggame/types/schemas'
-import { type CalendarComponent, type VEvent } from 'node-ical'
+import { type VEvent } from 'node-ical'
 
 nodecg().log.trace('Extension schedule loaded.')
 

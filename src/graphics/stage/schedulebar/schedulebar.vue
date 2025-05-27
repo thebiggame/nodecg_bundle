@@ -5,7 +5,7 @@ import {
   ProjectorActive,
 } from '@thebiggame/types/schemas'
 import { gsap, Quart } from 'gsap'
-import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
+import { useReplicant } from 'nodecg-vue-composable'
 import { onMounted, toValue, useTemplateRef, watch } from 'vue'
 import {
   RiArrowRightLine,
@@ -149,11 +149,7 @@ function _eventIsPast(end: string): boolean {
 
 function _eventIsToday(timestamp: string): boolean {
   var time = new Date(timestamp)
-  if (time.getDate() == new Date().getDate()) {
-    return true
-  } else {
-    return false
-  }
+  return time.getDate() == new Date().getDate()
 }
 
 function _formatDay(timestamp: string): string {
