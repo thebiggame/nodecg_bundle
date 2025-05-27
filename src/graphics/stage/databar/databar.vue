@@ -594,9 +594,11 @@ onMounted(() => {
               <p>Please ensure your credentials are visible at all times.</p>
             </div>
           </div>
+          <div class="ms-auto" />
           <div
             id="net-bw-box"
-            class="d-flex flex-column box-elem ms-auto bg-dark"
+            class="d-flex flex-column box-elem bg-dark"
+            v-if="config.network.snmp.enabled"
           >
             <div class="d-flex flex-grow">
               <RiDownloadCloudFill

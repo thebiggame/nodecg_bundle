@@ -69,7 +69,7 @@ const refMusicNextArrow = useTemplateRef('music-next-arrow')
 function handleWipe(newVal: boolean) {
   const outerNode = refElemOuter.value
   const innerNode = refElemInner.value
-  if (newVal) {
+  if (config.music?.party?.enabled! && newVal) {
     tl.clear().add('in')
     tl.to(
       outerNode,
