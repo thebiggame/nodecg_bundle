@@ -43,12 +43,14 @@ function updateSchedule() {
       }
     }
     // Append dummy events (debugging)
-    for (var i = 0; i < 10; i++) {
-      futureEvents.push({
-        title: 'Test Event',
-        ts_start: new Date('2025-04-05T23:00:00.000Z').toISOString(),
-        ts_end: new Date('2025-04-05T23:30:00.000Z').toISOString(),
-      })
+    if (config.schedule.debugExtraEvents === true) {
+      for (var i = 0; i < 10; i++) {
+        futureEvents.push({
+          title: 'Test Event',
+          ts_start: new Date('2025-04-05T23:00:00.000Z').toISOString(),
+          ts_end: new Date('2025-04-05T23:30:00.000Z').toISOString(),
+        })
+      }
     }
 
     var expNewData = <ScheduleData>{ now: nextEvent, upcoming: futureEvents }
@@ -64,5 +66,7 @@ function updateSchedule() {
   })
 }
 
-setInterval(updateSchedule, 10000)
-updateSchedule()
+if (typeof config.schedule.icalAddress !== undefined) {
+  setInterval(updateSchedule, 10000)
+  updateSchedule()
+}

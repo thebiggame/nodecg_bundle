@@ -112,11 +112,11 @@
       "properties": {
         "icalAddress": {
           "type": "string"
+        },
+        "debugExtraEvents": {
+          "type": "boolean"
         }
-      },
-      "required": [
-        "icalAddress"
-      ]
+      }
     }
   },
   "required": [

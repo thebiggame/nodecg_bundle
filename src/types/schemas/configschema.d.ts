@@ -46,15 +46,8 @@ export interface Configschema {
 		[k: string]: unknown;
 	};
 	schedule: {
-		icalAddress: string;
-		[k: string]: unknown;
-	};
-	shout?: {
-		discord?: {
-			enabled: boolean;
-			token?: string;
-			[k: string]: unknown;
-		};
+		icalAddress?: string;
+		debugExtraEvents?: boolean;
 		[k: string]: unknown;
 	};
 	[k: string]: unknown;
