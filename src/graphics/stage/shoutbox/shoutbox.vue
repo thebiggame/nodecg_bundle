@@ -124,11 +124,7 @@ function _formatTime(timestamp: string): string {
 
 function _eventIsToday(timestamp: string): boolean {
   var time = new Date(timestamp)
-  if (time.getDate() == new Date().getDate()) {
-    return true
-  } else {
-    return false
-  }
+  return time.getDate() == new Date().getDate()
 }
 
 function _formatDay(timestamp: string): string {

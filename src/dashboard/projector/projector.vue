@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ExampleType } from '@thebiggame/types'
-import { Configschema, ProjectorActive } from '@thebiggame/types/schemas'
+import {
+  Configschema,
+  ProjectorActive,
+  ProjectorDarkMode,
+} from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
 import { useReplicant } from 'nodecg-vue-composable'
 import { QToggle } from 'quasar'
@@ -12,6 +16,11 @@ useHead({ title: 'example' })
 // For more information see https://github.com/Dan-Shields/nodecg-vue-composable
 const repProjectorActive = useReplicant<ProjectorActive>(
   'projector:active',
+  'thebiggame',
+)
+
+const repProjectorDarkMode = useReplicant<ProjectorDarkMode>(
+  'projector:darkmode',
   'thebiggame',
 )
 
@@ -33,6 +42,15 @@ const exampleType: ExampleType = { exampleProperty: 'exampleString' }
         checked-icon="check"
         unchecked-icon="clear"
         @click="repProjectorActive!.save()"
+      />
+      <QToggle
+        size="xl"
+        v-model="repProjectorDarkMode!.data"
+        val="xl"
+        label="Dark Mode"
+        checked-icon="check"
+        unchecked-icon="clear"
+        @click="repProjectorDarkMode!.save()"
       />
     </div>
   </div>

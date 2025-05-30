@@ -38,6 +38,8 @@ export * from './personsData'
 // @ts-ignore
 export * from './projectorActive'
 // @ts-ignore
+export * from './projectorDarkMode'
+// @ts-ignore
 export * from './scheduleData'
 // @ts-ignore
 export * from './scoreboardActive'

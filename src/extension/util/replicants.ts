@@ -173,6 +173,15 @@ export const repProjectorActive = nodecg().Replicant<ProjectorActive>(
   },
 )
 
+// Projector - global dark mode for night use.
+export const repProjectorDarkMode = nodecg().Replicant<ProjectorActive>(
+  'projector:darkmode',
+  {
+    defaultValue: false,
+    persistent: true,
+  },
+)
+
 // Schedule.
 export const repScheduleData = nodecg().Replicant<ScheduleData>(
   'schedule:data',

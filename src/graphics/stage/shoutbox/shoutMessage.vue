@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { ShoutboxShout } from '@thebiggame/types/schemas'
+import { ProjectorDarkMode, ShoutboxShout } from '@thebiggame/types/schemas'
 import { RiDiscordFill } from '@remixicon/vue'
+import { useReplicant } from 'nodecg-vue-composable'
 
 const props = defineProps<{ shout: ShoutboxShout }>()
 
-const darkMode = true
+const gDarkMode = useReplicant<ProjectorDarkMode>(
+  'projector:darkmode',
+  'thebiggame',
+)
 
 function _formatTime(timestamp: string): string {
   var time = new Date(timestamp)
@@ -13,11 +17,7 @@ function _formatTime(timestamp: string): string {
 
 function _eventIsToday(timestamp: string): boolean {
   var time = new Date(timestamp)
-  if (time.getDate() == new Date().getDate()) {
-    return true
-  } else {
-    return false
-  }
+  return time.getDate() == new Date().getDate()
 }
 
 function _formatDay(timestamp: string): string {
@@ -51,8 +51,7 @@ function _formatDay(timestamp: string): string {
 <template>
   <div
     class="w-100 rounded-0 p-0 card text-dark"
-    :class="darkMode ? 'bg-dark' : 'bg-light'"
-    :data-bs-theme="darkMode ? 'dark' : ''"
+    :data-bs-theme="gDarkMode?.data ? 'dark' : ''"
   >
     <div class="card-header d-flex align-items-center p-2">
       <img
@@ -62,7 +61,7 @@ function _formatDay(timestamp: string): string {
       />
       <RiDiscordFill
         v-if="props.shout?.id?.startsWith('DISC-')"
-        :class="darkMode ? 'text-light' : ''"
+        :class="gDarkMode?.data ? 'text-light' : ''"
         class="ms-1"
       ></RiDiscordFill>
       <div class="ps-2 text-muted">{{ props.shout?.user.name }}</div>
@@ -79,7 +78,7 @@ function _formatDay(timestamp: string): string {
     </div>
     <div
       class="card-body card-text p-2 d-block text-break shout-message"
-      :class="darkMode ? 'text-light' : ''"
+      :class="gDarkMode?.data ? 'text-light' : ''"
       v-html="props.shout?.message"
     ></div>
   </div>
