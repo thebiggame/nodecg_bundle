@@ -519,7 +519,7 @@ onMounted(() => {
           <div
             id="message-box"
             ref="message-box"
-            class="d-flex box-elem-message align-items-center align-self-center"
+            class="ps-1 d-flex box-elem-message align-items-center align-self-center"
           >
             <div class="is-message d-flex message-display-once">
               <RiProjector2Line
@@ -538,11 +538,31 @@ onMounted(() => {
                 width="50px"
                 height="50px"
               ></svg>
-              <p>
+              <p v-if="clockEventDay == 1">
                 Welcome to <b>theBIGGAME</b>
                 <b class="event-num">{{ config.event_num }}</b
                 >!
               </p>
+              <p v-else>
+                <b>theBIGGAME</b>
+                <b class="event-num">{{ config.event_num }}</b>
+              </p>
+            </div>
+            <div class="is-message d-flex">
+              <RiCalendarEventFill
+                size="50px"
+                className="align-self-center me-3"
+              ></RiCalendarEventFill>
+              <p v-if="clockEventDay == 1">
+                Day <b>1</b>: <i>Settle in, make yourself at home!</i>
+              </p>
+              <p v-else-if="clockEventDay == 2">
+                Day <b>2</b>: <i>Tournaments & Pub Quiz</i>
+              </p>
+              <p v-else-if="clockEventDay == 3">
+                Day <b>3</b>: <i>Finals Day</i>
+              </p>
+              <p v-else>Day... wait, you're not supposed to be here!</p>
             </div>
             <div class="is-message d-flex">
               <RiHandHeartFill
