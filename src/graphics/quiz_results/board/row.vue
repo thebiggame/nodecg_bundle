@@ -1,36 +1,12 @@
 <script setup lang="ts">
-import {
-  Configschema,
-  ProjectorActive,
-  ScoreboardData,
-  ScoreboardActive,
-} from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant } from 'nodecg-vue-composable'
 import { watch, toValue, useTemplateRef, computed } from 'vue'
 import { gsap, Quart } from 'gsap'
-import assetTBGText from './tbgText.svg?raw'
-import {
-  RiCalendarEventFill,
-  RiDownloadCloudFill,
-  RiHandHeartFill,
-  RiLockPasswordLine,
-  RiMusicAiFill,
-  RiProjector2Line,
-  RiShieldUserFill,
-  RiSwordLine,
-  RiTimeLine,
-  RiUploadCloudFill,
-  RiWifiFill,
-} from '@remixicon/vue'
 
 const props = defineProps<{
   position?: number
   score?: number
   active?: boolean
 }>()
-
-// Access the bundle configuration with types.
-const config = nodecg.bundleConfig as Configschema
 
 const tl = gsap.timeline({ autoRemoveChildren: true })
 
