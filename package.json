@@ -185,7 +185,7 @@
     "@fontsource/dseg14-classic": "^5.2.5",
     "@remixicon/vue": "^4.6.0",
     "@types/snmp-native": "^1.2.5",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.0",
     "gsap": "^3.12.7",
     "marked": "^15.0.8",
     "module-alias": "^2.2.3",

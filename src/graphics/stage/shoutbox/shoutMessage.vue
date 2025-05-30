@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ShoutboxShout } from '@thebiggame/types/schemas'
-import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
-import { gsap, Quart } from 'gsap'
-import { onMounted, toValue, useTemplateRef, watch } from 'vue'
 import { RiDiscordFill, RiInformationFill } from '@remixicon/vue'
 
 const props = defineProps<{ shout: ShoutboxShout }>()
+
+const darkMode = true
 
 function _formatTime(timestamp: string): string {
   var time = new Date(timestamp)
@@ -50,7 +49,11 @@ function _formatDay(timestamp: string): string {
 </script>
 
 <template>
-  <div class="w-100 rounded-0 p-0 card text-dark bg-light">
+  <div
+    class="w-100 rounded-0 p-0 card text-dark"
+    :class="darkMode ? 'bg-dark' : 'bg-light'"
+    :data-bs-theme="darkMode ? 'dark' : ''"
+  >
     <div class="card-header d-flex align-items-center p-2">
       <img
         class="img-fluid rounded avatar"
@@ -59,6 +62,7 @@ function _formatDay(timestamp: string): string {
       />
       <RiDiscordFill
         v-if="props.shout?.id?.startsWith('DISC-')"
+        :class="darkMode ? 'text-light' : ''"
         class="ms-1"
       ></RiDiscordFill>
       <div class="ps-2 text-muted">{{ props.shout?.user.name }}</div>
@@ -75,6 +79,7 @@ function _formatDay(timestamp: string): string {
     </div>
     <div
       class="card-body card-text p-2 d-block text-break shout-message"
+      :class="darkMode ? 'text-light' : ''"
       v-html="props.shout?.message"
     ></div>
   </div>
