@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { ref } from 'vue'
 
-import Clock from './clock/clock.vue'
 import Scoreboard from './scoreboard/scoreboard.vue'
 
 // Set the title of this page.

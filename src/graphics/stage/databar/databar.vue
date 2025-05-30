@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
 import {
   Configschema,
   ProjectorActive,
@@ -7,7 +6,7 @@ import {
   BandwidthData,
   MusicData,
 } from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
+import { useReplicant, useAssetReplicant } from 'nodecg-vue-composable'
 import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
 import { gsap, Quart } from 'gsap'
 import assetTBGText from './tbgText.svg?raw'
@@ -16,17 +15,10 @@ import {
   RiUploadCloudFill,
   RiCalendarEventFill,
   RiHandHeartFill,
-  RiEmotionHappyFill,
-  RiRocketFill,
-  RiMusic2Fill,
-  RiUserLine,
   RiWifiFill,
   RiLockPasswordLine,
   RiShieldUserFill,
   RiTimeLine,
-  RiBugLine,
-  RiGameFill,
-  RiGamepadLine,
   RiProjector2Line,
   RiMusicAiFill,
 } from '@remixicon/vue'

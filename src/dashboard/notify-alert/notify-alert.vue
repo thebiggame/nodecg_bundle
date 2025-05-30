@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import { Configschema, AlertData, AlertActive } from '@thebiggame/types/schemas'
-import { useHead } from '@vueuse/head'
+import { AlertData, AlertActive } from '@thebiggame/types/schemas'
 import { useReplicant } from 'nodecg-vue-composable'
 import { QToggle, QInput } from 'quasar'
 

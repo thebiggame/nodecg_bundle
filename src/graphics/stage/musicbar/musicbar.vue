@@ -1,23 +1,14 @@
 <script setup lang="ts">
 import {
   Configschema,
-  ScheduleData,
   ProjectorActive,
   MusicData,
   MusicPlaybackData,
 } from '@thebiggame/types/schemas'
 import { gsap, Quart } from 'gsap'
-import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
-import { computed, onMounted, ref, toValue, useTemplateRef, watch } from 'vue'
-import {
-  RiArrowRightLine,
-  RiCalendarScheduleLine,
-  RiCalendarTodoLine,
-  RiHandHeartFill,
-  RiMusic2Fill,
-  RiMusicAiFill,
-  RiMusicFill,
-} from '@remixicon/vue'
+import { useReplicant } from 'nodecg-vue-composable'
+import { computed, ref, toValue, useTemplateRef, watch } from 'vue'
+import { RiArrowRightLine, RiMusic2Fill } from '@remixicon/vue'
 
 const config = nodecg.bundleConfig as Configschema
 
@@ -397,6 +388,7 @@ watch(
     rgba(0, 0, 0, 0) 90%,
     transparent 100%
   );
+  //noinspection CssInvalidPropertyValue
   -webkit-mask-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 1) 0%,

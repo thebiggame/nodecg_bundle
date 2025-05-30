@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import { Configschema } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
 import { ref } from 'vue'
 

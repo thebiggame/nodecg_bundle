@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ShoutboxShout } from '@thebiggame/types/schemas'
-import { RiDiscordFill, RiInformationFill } from '@remixicon/vue'
+import { RiDiscordFill } from '@remixicon/vue'
 
 const props = defineProps<{ shout: ShoutboxShout }>()
 

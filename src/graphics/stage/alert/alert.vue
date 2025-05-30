@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Configschema, AlertData, AlertActive } from '@thebiggame/types/schemas'
+import { AlertData, AlertActive } from '@thebiggame/types/schemas'
 import { useReplicant } from 'nodecg-vue-composable'
 import { watch, toValue, useTemplateRef } from 'vue'
 import { gsap, Quart, Power2 } from 'gsap'

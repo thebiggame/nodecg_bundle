@@ -1,17 +1,8 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import { Configschema } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
-import { ref } from 'vue'
 
 // Set the title of this page.
 useHead({ title: 'NodeCG Background Animations' })
-
-const stageIsFaded = ref(false)
-
-const setPageFadeState = (state: boolean) => {
-  state ? (stageIsFaded.value = true) : (stageIsFaded.value = false)
-}
 </script>
 <style scoped lang="scss">
 html {

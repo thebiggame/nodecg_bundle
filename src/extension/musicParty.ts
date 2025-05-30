@@ -4,7 +4,7 @@ import {
   repMusicNext,
   repMusicPlaybackState,
 } from './util/replicants'
-import { Configschema, MusicData } from '@thebiggame/types/schemas'
+import { Configschema } from '@thebiggame/types/schemas'
 import { PartyData } from '@thebiggame/types/external/musicparty'
 import https from 'https'
 import http from 'http'

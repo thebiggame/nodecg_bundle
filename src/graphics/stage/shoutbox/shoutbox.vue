@@ -4,10 +4,9 @@ import {
   ShoutboxShouts,
   ProjectorActive,
 } from '@thebiggame/types/schemas'
-import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
+import { useReplicant } from 'nodecg-vue-composable'
 import { gsap, Quart } from 'gsap'
-import { onMounted, toValue, useTemplateRef, watch } from 'vue'
-import { RiDiscordFill, RiInformationFill } from '@remixicon/vue'
+import { toValue, useTemplateRef, watch } from 'vue'
 import ShoutMessage from './shoutMessage.vue'
 
 const config = nodecg.bundleConfig as Configschema

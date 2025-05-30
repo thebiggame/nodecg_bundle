@@ -3,7 +3,6 @@ import { ExampleType } from '@thebiggame/types'
 import { Configschema, ProjectorActive } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
 import { useReplicant } from 'nodecg-vue-composable'
-import { ref } from 'vue'
 import { QToggle } from 'quasar'
 
 // Set the title of this page.

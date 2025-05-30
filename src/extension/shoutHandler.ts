@@ -1,6 +1,6 @@
 import { get as nodecg } from './util/nodecg'
 import { repShoutboxShouts } from './util/replicants'
-import { Configschema, ShoutboxShout } from '@thebiggame/types/schemas'
+import { Configschema } from '@thebiggame/types/schemas'
 import { parse } from 'marked'
 import sanitizeHtml from 'sanitize-html'
 

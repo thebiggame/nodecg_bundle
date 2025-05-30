@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import { Configschema } from '@thebiggame/types/schemas'
 import { useHead } from '@vueuse/head'
-import { ref } from 'vue'
 
 import Clock from './clock/clock.vue'
 import DatabarPrep from './databar-prep/databar-prep.vue'

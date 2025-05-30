@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
 import {
   Configschema,
   ProjectorActive,
-  Clock,
-  BandwidthData,
   ScoreboardData,
   ScoreboardActive,
-  MusicData,
 } from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
+import { useReplicant, useAssetReplicant } from 'nodecg-vue-composable'
+import { watch, toValue, useTemplateRef } from 'vue'
 import { gsap, Quart } from 'gsap'
 import assetTBGText from './tbgText.svg?raw'
 import { RiSwordLine } from '@remixicon/vue'

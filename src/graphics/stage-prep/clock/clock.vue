@@ -1,33 +1,8 @@
 <script setup lang="ts">
-import { ExampleType } from '@thebiggame/types'
-import {
-  Configschema,
-  ProjectorActive,
-  Clock,
-  BandwidthData,
-  MusicData,
-} from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant, Asset } from 'nodecg-vue-composable'
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
-import { gsap, Quart } from 'gsap'
-
-import {
-  RiDownloadCloudFill,
-  RiUploadCloudFill,
-  RiCalendarEventFill,
-  RiHandHeartFill,
-  RiEmotionHappyFill,
-  RiRocketFill,
-  RiMusic2Fill,
-  RiUserLine,
-  RiWifiFill,
-  RiLockPasswordLine,
-  RiShieldUserFill,
-  RiTimeLine,
-  RiBugLine,
-  RiGameFill,
-  RiGamepadLine,
-} from '@remixicon/vue'
+import { Configschema, Clock, MusicData } from '@thebiggame/types/schemas'
+import { useReplicant } from 'nodecg-vue-composable'
+import { computed } from 'vue'
+import { gsap } from 'gsap'
 
 // Access the bundle configuration with types.
 const config = nodecg.bundleConfig as Configschema

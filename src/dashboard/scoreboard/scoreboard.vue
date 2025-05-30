@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ScoreboardActive, ScoreboardData } from '@thebiggame/types/schemas'
-import { useHead } from '@vueuse/head'
 import { useReplicant } from 'nodecg-vue-composable'
-import { ref } from 'vue'
 import { QToggle, QInput } from 'quasar'
 
 const repScoreboardActive = useReplicant<ScoreboardActive>(
