@@ -1,6 +1,6 @@
 {
   "name": "thebiggame",
-  "version": "53.5.2",
+  "version": "53.6.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "https://thebiggame.org",
   "author": {
@@ -65,6 +65,14 @@
         "file": "scoreboard.html",
         "headerColor": "#000000",
         "workspace": "Presentation"
+      },
+      {
+        "name": "quizresults",
+        "title": "Quiz Results",
+        "width": 5,
+        "file": "quizScores.html",
+        "headerColor": "#000000",
+        "workspace": "Quiz"
       }
     ],
     "graphics": [
@@ -80,6 +88,11 @@
       },
       {
         "file": "gameplay.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "quiz_results.html",
         "width": 1920,
         "height": 1080
       },

@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "team1": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active",
+        "name",
+        "score"
+      ]
+    },
+    "team2": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active",
+        "name",
+        "score"
+      ]
+    },
+    "team3": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active",
+        "name",
+        "score"
+      ]
+    },
+    "team4": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active",
+        "name",
+        "score"
+      ]
+    },
+    "team5": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "active",
+        "name",
+        "score"
+      ]
+    }
+  },
+  "required": [
+    "team1",
+    "team2",
+    "team3",
+    "team4",
+    "team5"
+  ]
+}

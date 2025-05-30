@@ -24,6 +24,7 @@ import {
   ShoutboxShouts,
 } from '@thebiggame/types/schemas'
 import { get as nodecg } from './nodecg'
+import { QuizScoreData } from '@thebiggame/types/schemas/quizScoreData'
 
 /**
  * This is where you can declare all your replicant to import easily into other files,
@@ -232,5 +233,39 @@ export const repShoutboxShouts = nodecg().Replicant<ShoutboxShouts>(
       shouts: [],
     },
     persistent: true,
+  },
+)
+
+// Quiz - Results screen.
+export const repQuizScoreData = nodecg().Replicant<QuizScoreData>(
+  'quiz:scores:data',
+  {
+    defaultValue: {
+      team1: {
+        name: 'Team 1',
+        score: 0,
+        active: false,
+      },
+      team2: {
+        name: 'Team 2',
+        score: 0,
+        active: false,
+      },
+      team3: {
+        name: 'Team 3',
+        score: 0,
+        active: false,
+      },
+      team4: {
+        name: 'Team 4',
+        score: 0,
+        active: false,
+      },
+      team5: {
+        name: 'Team 5',
+        score: 0,
+        active: false,
+      },
+    },
   },
 )
