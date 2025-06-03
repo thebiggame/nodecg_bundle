@@ -6,7 +6,7 @@ import assetTBGText from './tbgText.svg?raw'
 
 const props = defineProps<{
   // Passing as a number is kinda garbo, but we need to do it for calculating font size.
-  size: Number
+  size: number
 }>()
 
 // Access the bundle configuration with types.
@@ -109,15 +109,16 @@ onMounted(() => {
 <template>
   <div
     ref="message-box"
+    :style="{ height: props.size }"
     class="d-flex box-elem message-box align-items-center justify-content-center"
-    :style="{ height: props.size, 'font-size': props.size * 0.6 + 'px' }"
   >
     <div
       class="is-message event-num d-flex align-self-center align-items-center"
+      :style="{ 'font-size': props.size * 0.6 + 'px' }"
     >
       {{ config.event_num }}
     </div>
-    <div class="is-message">
+    <div class="is-message" :style="{ 'font-size': props.size * 0.6 + 'px' }">
       <svg
         v-html="assetTBGText"
         class="align-self-center"
