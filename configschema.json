@@ -13,6 +13,10 @@
         },
         "schedule_scroll_interval": {
           "type": "integer"
+        },
+        "brandchip_interval": {
+          "type": "integer",
+          "default": 5000
         }
       },
       "required": [

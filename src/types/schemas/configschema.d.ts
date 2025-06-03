@@ -11,6 +11,7 @@ export interface Configschema {
 	stage: {
 		slideshow_interval: number;
 		schedule_scroll_interval: number;
+		brandchip_interval?: number;
 		[k: string]: unknown;
 	};
 	music: {

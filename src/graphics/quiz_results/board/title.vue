@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Configschema } from '@thebiggame/types/schemas'
+import TbgBrandChip from '../../shared/tbgBrandChip.vue'
 
 // Access the bundle configuration with types.
 const config = nodecg.bundleConfig as Configschema
@@ -44,17 +45,6 @@ const config = nodecg.bundleConfig as Configschema
   font-family: 'Archivo Variable', sans-serif;
 }
 
-#wipe-title {
-  font-size: 100px;
-  font-weight: 300;
-  font-family: 'Archivo Variable', 'Arial Black', 'Arial Bold', sans-serif;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
-  background-color: $color-tbg-primary;
-  border-right: solid #fff 2px;
-  padding-left: 0.5vw;
-  padding-right: 0.5vw;
-}
-
 .box-elem {
   height: 140px;
   border-left: solid #fff 2px;
@@ -70,12 +60,6 @@ const config = nodecg.bundleConfig as Configschema
 
 .box-border-left {
   border-left: solid #303030 1px;
-}
-
-.event-num {
-  color: $color-tbg-event-highlight;
-  font-family: 'Archivo Variable', sans-serif;
-  font-weight: 800;
 }
 
 .icon-primary {
@@ -235,9 +219,7 @@ const config = nodecg.bundleConfig as Configschema
     <div ref="wipe-outer" class="wipe-outer">
       <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
         <div id="event-data" class="d-flex">
-          <div id="wipe-title" class="d-flex box-elem">
-            <b class="event-num align-self-center">{{ config.event_num }}</b>
-          </div>
+          <tbg-brand-chip :size="140" />
           <div
             id="message-box"
             ref="message-box"

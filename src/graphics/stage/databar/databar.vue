@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import {
-  Configschema,
-  ProjectorActive,
-  Clock,
   BandwidthData,
+  Clock,
+  Configschema,
   MusicData,
+  ProjectorActive,
 } from '@thebiggame/types/schemas'
-import { useReplicant, useAssetReplicant } from 'nodecg-vue-composable'
-import { onMounted, watch, toValue, useTemplateRef, computed } from 'vue'
+import { useAssetReplicant, useReplicant } from 'nodecg-vue-composable'
+import { computed, onMounted, toValue, useTemplateRef, watch } from 'vue'
 import { gsap, Quart } from 'gsap'
-import assetTBGText from './tbgText.svg?raw'
+import assetTBGText from '../../shared/tbgText.svg?raw'
 import {
-  RiDownloadCloudFill,
-  RiUploadCloudFill,
   RiCalendarEventFill,
+  RiDownloadCloudFill,
+  RiGamepadFill,
   RiHandHeartFill,
-  RiWifiFill,
   RiLockPasswordLine,
+  RiMusicAiFill,
+  RiProjector2Line,
   RiShieldUserFill,
   RiTimeLine,
-  RiProjector2Line,
-  RiMusicAiFill,
+  RiUploadCloudFill,
+  RiWifiFill,
 } from '@remixicon/vue'
+import TbgBrandChip from '../../shared/tbgBrandChip.vue'
 
 // Access the bundle configuration with types.
 const config = nodecg.bundleConfig as Configschema
@@ -513,9 +515,7 @@ onMounted(() => {
     <div ref="wipe-outer" class="wipe-outer">
       <div ref="wipe-inner" class="wipe-inner container-fluid p-0">
         <div id="event-data" class="d-flex">
-          <div id="wipe-title" class="d-flex box-elem">
-            <b class="event-num align-self-center">{{ config.event_num }}</b>
-          </div>
+          <TbgBrandChip :size="75" />
           <div
             id="message-box"
             ref="message-box"
@@ -532,12 +532,7 @@ onMounted(() => {
               </p>
             </div>
             <div class="is-message d-flex">
-              <svg
-                v-html="assetTBGText"
-                class="align-self-center me-2"
-                width="50px"
-                height="50px"
-              ></svg>
+              <RiGamepadFill size="50px" className="align-self-center me-3" />
               <p v-if="clockEventDay == 1">
                 Welcome to <b>theBIGGAME</b>
                 <b class="event-num">{{ config.event_num }}</b
