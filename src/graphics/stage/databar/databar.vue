@@ -532,7 +532,7 @@ onMounted(() => {
               </p>
             </div>
             <div class="is-message d-flex">
-              <RiGamepadFill size="50px" className="align-self-center me-3" />
+              <RiGamepadFill size="50px" className="align-self-center me-2" />
               <p v-if="clockEventDay == 1">
                 Welcome to <b>theBIGGAME</b>
                 <b class="event-num">{{ config.event_num }}</b
@@ -546,7 +546,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiCalendarEventFill
                 size="50px"
-                className="align-self-center me-3"
+                className="align-self-center me-2"
               ></RiCalendarEventFill>
               <p v-if="clockEventDay == 1">
                 Day <b>1</b>: <i>Settle in, make yourself at home!</i>
@@ -562,7 +562,7 @@ onMounted(() => {
             <div class="is-message d-flex">
               <RiHandHeartFill
                 size="50px"
-                className="align-self-center me-3"
+                className="align-self-center me-2"
               ></RiHandHeartFill>
               <div
                 v-for="chip in repAssetSponsorChips"
@@ -588,7 +588,7 @@ onMounted(() => {
               ></RiWifiFill>
               <span>thebiggame</span>
               <RiLockPasswordLine
-                size="36px"
+                size="50px"
                 className="align-self-center mx-2"
               ></RiLockPasswordLine>
               <span>thebiggame</span>
