@@ -17,6 +17,7 @@ export = (nodecg: NodeCG): void => {
    * things to be loaded *after* the NodeCG context is set.
    */
   set(nodecg)
+  require('./bundleMeta')
   require('./clock')
   require('./countdown')
   require('./network')

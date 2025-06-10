@@ -212,7 +212,7 @@ function initSlideshow() {
   if (refMessages.value === null) {
     return
   }
-  let slides = refMessages.value.querySelectorAll('.is-message')
+  let slides = refMessages.value?.querySelectorAll('.is-message')
 
   let currentSlideIndex = 0
 
@@ -239,7 +239,7 @@ function initSlideshow() {
             shouldStepForward = false
             // Update understanding of slide list.
             if (refMessages.value !== null) {
-              slides = refMessages.value.querySelectorAll('.is-message')
+              slides = refMessages.value?.querySelectorAll('.is-message')
             }
           } else {
             gsap.set(currentSlide, { y: '100%' })
@@ -566,7 +566,7 @@ onMounted(() => {
               ></RiHandHeartFill>
               <div
                 v-for="chip in repAssetSponsorChips"
-                class="d-flex box-elem align-items-center sponsor-boxo bg-secondary"
+                class="d-flex box-elem align-items-center sponsor-boxo bg-white"
               >
                 <img class="img-fluid mx-2" :src="chip.url" />
               </div>

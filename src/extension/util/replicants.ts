@@ -25,11 +25,21 @@ import {
 } from '@thebiggame/types/schemas'
 import { get as nodecg } from './nodecg'
 import { QuizScoreData } from '@thebiggame/types/schemas/quizScoreData'
+import { BundleVersion } from '@thebiggame/types/schemas/bundleVersion'
 
 /**
  * This is where you can declare all your replicant to import easily into other files,
  * and to make sure they have any correct settings on startup.
  */
+
+// BundleMeta / Version.
+export const repBundleVersion = nodecg().Replicant<BundleVersion>(
+  'bundle:version',
+  {
+    defaultValue: nodecg().bundleVersion,
+    persistent: false,
+  },
+)
 
 // Clock.
 export const repClock = nodecg().Replicant<Clock>('clock', {
