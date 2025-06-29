@@ -59,6 +59,14 @@
         "workspace": "Projector"
       },
       {
+        "name": "shoutmod",
+        "title": "Shoutbox Moderation",
+        "width": 4,
+        "file": "shout-moderate.html",
+        "headerColor": "#888800",
+        "workspace": "Projector"
+      },
+      {
         "name": "scoreboard",
         "title": "Scoreboard",
         "width": 3,
