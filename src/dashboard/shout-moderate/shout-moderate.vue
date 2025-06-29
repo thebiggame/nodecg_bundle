@@ -22,8 +22,12 @@ function RevertShoutboxData() {
 }
 
 function DeleteShout(shout: ShoutboxShout) {
-  if (repShoutboxMessages !== null && repShoutboxMessages !== undefined) {
-    const targetIndex = repShoutboxMessages.data?.shouts.findIndex(
+  if (
+    repShoutboxMessages !== undefined &&
+    repShoutboxMessages.data !== undefined &&
+    repShoutboxMessages.data.shouts !== undefined
+  ) {
+    const targetIndex = repShoutboxMessages.data.shouts.findIndex(
       (repShout) => repShout.id === shout.id,
     )
     if (targetIndex === -1) {
@@ -31,7 +35,7 @@ function DeleteShout(shout: ShoutboxShout) {
       return
     }
     // Remove 1 element at the given index (the targeted shout).
-    repShoutboxMessages.data?.shouts.splice(targetIndex, 1)
+    repShoutboxMessages.data.shouts.splice(targetIndex, 1)
     SaveShoutboxData()
   }
 }
