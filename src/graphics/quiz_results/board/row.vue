@@ -86,7 +86,7 @@ function handleWipe(newVal: boolean) {
       outerNode,
       1,
       {
-        x: '-250%',
+        x: '-500%',
         ease: Quart.easeInOut,
       },
       'out+=1',

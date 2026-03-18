@@ -1,12 +1,12 @@
 {
   "name": "thebiggame",
-  "version": "53.7.1",
+  "version": "54.0.0",
   "description": "theBIGGAME graphical assets, etc",
   "homepage": "https://thebiggame.org",
   "author": {
     "name": "duck",
-    "email": "me@duck.me.uk",
-    "url": "https://duck.me.uk"
+    "email": "me@duck.moe",
+    "url": "https://duck.moe"
   },
   "files": [
     "dashboard",
@@ -150,7 +150,7 @@
       }
     ]
   },
-  "repository": "https://github.com/thebiggame/tbgcg.git",
+  "repository": "https://github.com/thebiggame/nodecg_bundle.git",
   "license": "Apache-2.0",
   "scripts": {
     "autofix": "run-s autofix:*",
@@ -206,12 +206,13 @@
     "@fontsource/dseg14-classic": "^5.2.5",
     "@remixicon/vue": "^4.6.0",
     "@types/snmp-native": "^1.2.5",
+    "bindings": "^1.5.0",
     "bootstrap": "^5.3.0",
     "gsap": "^3.12.7",
     "marked": "^15.0.8",
     "module-alias": "^2.2.3",
     "node-ical": "^0.20.1",
-    "nodecg": "^2.5.3",
+    "nodecg": "^2.6.0",
     "sanitize-html": "^2.15.0",
     "snmp-native": "^1.2.0"
   }

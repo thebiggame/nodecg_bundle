@@ -341,10 +341,10 @@ watch(
 
 .wipe-outer {
   @include tbg-bar-outer(20px, 5px);
-  top: 760px;
-  left: 10px;
-  right: 600px;
-  bottom: 240px;
+  top: 715px;
+  left: 80px;
+  right: 680px;
+  bottom: 285px;
 }
 
 .wipe-inner {

@@ -179,10 +179,10 @@ function _formatDay(timestamp: string): string {
 
 .shoutbox-outer {
   @include tbg-bar-outer(10px, 5px, 15px);
-  top: 10px;
-  left: 1350px;
-  right: 10px;
-  bottom: 240px;
+  top: 50px;
+  left: 1275px;
+  right: 80px;
+  bottom: 290px;
 }
 
 .shoutbox-inner {

@@ -24,10 +24,10 @@ const repMusicData = useReplicant<MusicData>('music:now', 'thebiggame')
 
 .wipe-outer {
   @include tbg-bar-outer(20px, 5px, 150px);
-  top: 990px;
-  left: 10px;
-  right: 10px;
-  bottom: 5px;
+  top: 935px;
+  left: 95px;
+  right: 95px;
+  bottom: 60px;
 }
 
 .wipe-inner {

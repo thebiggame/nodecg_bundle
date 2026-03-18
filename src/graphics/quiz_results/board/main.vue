@@ -13,33 +13,33 @@ const repQuizScoreData = useReplicant<QuizScoreData>(
 <style scoped lang="scss">
 .row {
   @include tbg-bar-outer(20px, 5px);
-  left: 50px;
-  right: 50px;
+  left: 110px;
+  right: 100px;
 }
 
 .pos1 {
-  top: 280px;
-  bottom: 660px;
+  top: 240px;
+  bottom: 700px;
 }
 
 .pos2 {
-  top: 440px;
-  bottom: 500px;
+  top: 400px;
+  bottom: 540px;
 }
 
 .pos3 {
-  top: 600px;
-  bottom: 340px;
+  top: 560px;
+  bottom: 380px;
 }
 
 .pos4 {
-  top: 760px;
-  bottom: 180px;
+  top: 720px;
+  bottom: 220px;
 }
 
 .pos5 {
-  top: 920px;
-  bottom: 20px;
+  top: 880px;
+  bottom: 60px;
 }
 </style>
 

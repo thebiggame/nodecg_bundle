@@ -45,9 +45,9 @@ const clockEventDay = computed(() => {
 
 .wipe-outer {
   @include tbg-bar-outer(20px, 5px, 500px);
-  top: 10px;
-  left: 10px;
-  right: 10px;
+  top: 55px;
+  left: 95px;
+  right: 95px;
   bottom: 500px;
 }
 
@@ -277,7 +277,7 @@ const clockEventDay = computed(() => {
           >
             <div
               class="box-clock align-self-center ps-1 pe-3"
-              style="font-size: 350px"
+              style="font-size: 325px"
               id="clock"
             >
               {{ clockTime }}

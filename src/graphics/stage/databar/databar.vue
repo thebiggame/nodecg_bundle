@@ -276,10 +276,10 @@ onMounted(() => {
 
 .wipe-outer {
   @include tbg-bar-outer(20px, 5px);
-  top: 990px;
-  left: 10px;
-  right: 10px;
-  bottom: 5px;
+  top: 945px;
+  left: 80px;
+  right: 80px;
+  bottom: 50px;
 }
 
 .wipe-outer {

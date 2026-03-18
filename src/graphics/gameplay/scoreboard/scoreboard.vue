@@ -111,9 +111,9 @@ watch(
 
 .wipe-outer {
   @include tbg-bar-outer(20px, 5px);
-  top: 990px;
-  left: 0;
-  right: 0;
+  top: 960px;
+  left: 70px;
+  right: 70px;
   bottom: 0;
 }
 

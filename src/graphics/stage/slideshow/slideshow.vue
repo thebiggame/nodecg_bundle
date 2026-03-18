@@ -232,10 +232,10 @@ onMounted(() => {
 
 .slideshow-outer {
   @include tbg-bar-outer(20px, 5px, 15px);
-  top: 10px;
-  left: 10px;
-  right: 600px;
-  bottom: 345px;
+  top: 50px;
+  left: 80px;
+  right: 680px;
+  bottom: 385px;
 }
 
 .slideshow-inner {
